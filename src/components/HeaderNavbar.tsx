@@ -1,13 +1,13 @@
 import React from 'react';
-import {Navbar,Container,NavDropdown,Nav} from "react-bootstrap";
+import { Navbar, Container, NavDropdown, Nav } from "react-bootstrap";
 
-export default function HeaderNavbar(){
-    return(
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{zIndex:10}}>
+export default function HeaderNavbar() {
+    return (
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{ zIndex: 10 }}>
             <Container fluid>
-                <Navbar.Brand href="/"><h1 style={{color:'rgb(253, 207, 27)',fontWeight:"800",fontSize:"xx-large"}} className="text-border p-1 ps-4">My Form</h1></Navbar.Brand>
+                <Navbar.Brand href="/"><h1 style={{ color: 'rgb(253, 207, 27)', fontWeight: "800", fontSize: "xx-large" }} className="text-border p-1 ps-4">My Form</h1></Navbar.Brand>
                 <div className="ps-5 pe-5" />
-                <Navbar.Toggle aria-controls="responsive-navbar-nav"  />
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="/NewForm">Yeni Form Yarat</Nav.Link>
@@ -28,5 +28,5 @@ export default function HeaderNavbar(){
             </Container>
         </Navbar>
     );
-    
+
 }

@@ -1,5 +1,5 @@
 export default function CreateNewForm() {
-    return(
+    return (
         <>New Form</>
     );
 }

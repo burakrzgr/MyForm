@@ -1,6 +1,5 @@
 
-export default function LoginPage({login}:{login: boolean})
-{
+export default function LoginPage({ login }: { login: boolean }) {
     return (
         <>
             if(login){
