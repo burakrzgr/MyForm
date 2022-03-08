@@ -5,7 +5,7 @@ import AskPersonnelInfo from "./AskPersonnelInfo";
 
 export default function CreateNewForm() {  
     const [personnelInfo,setPersonnelInfo] = React.useState<string>("0");
-    const [formName,setFormName] = React.useState<string>("0");
+    const [formName,setFormName] = React.useState<string>("");
     return (
         <Container >
             <h2>New Form</h2>
