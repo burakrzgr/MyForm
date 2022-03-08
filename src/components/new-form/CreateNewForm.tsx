@@ -1,5 +1,10 @@
+import AddComponent from "./AddComponent"
+
 export default function CreateNewForm() {
     return (
-        <>New Form</>
+        <>
+            <p>New Form</p>
+            <AddComponent></AddComponent>
+        </>
     );
 }
