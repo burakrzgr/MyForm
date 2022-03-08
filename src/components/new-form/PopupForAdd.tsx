@@ -1,9 +1,9 @@
 import { Button, Modal } from "react-bootstrap"
 
 
-export default function PopupForAdd({ show, closeHandle }: { show: boolean, closeHandle: Function }) {
+export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: boolean, closeHandle: Function, addedHandle: Function }) {
     const addCriteria=() =>{
-        alert("Done!!");
+        addedHandle("Lolllloll");
     }
     return (
         <Modal
