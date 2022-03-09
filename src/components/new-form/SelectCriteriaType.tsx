@@ -22,6 +22,7 @@ export default function SelectCriteriaType({selected,selectedChanged }:{selected
     <ButtonGroup>
         {listofType.map(i => 
              <ToggleButton
+             key={i.val}
              type="radio"
              id={"rbt-crt-"+i.val}
              variant="outline-info"
