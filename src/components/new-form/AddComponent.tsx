@@ -12,7 +12,6 @@ export default function AddComponent({addedHandle} : {addedHandle:Function}) {
         setShowPopup(false);
     }
     const addedItem = (vl:any) =>{
-        console.log("tr",vl);
         addedHandle(vl);
         setShowPopup(false);
     }

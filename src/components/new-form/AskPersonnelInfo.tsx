@@ -17,7 +17,7 @@ export default function AskPersonnelInfo({selected,selectedChanged }:{selected:s
                 checked={"0" === selected}
                 onChange={radioHandler}
             >
-                Dont ask any info
+                Dont ask any information
         </ToggleButton>
             <ToggleButton
                 type="radio"
@@ -28,7 +28,7 @@ export default function AskPersonnelInfo({selected,selectedChanged }:{selected:s
                 checked={"1" === selected}
                 onChange={radioHandler}
             >
-                Only if surveyor accepts  
+                Only if participant accepts  
         </ToggleButton>
             <ToggleButton
                 type="radio"

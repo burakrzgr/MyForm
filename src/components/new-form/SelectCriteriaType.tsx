@@ -14,6 +14,7 @@ export default function SelectCriteriaType({selected,selectedChanged }:{selected
         { "val": "rb", "name": " Radio Button" },
         { "val": "cm_b", "name": "Combo Box" },
         { "val": "ch_b", "name": "Check Box" },
+        { "val": "date", "name": "Date / Time" },
         { "val": "rate", "name": "Rate" },
         { "val": "ap", "name": "Accept Policy" }
     ];

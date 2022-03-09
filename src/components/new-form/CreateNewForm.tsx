@@ -14,9 +14,9 @@ export default function CreateNewForm() {
     const [formName, setFormName] = React.useState<string>("");
     const [areas,setAreas] = React.useState<{items:Array<string>}>({items:[]})
     const newComponentAdded = (vl : any) => {
-        let _area = areas;
-        _area.items.push(vl);
-        setAreas({..._area});
+        let list = areas;
+        list.items.push(vl);
+        setAreas({...list});
     }
     return (
         <Container className="pt-5">

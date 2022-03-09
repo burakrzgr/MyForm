@@ -4,6 +4,7 @@ import SelectCriteriaType from "./SelectCriteriaType";
 import "./form-input.css";
 import mystyle from "../../mystyle";
 import {TextBox,TextArea} from "./new-component/TextField";
+import { SelectionList,SelectionCombo } from "./new-component/Selections";
 
 
 export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: boolean, closeHandle: Function, addedHandle: Function }) {
@@ -11,6 +12,7 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
     const[value,setValue] = useState<string>("");
     const[type,setType] = useState<string>("");
     const[defValue,setDefValue] = useState<string>("");
+    const[options, setOptions] = useState<{ items: string[] }>({ items: [] });
 
     const addCriteria=() =>{
         addedHandle(value);
@@ -57,9 +59,10 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
                     {
                         "tx_b" : <TextBox value={defValue} setValue={setDefValue} />,
                         "tx_a" : <TextArea value={defValue} setValue={setDefValue} />,
-                        "rb" : <>RadioBox</>,
-                        "cm_b" : <>Combo Box</>,
+                        "rb" : <SelectionList options={options} setOptions={setOptions}></SelectionList>,
+                        "cm_b" : <SelectionCombo options={options} setOptions={setOptions}></SelectionCombo>,
                         "ch_b" : <>Selamlar</>,
+                        "date" : <>Date / Time</>,
                         "rate" : <>Puanla</>,
                         "ap" : <>Policy</>
                     }[type]
