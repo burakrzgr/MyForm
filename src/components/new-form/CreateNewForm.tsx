@@ -3,6 +3,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import AddComponent from "./AddComponent"
 import AreasDisplay from "./AreasDisplay";
 import AskPersonnelInfo from "./AskPersonnelInfo";
+import mystyle from "../../mystyle";
 
 class CompList{
     items : any[] = [];
@@ -37,7 +38,7 @@ export default function CreateNewForm() {
                 </Form.Group>
                 <Form.Group className="pt-5 " controlId="formBasicPrInfo">
                     <Form.Label>Ask Personnel Information (Name, Surname, Identity Number...)</Form.Label>
-                    <div style={styles.formControl}>
+                    <div style={mystyle.formControl}>
                         <AskPersonnelInfo selected={personnelInfo} selectedChanged={(vl: any) => setPersonnelInfo(vl)} ></AskPersonnelInfo>
                     </div>
                     <Form.Text className="text-muted">
@@ -53,8 +54,3 @@ export default function CreateNewForm() {
     );
 }
 
-const styles = {
-    formControl: {
-        padding: '.375rem .75rem'
-    }
-  } as const;
