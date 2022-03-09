@@ -59,12 +59,12 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
                     {
                         "tx_b" : <TextBox value={defValue} setValue={setDefValue} />,
                         "tx_a" : <TextArea value={defValue} setValue={setDefValue} />,
-                        "rb" : <SelectionList options={options} setOptions={setOptions}></SelectionList>,
+                        "sel_" : <SelectionList options={options} setOptions={setOptions}></SelectionList>,
                         "cm_b" : <SelectionCombo options={options} setOptions={setOptions}></SelectionCombo>,
                         "ch_b" : <>Selamlar</>,
                         "date" : <>Date / Time</>,
                         "rate" : <>Puanla</>,
-                        "ap" : <>Policy</>
+                        "ap_c" : <>Policy</>
                     }[type]
                 }
             </Modal.Body>
