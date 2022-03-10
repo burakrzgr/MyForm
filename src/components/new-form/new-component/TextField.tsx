@@ -36,7 +36,6 @@ export function TextArea({ value, setValue }: { value: string, setValue: Functio
     return (
         <>
             <Stack direction="horizontal" gap={3}>
-
                 <div ><Form.Label>Area Height</Form.Label></div>
                 <div ><InputGroup style={{ width: '9rem' }}>
                     <Button variant="outline-danger" style={{ width: '2.5rem' }} onClick={() => setRowEvent(row - 1)}>-</Button>

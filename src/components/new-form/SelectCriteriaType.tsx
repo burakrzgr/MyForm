@@ -11,7 +11,7 @@ export default function SelectCriteriaType({selected,selectedChanged }:{selected
     let listofType: { val: string, name: string }[] = [
         { "val": "tx_b", "name": "Text Box" },
         { "val": "tx_a", "name": "Text Area" },
-        { "val": "sel_", "name": " Radio Button" },
+        { "val": "sel_", "name": "Radio Button" },
         { "val": "cm_b", "name": "Combo Box" },
         { "val": "ch_b", "name": "Check Box" },
         { "val": "date", "name": "Date / Time" },
@@ -39,78 +39,3 @@ export default function SelectCriteriaType({selected,selectedChanged }:{selected
     </ButtonGroup>
     );
 }
-
-
-
-
-
-/*
-
-   <ToggleButton
-                type="radio"
-                id="rbt-crt-1"
-                variant="outline-info"
-                name="radio"
-                value="1"
-                checked={"1" === selected}
-                onChange={radioHandler}
-            >
-                Text Area  
-        </ToggleButton>
-            <ToggleButton
-                type="radio"
-                id="rbt-crt-2"
-                variant="outline-info"
-                name="radio"
-                value="2"
-                checked={"2" === selected}
-                onChange={radioHandler}
-            >
-                Radio Button
-        </ToggleButton>
-        <ToggleButton
-                type="radio"
-                id="rbt-crt-3"
-                variant="outline-info"
-                name="radio"
-                value="3"
-                checked={"3" === selected}
-                onChange={radioHandler}
-            >
-                Combo Box
-        </ToggleButton>
-        <ToggleButton
-                type="radio"
-                id="rbt-crt-5"
-                variant="outline-info"
-                name="radio"
-                value="5"
-                checked={"5" === selected}
-                onChange={radioHandler}
-            >
-                Check Box
-        </ToggleButton>
-        <ToggleButton
-                type="radio"
-                id="rbt-crt-6"
-                variant="outline-info"
-                name="radio"
-                value="6"
-                checked={"6" === selected}
-                onChange={radioHandler}
-            >
-                Rate
-        </ToggleButton>
-        <ToggleButton
-                type="radio"
-                id="rbt-crt-9"
-                variant="outline-info"
-                name="radio"
-                value="4"
-                checked={"4" === selected}
-                onChange={radioHandler}
-            >
-                Accept Policy
-        </ToggleButton>
-
-*/

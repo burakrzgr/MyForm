@@ -1,10 +1,14 @@
-import React, { useState,useEffect } from "react";
+import { useState,useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import SelectCriteriaType from "./SelectCriteriaType";
-import "./form-input.css";
+import "../../css/form-input.css";
 import mystyle from "../../mystyle";
 import {TextBox,TextArea} from "./new-component/TextField";
 import { SelectionList,SelectionCombo } from "./new-component/Selections";
+import Rating from "./new-component/Rating";
+import CheckValue from "./new-component/CheckValue";
+import AcceptPolicy from "./new-component/AcceptPolicy";
+import DateTime from "./new-component/DateTime";
 
 
 export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: boolean, closeHandle: Function, addedHandle: Function }) {
@@ -61,10 +65,10 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
                         "tx_a" : <TextArea value={defValue} setValue={setDefValue} />,
                         "sel_" : <SelectionList options={options} setOptions={setOptions}></SelectionList>,
                         "cm_b" : <SelectionCombo options={options} setOptions={setOptions}></SelectionCombo>,
-                        "ch_b" : <>Selamlar</>,
-                        "date" : <>Date / Time</>,
-                        "rate" : <>Puanla</>,
-                        "ap_c" : <>Policy</>
+                        "ch_b" : <CheckValue></CheckValue>,
+                        "date" : <DateTime></DateTime>,
+                        "rate" : <Rating></Rating>,
+                        "ap_c" : <AcceptPolicy value={defValue} setValue={setDefValue}></AcceptPolicy>
                     }[type]
                 }
             </Modal.Body>
