@@ -7,6 +7,20 @@ export default function DateTime() {
     const [time, setTime] = useState<boolean>(true);
     return (
         <>
+         <Form.Group className="mt-3">
+                <Form.Check
+                    type="checkbox"
+                    label="Show Date"
+                    checked={date}
+                    onChange={(e: any) => { setDate(e.target.checked)}}
+                ></Form.Check> 
+                <Form.Check
+                type="checkbox"
+                label="Show Time"
+                checked={time}
+                onChange={(e: any) => { setTime(e.target.checked)}}
+            ></Form.Check>
+            </Form.Group>
             <Stack direction="horizontal">
                 {date ?
                     <div className="p-2">
@@ -20,6 +34,7 @@ export default function DateTime() {
                         <FormControl type="time" id="myTime" style={{ width: "10rem" }}></FormControl>
                     </div> : <></>
                 }
+                {(date || time)?<></>:<div className="text-danger p-2"><h5>This component useless!</h5></div>}
             </Stack>
         </>
     );
