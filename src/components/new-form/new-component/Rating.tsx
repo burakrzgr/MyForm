@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Button, Form, FormControl, InputGroup, Stack } from "react-bootstrap";
 import "../../../css/rating.css";
 
-export default function Rating() {
-    const [row, setRow] = useState<number>(5);
+export default function Rating({ count, setCount }: { count: number, setCount: Function }) {
     const setRowEvent = (val: number) => {
         if (val > 25) {
-            setRow(25);
+            setCount(20);
         }
         else if (val < 1) {
-            setRow(5);
+            setCount(5);
         }
         else {
-            setRow(val);
+            setCount(val);
         }
 
     }
+    useEffect(() => {
+        setCount(5)
+      },[]);
+
     let starNumber : string[] = [];
-    for (let index = row; index > 0; index--) {
+    for (let index = count; index > 0; index--) {
         starNumber.push(String(index));
         
     }
@@ -26,16 +29,16 @@ export default function Rating() {
             <Stack direction="horizontal" gap={3}>
                 <div ><Form.Label>Area Height</Form.Label></div>
                 <div ><InputGroup style={{ width: '9rem' }}>
-                    <Button variant="outline-danger" style={{ width: '2.5rem' }} onClick={() => setRowEvent(row - 1)}>-</Button>
+                    <Button variant="outline-danger" style={{ width: '2.5rem' }} onClick={() => setRowEvent(count - 1)}>-</Button>
                     <FormControl
                         type="Number"
                         placeholder="Number of Column"
                         aria-label="Inputgroupnoc"
                         className="text-center"
-                        value={row}
+                        value={count}
                         onChange={(vl: any) => setRowEvent(vl.target.value)}
                     />
-                    <Button variant="outline-success" style={{ width: '2.5rem' }} onClick={() => row < 30 ? setRowEvent(row + 1) : null}>+</Button>
+                    <Button variant="outline-success" style={{ width: '2.5rem' }} onClick={() => setRowEvent(count + 1)}>+</Button>
                 </InputGroup>
                 </div>
             </Stack>

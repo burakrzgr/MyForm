@@ -4,6 +4,7 @@ import AddComponent from "./AddComponent"
 import AreasDisplay from "./AreasDisplay";
 import AskPersonnelInfo from "./AskPersonnelInfo";
 import mystyle from "../../mystyle";
+import { itemOfForm } from "./ItemofForm";
 
 class CompList{
     items : any[] = [];
@@ -12,10 +13,10 @@ class CompList{
 export default function CreateNewForm() {
     const [personnelInfo, setPersonnelInfo] = React.useState<string>("0");
     const [formName, setFormName] = React.useState<string>("");
-    const [areas,setAreas] = React.useState<{items:Array<string>}>({items:[]})
-    const newComponentAdded = (vl : any) => {
+    const [areas,setAreas] = React.useState<{items:Array<itemOfForm>}>({items:[]})
+    const newComponentAdded = (val : itemOfForm) => {
         let list = areas;
-        list.items.push(vl);
+        list.items.push(val);
         setAreas({...list});
     }
     return (

@@ -1,31 +1,53 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import SelectCriteriaType from "./SelectCriteriaType";
 import "../../css/form-input.css";
 import mystyle from "../../mystyle";
-import {TextBox,TextArea} from "./new-component/TextField";
-import { SelectionList,SelectionCombo } from "./new-component/Selections";
+import { TextBox, TextArea } from "./new-component/TextField";
+import { SelectionList, SelectionCombo } from "./new-component/Selections";
 import Rating from "./new-component/Rating";
 import CheckValue from "./new-component/CheckValue";
 import AcceptPolicy from "./new-component/AcceptPolicy";
 import DateTime from "./new-component/DateTime";
+import { itemOfForm } from "./ItemofForm";
+import { count } from "console";
+
 
 
 export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: boolean, closeHandle: Function, addedHandle: Function }) {
-    
-    const[value,setValue] = useState<string>("");
-    const[type,setType] = useState<string>("");
-    const[defValue,setDefValue] = useState<string>("");
-    const[options, setOptions] = useState<{ items: string[] }>({ items: [] });
+    const [type, setType] = useState<string>("");
+    const [name, setName] = useState<string>("");
+    const [value, setValue] = useState<string>("");
+    const [count, setCount] = useState<number>(3);
+    const [options, setOptions] = useState<{ items: string[] }>({ items: [] });
+    const [displays, setDisplays] = useState<{ items: boolean[] }>({ items: [] });
 
-    const addCriteria=() =>{
-        addedHandle(value);
+    const addCriteria = () => {
+        let item: itemOfForm = { name, type, value: undefined, options: undefined, count: undefined, displays: undefined };
+
+        item.value = {
+            "tx_b": value,
+            "tx_a": value,
+            "ap_c": value
+        }[type];
+
+        item.options = {
+            "sel_": options.items,
+            "cm_b": options.items
+        }[type];
+
+        item.count = {
+            "rate": count,
+            "ap_c": count
+        }[type];
+
+        addedHandle(item);
     }
 
     useEffect(() => {
-      setValue("");
+        setName("");
     }, [show])
-    
+
     return (
         <Modal
             show={show}
@@ -45,12 +67,12 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
             <Modal.Body >
                 <Form.Group className="" controlId="formtextBox">
                     <Form.Label><h5>Item Text</h5></Form.Label>
-                    <Form.Control 
-                        type="text" 
-                        placeholder="Item Text" 
+                    <Form.Control
+                        type="text"
+                        placeholder="Item Text"
                         className="form-underline"
-                        value={value} 
-                        onChange={(vl : any) => setValue(vl.target.value)} />
+                        value={name}
+                        onChange={(vl: any) => setName(vl.target.value)} />
                 </Form.Group>
                 <Form.Group className="" controlId="formtextBox">
                     <Form.Label className="pt-3">Item Type</Form.Label>
@@ -61,14 +83,14 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
                 <hr />
                 {
                     {
-                        "tx_b" : <TextBox value={defValue} setValue={setDefValue} />,
-                        "tx_a" : <TextArea value={defValue} setValue={setDefValue} />,
-                        "sel_" : <SelectionList options={options} setOptions={setOptions}></SelectionList>,
-                        "cm_b" : <SelectionCombo options={options} setOptions={setOptions}></SelectionCombo>,
-                        "ch_b" : <CheckValue></CheckValue>,
-                        "date" : <DateTime></DateTime>,
-                        "rate" : <Rating></Rating>,
-                        "ap_c" : <AcceptPolicy value={defValue} setValue={setDefValue}></AcceptPolicy>
+                        "tx_b": <TextBox value={value} setValue={setValue} />,
+                        "tx_a": <TextArea value={value} setValue={setValue} count={count} setCount={setCount} />,
+                        "sel_": <SelectionList options={options} setOptions={setOptions}></SelectionList>,
+                        "cm_b": <SelectionCombo options={options} setOptions={setOptions}></SelectionCombo>,
+                        "ch_b": <CheckValue></CheckValue>,
+                        "date": <DateTime></DateTime>,
+                        "rate": <Rating count={count} setCount={setCount} ></Rating>,
+                        "ap_c": <AcceptPolicy value={value} setValue={setValue} ></AcceptPolicy>
                     }[type]
                 }
             </Modal.Body>
