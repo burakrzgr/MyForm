@@ -57,7 +57,7 @@ export function TextArea({
           <Form.Label>Area Height</Form.Label>
         </div>
         <div>
-          <InputGroup style={{ width: "9rem" }}>
+          <InputGroup style={{ width: "9rem",backgroundColor:"white" }}>
             <Button
               variant="outline-danger"
               style={{ width: "2.5rem" }}

@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import PopupForAdd from "./PopupForAdd";
 
 
-export default function AddComponent({addedHandle} : {addedHandle:Function}) {
+export default function AddFieldButton({addedHandle} : {addedHandle:Function}) {
     const [showPopup,setShowPopup] = React.useState<boolean>(false);
     const showPopupHandler = () =>{
         setShowPopup(true);

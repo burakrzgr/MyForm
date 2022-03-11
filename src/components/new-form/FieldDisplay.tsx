@@ -1,7 +1,7 @@
-import { itemOfForm } from "./ItemofForm";
+import { FieldoForm } from "./FieldofForm";
 
 
-export default function AreasDisplay({ areas, setAreas }: { areas: { items: Array<itemOfForm> }, setAreas: Function }) {
+export default function FieldDisplay({ areas, setAreas }: { areas: { items: Array<FieldoForm> }, setAreas: Function }) {
     return (
         <>
             {areas.items.map((i, key) =>

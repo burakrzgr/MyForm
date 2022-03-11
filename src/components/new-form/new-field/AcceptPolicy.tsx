@@ -17,9 +17,6 @@ export default function AcceptPolicy({
     setCheckText("I acknowledge that I have read and understood the above policies and procedures in its entirety and agree to abide by them.");
   }, [])
   
-  /*const [text, setText] = useState<string>(
-    "I acknowledge that I have read and understood the above policies and procedures in its entirety and agree to abide by them."
-  );*/
   return (
     <>
       <TextChanged textChanged={(vl: any) => setCheckText(vl)}></TextChanged>

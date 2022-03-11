@@ -3,13 +3,13 @@ import { Button, Form, Modal } from "react-bootstrap";
 import SelectCriteriaType from "./SelectCriteriaType";
 import "../../css/form-input.css";
 import mystyle from "../../mystyle";
-import { TextBox, TextArea } from "./new-item/TextField";
-import { SelectionList, SelectionCombo } from "./new-item/Selections";
-import Rating from "./new-item/Rating";
-import CheckValue from "./new-item/CheckValue";
-import AcceptPolicy from "./new-item/AcceptPolicy";
-import DateTime from "./new-item/DateTime";
-import { itemOfForm } from "./ItemofForm";
+import { TextBox, TextArea } from "./new-field/TextField";
+import { SelectionList, SelectionCombo } from "./new-field/Selections";
+import Rating from "./new-field/Rating";
+import CheckValue from "./new-field/CheckValue";
+import AcceptPolicy from "./new-field/AcceptPolicy";
+import DateTime from "./new-field/DateTime";
+import { FieldoForm } from "./FieldofForm";
 
 
 
@@ -20,20 +20,20 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
     const [checkText, setCheckText] = useState<string>("");
     const [count, setCount] = useState<number>(3);
     const [options, setOptions] = useState<{ items: string[] }>({ items: [] });
-    const [displays, setDisplays] = useState<{ items: boolean[] }>({ items: [false,true,true,false] });
+    const [displays, setDisplays] = useState<{ items: boolean[] }>({ items: [false, true, true, false] });
 
     const addCriteria = () => {
-        let item: itemOfForm = { name, type, value: undefined,checkText : undefined, options: undefined, count: undefined, displays: undefined };
+        let item: FieldoForm = { name, type, value: undefined, checkText: undefined, options: undefined, count: undefined, displays: undefined };
 
         item.value = {
             "tx_b": value,
             "tx_a": value,
             "ap_c": value
-        }[type];  
+        }[type];
 
         item.checkText = {
-            "ch_b" :checkText,
-            "ap_c" :checkText,
+            "ch_b": checkText,
+            "ap_c": checkText,
         }[type];
 
         item.options = {
@@ -44,7 +44,7 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
         item.count = {
             "tx_a": count,
             "rate": count
-        }[type]; 
+        }[type];
 
         item.displays = {
             "ch_b": [...displays.items],
@@ -55,10 +55,10 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
         addedHandle(item);
     }
 
-    const setCheck = (index :number,val :boolean) => {
+    const setCheck = (index: number, val: boolean) => {
         let list = displays.items;
-        list[index] = val;       
-        setDisplays({...displays, items:list})
+        list[index] = val;
+        setDisplays({ ...displays, items: list })
     }
     useEffect(() => {
         setName("");
@@ -73,47 +73,51 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
             backdrop="static"
             centered
         >
-            <Modal.Header closeButton>
-                <Modal.Title
-                    id="contained-modal-title-vcenter"
-                >
-                    Yeni Alan Ekle
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body >
-                <Form.Group className="" controlId="formtextBox">
-                    <Form.Label><h5>Item Text</h5></Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="Item Text"
-                        className="form-underline"
-                        value={name}
-                        onChange={(vl: any) => setName(vl.target.value)} />
-                </Form.Group>
-                <Form.Group className="" controlId="formtextBox">
-                    <Form.Label className="pt-3">Item Type</Form.Label>
-                    <div style={mystyle.formControl}>
-                        <SelectCriteriaType selected={type} selectedChanged={(vl: any) => setType(vl)} ></SelectCriteriaType>
-                    </div>
-                </Form.Group>
-                <hr />
-                {
+            <div style={{backgroundColor:"var(--bs-gray-200)"}}>
+                <Modal.Header closeButton>
+                    <Modal.Title
+                        id="contained-modal-title-vcenter"
+                    >
+                        Create New Field
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body >
+                    <Form.Group className="" controlId="formtype">
+                        <Form.Label >Item Type</Form.Label>
+                        <div style={mystyle.formControl}>
+                            <SelectCriteriaType selected={type} selectedChanged={(vl: any) => setType(vl)} ></SelectCriteriaType>
+                        </div>
+                    </Form.Group>
+                    <Form.Group className="pt-3" controlId="formtextBox">
+                        <Form.Label><h5>Question</h5></Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Question"
+                            value={name}
+                            rows={2}
+                            as="textarea"
+                            style={{ resize: "none" }}
+                            onChange={(vl: any) => setName(vl.target.value)} />
+                    </Form.Group>
+                    <hr />
                     {
-                        "tx_b": <TextBox value={value} setValue={setValue} />,
-                        "tx_a": <TextArea value={value} setValue={setValue} count={count} setCount={setCount} />,
-                        "sel_": <SelectionList options={options} setOptions={setOptions} check={displays.items[3]} setCheck={(val :boolean) => setCheck(3,val)}></SelectionList>,
-                        "cm_b": <SelectionCombo options={options} setOptions={setOptions} ></SelectionCombo>,
-                        "ch_b": <CheckValue text={checkText} setText={setCheckText} check={displays.items[0]} setCheck={(val :boolean) => setCheck(0,val)}></CheckValue>,
-                        "date": <DateTime check={displays.items} setCheck={(index :number,val :boolean) => setCheck(index,val)}></DateTime>,
-                        "rate": <Rating count={count} setCount={setCount} ></Rating>,
-                        "ap_c": <AcceptPolicy value={value} setValue={setValue} checkText={checkText} setCheckText={setCheckText} ></AcceptPolicy>
-                    }[type]
-                }
-            </Modal.Body>
-            <Modal.Footer className="justify-content-between">
-                <Button variant="outline-dark" onClick={() => closeHandle()}>Cancel</Button>
-                <Button variant="primary" onClick={() => addCriteria()}>Add Criteria</Button>
-            </Modal.Footer>
+                        {
+                            "tx_b": <TextBox value={value} setValue={setValue} />,
+                            "tx_a": <TextArea value={value} setValue={setValue} count={count} setCount={setCount} />,
+                            "sel_": <SelectionList options={options} setOptions={setOptions} check={displays.items[3]} setCheck={(val: boolean) => setCheck(3, val)}></SelectionList>,
+                            "cm_b": <SelectionCombo options={options} setOptions={setOptions} ></SelectionCombo>,
+                            "ch_b": <CheckValue text={checkText} setText={setCheckText} check={displays.items[0]} setCheck={(val: boolean) => setCheck(0, val)}></CheckValue>,
+                            "date": <DateTime check={displays.items} setCheck={(index: number, val: boolean) => setCheck(index, val)}></DateTime>,
+                            "rate": <Rating count={count} setCount={setCount} ></Rating>,
+                            "ap_c": <AcceptPolicy value={value} setValue={setValue} checkText={checkText} setCheckText={setCheckText} ></AcceptPolicy>
+                        }[type]
+                    }
+                </Modal.Body>
+                <Modal.Footer className="justify-content-between">
+                    <Button variant="outline-dark" className="my-bg-white ps-4 pe-4" onClick={() => closeHandle()}>Cancel</Button>
+                    <Button variant="primary" className=" ps-4 pe-4" onClick={() => addCriteria()}>Add Criteria</Button>
+                </Modal.Footer>
+            </div>
         </Modal>
     );
 }

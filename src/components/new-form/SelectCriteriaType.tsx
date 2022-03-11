@@ -24,7 +24,7 @@ export default function SelectCriteriaType({
   ];
 
   return (
-    <ButtonGroup className="rounded-top">
+    <ButtonGroup className="w-100 bg-white">
       {listofType.map((i) => (
         <ToggleButton
           key={i.val}

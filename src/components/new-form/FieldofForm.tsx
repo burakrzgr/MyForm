@@ -1,5 +1,5 @@
 
-export type itemOfForm ={
+export type FieldoForm ={
     name : string,
     type : string,
     value? : string,

@@ -1,10 +1,10 @@
 import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import AddComponent from "./AddComponent"
-import AreasDisplay from "./AreasDisplay";
+import AddFieldButton from "./AddFieldButton"
+import FieldDisplay from "./FieldDisplay";
 import AskPersonnelInfo from "./AskPersonnelInfo";
 import mystyle from "../../mystyle";
-import { itemOfForm } from "./ItemofForm";
+import { FieldoForm } from "./FieldofForm";
 
 class CompList{
     items : any[] = [];
@@ -13,8 +13,8 @@ class CompList{
 export default function CreateNewForm() {
     const [personnelInfo, setPersonnelInfo] = React.useState<string>("0");
     const [formName, setFormName] = React.useState<string>("");
-    const [areas,setAreas] = React.useState<{items:Array<itemOfForm>}>({items:[]})
-    const newComponentAdded = (val : itemOfForm) => {
+    const [areas,setAreas] = React.useState<{items:Array<FieldoForm>}>({items:[]})
+    const newComponentAdded = (val : FieldoForm) => {
         let list = areas;
         list.items.push(val);
         setAreas({...list});
@@ -46,10 +46,10 @@ export default function CreateNewForm() {
                         Please notice that checking this are will force surveyor to share their personal information. Such as name and surname.
                     </Form.Text>
                 </Form.Group>
-                <AreasDisplay areas={areas} setAreas={setAreas} ></AreasDisplay>
+                <FieldDisplay areas={areas} setAreas={setAreas} ></FieldDisplay>
             </Form>
             <div className="pt-5">
-                <AddComponent addedHandle={newComponentAdded}></AddComponent>
+                <AddFieldButton addedHandle={newComponentAdded}></AddFieldButton>
             </div>
         </Container>
     );
