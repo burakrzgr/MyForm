@@ -13,7 +13,7 @@ export default function CheckValue({
   setText: Function;
 }) {
     useEffect(() => {
-        setText("Check me! Click me! But you can never break me!");
+        setText("Check me! Click me! You can never break me!");
       }, [])
   //const [text, setText] = useState<string>("Check here!");
   return (
