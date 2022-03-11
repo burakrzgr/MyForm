@@ -17,17 +17,23 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
     const [type, setType] = useState<string>("");
     const [name, setName] = useState<string>("");
     const [value, setValue] = useState<string>("");
+    const [checkText, setCheckText] = useState<string>("");
     const [count, setCount] = useState<number>(3);
     const [options, setOptions] = useState<{ items: string[] }>({ items: [] });
-    const [displays, setDisplays] = useState<{ items: boolean[] }>({ items: [] });
+    const [displays, setDisplays] = useState<{ items: boolean[] }>({ items: [false,true,true,false] });
 
     const addCriteria = () => {
-        let item: itemOfForm = { name, type, value: undefined, options: undefined, count: undefined, displays: undefined };
+        let item: itemOfForm = { name, type, value: undefined,checkText : undefined, options: undefined, count: undefined, displays: undefined };
 
         item.value = {
             "tx_b": value,
             "tx_a": value,
             "ap_c": value
+        }[type];  
+
+        item.checkText = {
+            "ch_b" :checkText,
+            "ap_c" :checkText,
         }[type];
 
         item.options = {
@@ -36,13 +42,24 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
         }[type];
 
         item.count = {
-            "rate": count,
-            "ap_c": count
+            "tx_a": count,
+            "rate": count
+        }[type]; 
+
+        item.displays = {
+            "ch_b": displays.items,
+            "date": displays.items,
+            "sel_": displays.items
         }[type];
 
         addedHandle(item);
     }
 
+    const setCheck = (index :number,val :boolean) => {
+        let list = displays.items;
+        list[index] = val;       
+        setDisplays({...displays, items:list})
+    }
     useEffect(() => {
         setName("");
     }, [show])
@@ -84,12 +101,12 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
                     {
                         "tx_b": <TextBox value={value} setValue={setValue} />,
                         "tx_a": <TextArea value={value} setValue={setValue} count={count} setCount={setCount} />,
-                        "sel_": <SelectionList options={options} setOptions={setOptions}></SelectionList>,
-                        "cm_b": <SelectionCombo options={options} setOptions={setOptions}></SelectionCombo>,
-                        "ch_b": <CheckValue></CheckValue>,
-                        "date": <DateTime></DateTime>,
+                        "sel_": <SelectionList options={options} setOptions={setOptions} check={displays.items[3]} setCheck={(val :boolean) => setCheck(3,val)}></SelectionList>,
+                        "cm_b": <SelectionCombo options={options} setOptions={setOptions} ></SelectionCombo>,
+                        "ch_b": <CheckValue text={checkText} setText={setCheckText} check={displays.items[0]} setCheck={(val :boolean) => setCheck(0,val)}></CheckValue>,
+                        "date": <DateTime check={displays.items} setCheck={(index :number,val :boolean) => setCheck(index,val)}></DateTime>,
                         "rate": <Rating count={count} setCount={setCount} ></Rating>,
-                        "ap_c": <AcceptPolicy value={value} setValue={setValue} ></AcceptPolicy>
+                        "ap_c": <AcceptPolicy value={value} setValue={setValue} checkText={checkText} setCheckText={setCheckText} ></AcceptPolicy>
                     }[type]
                 }
             </Modal.Body>

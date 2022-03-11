@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 
-export function SelectionList({options,setOptions}:{options:{ items: string[] },setOptions:Function}) {
-    const [multi, setMulti] = useState<boolean>(false);
+export function SelectionList({options,setOptions, check : multi, setCheck : setMulti}:{options:{ items: string[] },setOptions:Function,  check :boolean,setCheck : Function,}) {
     const addNewOption = (vl: string) => {
         if (vl !== "" && !options.items.includes(vl)) {
             let list = options;

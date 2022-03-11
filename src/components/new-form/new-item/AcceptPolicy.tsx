@@ -1,19 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 
 export default function AcceptPolicy({
   value,
-  setValue
+  setValue,
+  checkText,
+  setCheckText
 }: {
-  value: string;
-  setValue: Function
+  value : string;
+  setValue : Function,
+  checkText : string,
+  setCheckText : Function
 }) {
-  const [text, setText] = useState<string>(
+
+  useEffect(() => {
+    setCheckText("I acknowledge that I have read and understood the above policies and procedures in its entirety and agree to abide by them.");
+  }, [])
+  
+  /*const [text, setText] = useState<string>(
     "I acknowledge that I have read and understood the above policies and procedures in its entirety and agree to abide by them."
-  );
+  );*/
   return (
     <>
-      <TextChanged textChanged={(vl: any) => setText(vl)}></TextChanged>
+      <TextChanged textChanged={(vl: any) => setCheckText(vl)}></TextChanged>
       <Form.Group controlId="formtextBoxPolicy">
         <Form.Label>
           <h5></h5>
@@ -35,7 +44,7 @@ export default function AcceptPolicy({
       <Form.Group className="mt-3">
         <Form.Check
           type="checkbox"
-          label={text}
+          label={checkText}
           checked={false}
           onChange={(e: any) => {}}
         ></Form.Check>

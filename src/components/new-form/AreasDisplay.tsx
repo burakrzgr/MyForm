@@ -6,7 +6,7 @@ export default function AreasDisplay({ areas, setAreas }: { areas: { items: Arra
         <>
             {areas.items.map((i, key) =>
             (
-                <div key={key}>{i.type} - {i.value} - {i.options}</div>
+                <div key={key}>name: {i.name} - type: {i.type} - val : {i.value} - opt: {i.options} - disp: {i.displays ? i.displays.map(t => (t ? "true":"false")):"no"} - cnt : {i.count} </div>
             )
             )}
         </>
