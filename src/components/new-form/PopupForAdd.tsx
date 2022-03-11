@@ -3,12 +3,12 @@ import { Button, Form, Modal } from "react-bootstrap";
 import SelectCriteriaType from "./SelectCriteriaType";
 import "../../css/form-input.css";
 import mystyle from "../../mystyle";
-import {TextBox,TextArea} from "./new-component/TextField";
-import { SelectionList,SelectionCombo } from "./new-component/Selections";
-import Rating from "./new-component/Rating";
-import CheckValue from "./new-component/CheckValue";
-import AcceptPolicy from "./new-component/AcceptPolicy";
-import DateTime from "./new-component/DateTime";
+import {TextBox,TextArea} from "./new-item/TextField";
+import { SelectionList,SelectionCombo } from "./new-item/Selections";
+import Rating from "./new-item/Rating";
+import CheckValue from "./new-item/CheckValue";
+import AcceptPolicy from "./new-item/AcceptPolicy";
+import DateTime from "./new-item/DateTime";
 
 
 export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: boolean, closeHandle: Function, addedHandle: Function }) {
