@@ -37,8 +37,8 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
         }[type];
 
         item.options = {
-            "sel_": options.items,
-            "cm_b": options.items
+            "sel_": [...options.items],
+            "cm_b": [...options.items]
         }[type];
 
         item.count = {
@@ -47,9 +47,9 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
         }[type]; 
 
         item.displays = {
-            "ch_b": displays.items,
-            "date": displays.items,
-            "sel_": displays.items
+            "ch_b": [...displays.items],
+            "date": [...displays.items],
+            "sel_": [...displays.items]
         }[type];
 
         addedHandle(item);
