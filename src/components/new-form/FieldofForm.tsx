@@ -6,5 +6,12 @@ export type FieldoForm ={
     options? : string[],
     count? : number,
     checkText? : string,
-    displays? : boolean[]
-}
+    displays? : Display
+};
+
+export type Display ={
+    checked:boolean, 
+    multi:boolean, 
+    date:boolean,
+    time:boolean 
+};

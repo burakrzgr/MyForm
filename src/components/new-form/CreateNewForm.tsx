@@ -1,14 +1,11 @@
 import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import AddFieldButton from "./AddFieldButton"
-import FieldDisplay from "./FieldDisplay";
+import FieldDisplay from "./show-field/FieldDisplay";
 import AskPersonnelInfo from "./AskPersonnelInfo";
 import mystyle from "../../mystyle";
 import { FieldoForm } from "./FieldofForm";
 
-class CompList{
-    items : any[] = [];
-}
 
 export default function CreateNewForm() {
     const [personnelInfo, setPersonnelInfo] = React.useState<string>("0");

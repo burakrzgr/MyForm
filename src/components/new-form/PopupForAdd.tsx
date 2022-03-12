@@ -9,7 +9,7 @@ import Rating from "./new-field/Rating";
 import CheckValue from "./new-field/CheckValue";
 import AcceptPolicy from "./new-field/AcceptPolicy";
 import DateTime from "./new-field/DateTime";
-import { FieldoForm } from "./FieldofForm";
+import { Display, FieldoForm } from "./FieldofForm";
 
 
 
@@ -20,7 +20,7 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
     const [checkText, setCheckText] = useState<string>("");
     const [count, setCount] = useState<number>(3);
     const [options, setOptions] = useState<{ items: string[] }>({ items: [] });
-    const [displays, setDisplays] = useState<{ items: boolean[] }>({ items: [false, true, true, false] });
+    const [displays, setDisplays] = useState<{ items:Display }>({ items: {checked:false,multi:false, date:true, time:true} });
 
     const addCriteria = () => {
         let item: FieldoForm = { name, type, value: undefined, checkText: undefined, options: undefined, count: undefined, displays: undefined };
@@ -47,17 +47,20 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
         }[type];
 
         item.displays = {
-            "ch_b": [...displays.items],
-            "date": [...displays.items],
-            "sel_": [...displays.items]
+            "ch_b": {...displays.items},
+            "date": {...displays.items},
+            "sel_": {...displays.items}
         }[type];
 
         addedHandle(item);
     }
 
-    const setCheck = (index: number, val: boolean) => {
+    const setCheck = (index: string, val: boolean) => {
         let list = displays.items;
-        list[index] = val;
+        list.checked = index == "checked" ? val : list.checked;
+        list.multi = index == "multi" ? val : list.multi;
+        list.date = index == "date" ? val : list.date;
+        list.time = index == "time" ? val : list.time;
         setDisplays({ ...displays, items: list })
     }
     useEffect(() => {
@@ -105,10 +108,10 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
                         {
                             "tx_b": <TextBox value={value} setValue={setValue} />,
                             "tx_a": <TextArea value={value} setValue={setValue} count={count} setCount={setCount} />,
-                            "sel_": <SelectionList options={options} setOptions={setOptions} check={displays.items[3]} setCheck={(val: boolean) => setCheck(3, val)}></SelectionList>,
+                            "sel_": <SelectionList options={options} setOptions={setOptions} check={displays.items.multi} setCheck={(val: boolean) => setCheck("multi", val)}></SelectionList>,
                             "cm_b": <SelectionCombo options={options} setOptions={setOptions} ></SelectionCombo>,
-                            "ch_b": <CheckValue text={checkText} setText={setCheckText} check={displays.items[0]} setCheck={(val: boolean) => setCheck(0, val)}></CheckValue>,
-                            "date": <DateTime check={displays.items} setCheck={(index: number, val: boolean) => setCheck(index, val)}></DateTime>,
+                            "ch_b": <CheckValue text={checkText} setText={setCheckText} check={displays.items.checked} setCheck={(val: boolean) => setCheck("checked", val)}></CheckValue>,
+                            "date": <DateTime check={displays.items} setCheck={(index: string, val: boolean) => setCheck(index, val)}></DateTime>,
                             "rate": <Rating count={count} setCount={setCount} ></Rating>,
                             "ap_c": <AcceptPolicy value={value} setValue={setValue} checkText={checkText} setCheckText={setCheckText} ></AcceptPolicy>
                         }[type]
