@@ -32,6 +32,7 @@ export default function AcceptPolicy({
           rows={5}
           as="textarea"
           style={{ resize: "none" }}
+          className="control-shadow"
         />
         <Form.Text className="text-muted">
           The text you wrote above will be read-only.
@@ -57,8 +58,8 @@ function TextChanged({ textChanged }: { textChanged: Function }) {
   };
   return (
     <>
-      <InputGroup size="sm">
-        <FormControl
+      <InputGroup size="sm" className="control-shadow">
+        <FormControl 
           placeholder={"Add new option"}
           aria-label="Add Option"
           aria-describedby="opt-addon"
