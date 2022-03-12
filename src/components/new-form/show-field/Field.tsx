@@ -118,3 +118,25 @@ export function FieldRate({ item }: { item: FieldoForm }) {
         </>);
 }
 
+export function FieldAcceptPolicy({ item }: { item: FieldoForm }) {
+    return (
+        <>
+            <Form.Group className="pt-5" controlId="trb">
+                <FieldHeader item={item}></FieldHeader>
+                <Form.Control type="text"
+                    placeholder="Detail of the Policy is Here!"
+                    defaultValue={item.value}
+                    rows={12}
+                    as="textarea"
+                    style={{ resize: "none" }}
+                    readOnly />
+                    <Form.Check
+                        type="checkbox"
+                        label={item.checkText}
+                        checked={false}
+                        onChange={(e: any) => { }}
+                    ></Form.Check>
+            </Form.Group>
+            <hr />
+        </>);
+}

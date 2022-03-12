@@ -1,6 +1,6 @@
 import React from "react";
 import { FieldoForm } from "../FieldofForm";
-import { TextField,TextArea, FieldSelect, FieldCombo, FieldCheck, FieldDateTime, FieldRate} from "./Field";
+import { TextField,TextArea, FieldSelect, FieldCombo, FieldCheck, FieldDateTime, FieldRate, FieldAcceptPolicy} from "./Field";
 
 export default function FieldDisplay({
   areas,
@@ -22,13 +22,7 @@ export default function FieldDisplay({
               "ch_b": <FieldCheck item={i} />,
               "date": <FieldDateTime item={i} />,
               "rate": <FieldRate item={i} />,
-              "ap_c": (
-                <div key={key}>
-                  name: {i.name} - type: {i.type} - val : {i.value} - opt:{" "}
-                  {i.options} - disp:{" "}
-                  {i.displays ? i.displays.toString():"no"} - cnt : {i.count} -chtee : {i.checkText}{" "}
-                </div>
-              ),
+              "ap_c": <FieldAcceptPolicy item={i} />,
             }[i.type]
           }
         </React.Fragment>
