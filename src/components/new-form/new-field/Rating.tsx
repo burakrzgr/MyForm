@@ -28,7 +28,7 @@ export default function Rating({ count, setCount }: { count: number, setCount: F
         <>
             <Stack direction="horizontal" gap={3}>
                 <div ><Form.Label>Area Height</Form.Label></div>
-                <div ><InputGroup style={{ width: '9rem',backgroundColor:"white"}}>
+                <div ><InputGroup style={{ width: '9rem',backgroundColor:"white"}} className="control-shadow">
                     <Button variant="outline-danger" style={{ width: '2.5rem' }} onClick={() => setRowEvent(count - 1)}>-</Button>
                     <FormControl
                         type="Number"

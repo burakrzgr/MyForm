@@ -41,7 +41,7 @@ function TextChanged({ textChanged }: { textChanged: Function }) {
   };
   return (
     <>
-      <InputGroup size="sm">
+      <InputGroup size="sm" className="control-shadow">
         <FormControl
           placeholder={"Change check box text!"}
           aria-label="change check"
