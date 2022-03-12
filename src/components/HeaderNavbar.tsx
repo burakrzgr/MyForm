@@ -10,9 +10,11 @@ export default function HeaderNavbar() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="/NewForm">Yeni Form Yarat</Nav.Link>
-                        <Nav.Link href="/FillForm">Form Doldur</Nav.Link>
-                        <NavDropdown title="Formlarım" id="collasible-nav-dropdown">
+                        <Nav.Link href="/NewForm">Create New Form</Nav.Link>
+                        <Nav.Link href="/Broadcast">Broadcast a Form</Nav.Link>
+                        <Nav.Link href="/FillForm">Fill a Form</Nav.Link>
+                        <Nav.Link href="/FilledByMe">My Forms</Nav.Link>
+                        <NavDropdown title="Form List" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="/Forms/All">All</NavDropdown.Item>
                             <NavDropdown.Item href="/Forms/Waiting">Waiting</NavDropdown.Item>
                             <NavDropdown.Item href="/Forms/Sent">Sent</NavDropdown.Item>
