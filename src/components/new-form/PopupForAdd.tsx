@@ -73,7 +73,7 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
             backdrop="static"
             centered
         >
-            <div style={{backgroundColor:"var(--bs-gray-200)"}}>
+            <div>
                 <Modal.Header closeButton>
                     <Modal.Title
                         id="contained-modal-title-vcenter"
@@ -97,6 +97,7 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
                             rows={2}
                             as="textarea"
                             style={{ resize: "none" }}
+                            className="control-shadow"
                             onChange={(vl: any) => setName(vl.target.value)} />
                     </Form.Group>
                     <hr />
@@ -114,8 +115,8 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
                     }
                 </Modal.Body>
                 <Modal.Footer className="justify-content-between">
-                    <Button variant="outline-dark" className="my-bg-white ps-4 pe-4" onClick={() => closeHandle()}>Cancel</Button>
-                    <Button variant="primary" className=" ps-4 pe-4" onClick={() => addCriteria()}>Add Criteria</Button>
+                    <Button variant="outline-dark" className="my-bg-white ps-4 pe-4 control-shadow" onClick={() => closeHandle()}>Cancel</Button>
+                    <Button variant="primary" className=" ps-4 pe-4 control-shadow" onClick={() => addCriteria()}>Add Criteria</Button>
                 </Modal.Footer>
             </div>
         </Modal>

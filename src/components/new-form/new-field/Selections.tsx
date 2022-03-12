@@ -35,7 +35,7 @@ export function SelectionCombo({options,setOptions}:{options:{ items: string[] }
     return (
         <>
             <AddOption optionAdded={addNewOption}></AddOption>
-            <Form.Select aria-label="Select option" className="mt-3">
+            <Form.Select aria-label="Select option" className="mt-3 control-shadow">
                 <option>[Please select one of the options...]</option>
                 {options.items.map(i => (
                     <option value={i} key={i}>{i}</option>
@@ -70,7 +70,7 @@ function AddOption({ optionAdded }: { optionAdded: Function }) {
     };
     return (
         <>
-            <InputGroup size="sm">
+            <InputGroup size="sm" className="control-shadow">
                 <FormControl
                     placeholder={"Add new option"}
                     aria-label="Add Option"

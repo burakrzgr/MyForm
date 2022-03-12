@@ -15,6 +15,7 @@ export function TextBox({
           type="text"
           placeholder="Type default value if you have any"
           value={value}
+          className="control-shadow"
           onChange={(vl: any) => setValue(vl.target.value)}
         />
         <Form.Text className="text-muted">
@@ -57,7 +58,7 @@ export function TextArea({
           <Form.Label>Area Height</Form.Label>
         </div>
         <div>
-          <InputGroup style={{ width: "9rem",backgroundColor:"white" }}>
+          <InputGroup style={{ width: "9rem",backgroundColor:"white" }} className="control-shadow">
             <Button
               variant="outline-danger"
               style={{ width: "2.5rem" }}
@@ -69,7 +70,7 @@ export function TextArea({
               type="Number"
               placeholder="Number of Column"
               aria-label="Inputgroupnoc"
-              className="text-center"
+              className="text-center "
               value={count}
               onChange={(vl: any) => setRowEvent(vl.target.value)}
             />
@@ -94,6 +95,7 @@ export function TextArea({
           onChange={(vl: any) => setValue(vl.target.value)}
           rows={count}
           as="textarea"
+          className="control-shadow"
           style={{ resize: "none" }}
         />
         <Form.Text className="text-muted">
