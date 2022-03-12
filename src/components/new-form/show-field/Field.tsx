@@ -1,4 +1,5 @@
 import { Form, FormControl, Stack } from "react-bootstrap";
+import Stars from "../custom-component/Stars";
 import { FieldoForm } from "../FieldofForm";
 import FieldHeader from "./FieldHeader";
 
@@ -101,6 +102,17 @@ export function FieldDateTime({ item }: { item: FieldoForm }) {
                                 </div> : <></>}
                         </> :<span className="alert alert-danger p-2 ps-4 pe-4 mt-4">Date Time  Error!</span>}
                 </Stack>
+            </Form.Group>
+            <hr />
+        </>);
+}
+
+export function FieldRate({ item }: { item: FieldoForm }) {
+    return (
+        <>
+            <Form.Group className="pt-5" controlId="trb">
+                <FieldHeader item={item}></FieldHeader>
+                <Stars count={item.count?item.count:5}></Stars>
             </Form.Group>
             <hr />
         </>);

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Button, Form, FormControl, InputGroup, Stack } from "react-bootstrap";
 import "../../../css/rating.css";
+import Stars from "../custom-component/Stars";
 
 export default function Rating({ count, setCount }: { count: number, setCount: Function }) {
     const setRowEvent = (val: number) => {
@@ -19,11 +20,6 @@ export default function Rating({ count, setCount }: { count: number, setCount: F
         setCount(5)
       },[]);
 
-    let starNumber : string[] = [];
-    for (let index = count; index > 0; index--) {
-        starNumber.push(String(index));
-        
-    }
     return (
         <>
             <Stack direction="horizontal" gap={3}>
@@ -42,18 +38,8 @@ export default function Rating({ count, setCount }: { count: number, setCount: F
                 </InputGroup>
                 </div>
             </Stack>
-                <Stars list={starNumber}></Stars>
+                <Stars count={count}></Stars>
         </>
     );
 }
 
-function Stars({list}:{list:string[]}) {
-    return (
-        <div className="rating pt-3">
-            {list.map(ix => 
-                <React.Fragment key={ix}><Form.Control type="radio" name="rating" value={ix} id={ix}></Form.Control><label htmlFor={ix} >☆</label></React.Fragment>
-            )}
-        </div>
-    );
-    ////  <Form.Control type="radio" name="rating" value={inx} id={inx}></Form.Control><label htmlFor={inx}>☆</label>
-}
