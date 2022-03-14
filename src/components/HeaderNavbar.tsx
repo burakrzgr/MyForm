@@ -21,7 +21,7 @@ export default function HeaderNavbar() {
                             <NavDropdown.Item href="/Forms/Archived">Archived</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Item className="ms-3 me-3 seperator" ></Nav.Item>
-                        <Nav.Link href="/Deneme">Deneme</Nav.Link>
+                        <Nav.Link href="/Testing">Testing System</Nav.Link>
                     </Nav>
                     <Nav>
                         <Nav.Link href="/Login">Login</Nav.Link>
