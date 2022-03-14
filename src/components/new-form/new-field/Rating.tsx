@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Button, Form, FormControl, InputGroup, Stack } from "react-bootstrap";
 import "../../../css/rating.css";
 import Stars from "../custom-component/Stars";

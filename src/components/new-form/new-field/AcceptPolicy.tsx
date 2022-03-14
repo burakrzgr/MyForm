@@ -15,12 +15,12 @@ export default function AcceptPolicy({
 
   useEffect(() => {
     setCheckText("I acknowledge that I have read and understood the above policies and procedures in its entirety and agree to abide by them.");
-  }, [])
+  },[setCheckText])
   
   return (
     <>
       <TextChanged textChanged={(vl: any) => setCheckText(vl)}></TextChanged>
-      <Form.Group controlId="formtextBoxPolicy">
+      <Form.Group controlId="formtextBoxPolicy" className="mt-3">
         <Form.Control
           type="text"
           placeholder="Write your policy to make it required field for submitting form."

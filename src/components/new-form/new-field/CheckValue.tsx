@@ -14,7 +14,8 @@ export default function CheckValue({
 }) {
     useEffect(() => {
         setText("Check me! Click me! You can never break me!");
-      }, [])
+        console.log("ee");
+      },[setText])
   //const [text, setText] = useState<string>("Check here!");
   return (
     <>
