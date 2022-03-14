@@ -21,9 +21,6 @@ export default function AcceptPolicy({
     <>
       <TextChanged textChanged={(vl: any) => setCheckText(vl)}></TextChanged>
       <Form.Group controlId="formtextBoxPolicy">
-        <Form.Label>
-          <h5></h5>
-        </Form.Label>
         <Form.Control
           type="text"
           placeholder="Write your policy to make it required field for submitting form."
