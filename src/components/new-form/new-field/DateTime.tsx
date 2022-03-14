@@ -1,11 +1,8 @@
-import { useState } from "react";
-import { Form, FormControl, Row, Stack } from "react-bootstrap";
+import { Form, FormControl, Stack } from "react-bootstrap";
 import {TringleExclamationSolid} from "../../../FontAwesome/fontAwesome"
-import { Display } from "../FieldofForm";
+import { Display } from "../class/FieldofForm";
 
 export default function DateTime({check,setCheck}: {check: Display; setCheck: Function}) {
-    const date=1;
-    const time=2;
     return (
         <>
          <Form.Group className="mt-3">
