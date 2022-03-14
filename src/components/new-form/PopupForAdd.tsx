@@ -9,7 +9,7 @@ import Rating from "./new-field/Rating";
 import CheckValue from "./new-field/CheckValue";
 import AcceptPolicy from "./new-field/AcceptPolicy";
 import DateTime from "./new-field/DateTime";
-import { Display, FieldoForm } from "./FieldofForm";
+import { Display, FieldoForm } from "./class/FieldofForm";
 
 
 
@@ -30,22 +30,18 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
             "tx_a": value,
             "ap_c": value
         }[type];
-
         item.checkText = {
             "ch_b": checkText,
             "ap_c": checkText,
         }[type];
-
         item.options = {
             "sel_": [...options.items],
             "cm_b": [...options.items]
         }[type];
-
         item.count = {
             "tx_a": count,
             "rate": count
         }[type];
-
         item.displays = {
             "ch_b": {...displays.items},
             "date": {...displays.items},
@@ -57,10 +53,10 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
 
     const setCheck = (index: string, val: boolean) => {
         let list = displays.items;
-        list.checked = index == "checked" ? val : list.checked;
-        list.multi = index == "multi" ? val : list.multi;
-        list.date = index == "date" ? val : list.date;
-        list.time = index == "time" ? val : list.time;
+        list.checked = index === "checked" ? val : list.checked;
+        list.multi = index === "multi" ? val : list.multi;
+        list.date = index === "date" ? val : list.date;
+        list.time = index === "time" ? val : list.time;
         setDisplays({ ...displays, items: list })
     }
     useEffect(() => {
@@ -119,7 +115,7 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
                 </Modal.Body>
                 <Modal.Footer className="justify-content-between">
                     <Button variant="outline-dark" className="my-bg-white ps-4 pe-4 control-shadow" onClick={() => closeHandle()}>Cancel</Button>
-                    <Button variant="primary" className=" ps-4 pe-4 control-shadow" onClick={() => addCriteria()}>Add Criteria</Button>
+                    <Button variant="primary" className=" ps-4 pe-4 control-shadow" onClick={() => addCriteria()} disabled={!(name && name.length > 5)}>Add Question</Button>
                 </Modal.Footer>
             </div>
         </Modal>

@@ -2,9 +2,9 @@ import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import AddFieldButton from "./AddFieldButton"
 import FieldDisplay from "./show-field/FieldDisplay";
-import AskPersonnelInfo from "./AskPersonnelInfo";
+import AskPersonnelInfo from "./custom-component/AskPersonnelInfo";
 import mystyle from "../../mystyle";
-import { FieldoForm } from "./FieldofForm";
+import { FieldoForm } from "./class/FieldofForm";
 
 
 export default function CreateNewForm() {
@@ -20,10 +20,10 @@ export default function CreateNewForm() {
         <Container className="pt-5">
             <Row>
                 <Col className="text-start">
-                    <h2>New Form</h2>
+                    <h1>New Form</h1>
                 </Col>
                 <Col className="text-end">
-                <Button variant="primary" type="submit" size="lg">
+                <Button variant="primary" type="submit" size="lg" disabled={!(formName && formName.length > 5)}>
                     Create New Form
                 </Button>
                 </Col>
@@ -40,7 +40,7 @@ export default function CreateNewForm() {
                         <AskPersonnelInfo selected={personnelInfo} selectedChanged={(vl: any) => setPersonnelInfo(vl)} ></AskPersonnelInfo>
                     </div>
                     <Form.Text className="text-muted">
-                        Please notice that checking this are will force surveyor to share their personal information. Such as name and surname.
+                        Please notice that changing this area might/will force participant to share their personal information. Such as name and surname.
                     </Form.Text>
                 </Form.Group>
                 <FieldDisplay areas={areas} setAreas={setAreas} ></FieldDisplay>
