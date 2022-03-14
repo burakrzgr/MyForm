@@ -1,25 +1,25 @@
 import { Form, FormControl, Stack } from "react-bootstrap";
 import Stars from "../custom-component/Stars";
-import { FieldoForm } from "../FieldofForm";
+import { FieldoForm } from "../class/FieldofForm";
 import FieldHeader from "./FieldHeader";
 
 
-export function TextField({ item }: { item: FieldoForm }) {
+export function TextField({ item, removeEvent }: { item: FieldoForm, removeEvent: Function }) {
     return (
         <>
             <Form.Group className="pt-5" controlId="trb">
-                <FieldHeader item={item}></FieldHeader>
+                <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader>
                 <Form.Control type="text" placeholder="Form Text" defaultValue={item.value} />
             </Form.Group>
             <hr />
         </>);
 }
 
-export function TextArea({ item }: { item: FieldoForm }) {
+export function TextArea({ item , removeEvent}: { item: FieldoForm, removeEvent: Function }) {
     return (
         <>
             <Form.Group className="pt-5" controlId="trb">
-                <FieldHeader item={item}></FieldHeader>
+                <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader>
                 <Form.Control type="text"
                     placeholder="Form Text"
                     defaultValue={item.value}
@@ -31,11 +31,11 @@ export function TextArea({ item }: { item: FieldoForm }) {
         </>);
 }
 
-export function FieldSelect({ item }: { item: FieldoForm }) {
+export function FieldSelect({ item, removeEvent }: { item: FieldoForm, removeEvent: Function }) {
     return (
         <>
             <Form.Group className="pt-5" controlId="trb">
-                <FieldHeader item={item}></FieldHeader>
+                <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader>
                 {item.options ? item.options.map((i, key) => (
                     <Form.Check
                         key={key}
@@ -49,11 +49,11 @@ export function FieldSelect({ item }: { item: FieldoForm }) {
             <hr />
         </>);
 }
-export function FieldCombo({ item }: { item: FieldoForm }) {
+export function FieldCombo({ item, removeEvent }: { item: FieldoForm, removeEvent: Function }) {
     return (
         <>
             <Form.Group className="pt-5" controlId="trb">
-                <FieldHeader item={item}></FieldHeader>
+                <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader>
                 <Form.Select aria-label="Select option" className="mt-3 control-shadow">
                     <option>[Please select one of the options...]</option>
                     {item.options ? item.options.map(i => (
@@ -64,11 +64,11 @@ export function FieldCombo({ item }: { item: FieldoForm }) {
             <hr />
         </>);
 }
-export function FieldCheck({ item }: { item: FieldoForm }) {
+export function FieldCheck({ item, removeEvent }: { item: FieldoForm, removeEvent: Function }) {
     return (
         <>
             <Form.Group className="pt-5" controlId="trb">
-                <FieldHeader item={item}></FieldHeader>
+                <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader>
                 <Form.Group className="mt-3">
                     <Form.Check
                         type="checkbox"
@@ -82,11 +82,11 @@ export function FieldCheck({ item }: { item: FieldoForm }) {
         </>);
 }
 
-export function FieldDateTime({ item }: { item: FieldoForm }) {
+export function FieldDateTime({ item, removeEvent }: { item: FieldoForm, removeEvent: Function }) {
     return (
         <>
             <Form.Group className="pt-5" controlId="trb">
-                <FieldHeader item={item}></FieldHeader>
+                <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader>
                 <Stack direction="horizontal">
                     {item.displays && (item.displays.date || item.displays.time) ?
                         <>
@@ -100,29 +100,29 @@ export function FieldDateTime({ item }: { item: FieldoForm }) {
                                     <Form.Label>Time</Form.Label>
                                     <FormControl type="time" style={{ width: "10rem" }} className="control-shadow"></FormControl>
                                 </div> : <></>}
-                        </> :<span className="alert alert-danger p-2 ps-4 pe-4 mt-4">Date Time  Error!</span>}
+                        </> : <span className="alert alert-danger p-2 ps-4 pe-4 mt-4">Date Time  Error!</span>}
                 </Stack>
             </Form.Group>
             <hr />
         </>);
 }
 
-export function FieldRate({ item }: { item: FieldoForm }) {
+export function FieldRate({ item, removeEvent }: { item: FieldoForm, removeEvent: Function }) {
     return (
         <>
             <Form.Group className="pt-5" controlId="trb">
-                <FieldHeader item={item}></FieldHeader>
-                <Stars count={item.count?item.count:5}></Stars>
+                <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader>
+                <Stars count={item.count ? item.count : 5}></Stars>
             </Form.Group>
             <hr />
         </>);
 }
 
-export function FieldAcceptPolicy({ item }: { item: FieldoForm }) {
+export function FieldAcceptPolicy({ item, removeEvent }: { item: FieldoForm, removeEvent: Function }) {
     return (
         <>
             <Form.Group className="pt-5" controlId="trb">
-                <FieldHeader item={item}></FieldHeader>
+                <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader>
                 <Form.Control type="text"
                     placeholder="Detail of the Policy is Here!"
                     defaultValue={item.value}
@@ -130,12 +130,12 @@ export function FieldAcceptPolicy({ item }: { item: FieldoForm }) {
                     as="textarea"
                     style={{ resize: "none" }}
                     readOnly />
-                    <Form.Check
-                        type="checkbox"
-                        label={item.checkText}
-                        checked={false}
-                        onChange={(e: any) => { }}
-                    ></Form.Check>
+                <Form.Check
+                    type="checkbox"
+                    label={item.checkText}
+                    checked={false}
+                    onChange={(e: any) => { }}
+                ></Form.Check>
             </Form.Group>
             <hr />
         </>);

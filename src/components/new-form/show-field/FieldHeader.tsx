@@ -1,7 +1,7 @@
 import { Form, Stack } from "react-bootstrap";
-import { FieldoForm } from "../FieldofForm";
+import { FieldoForm } from "../class/FieldofForm";
 
-export default function FieldHeader({ item }: { item: FieldoForm }) {
+export default function FieldHeader({ item, removeEvent }: { item: FieldoForm, removeEvent: Function }) {
   return (
     <>
       <Form.Label className="w-100">
@@ -18,7 +18,7 @@ export default function FieldHeader({ item }: { item: FieldoForm }) {
           <div className="text-success ps-2">
             <u>Edit</u>
           </div>
-          <div className="text-danger ps-2">
+          <div className="text-danger ps-2" onClick={() => removeEvent(item) }>
             <u>Delete</u>
           </div>
         </Stack>
