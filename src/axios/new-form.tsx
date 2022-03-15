@@ -3,15 +3,15 @@ import { MyForm } from "../components/new-form/class/MyForm";
 import axios from "axios";
 
 
-const GetForm =  (id:number) => {return axios.get("https://localhost:7213/Form/"+id);}
-const GetFormCriteria =  (criteria:string) => {};
-const postForm =  (id:number,form : MyForm) => {};
-const deleteForm =  (id : number) => {};
-const putForm =  (form : MyForm) => {};
-const patchForm =  (form : any) => {};
+export const GetForm =  (id:number) => {return axios.get("https://localhost:7213/Form/"+id);}
+export const GetFormCriteria =  (criteria:string) => {};
+export const postForm =  (id:number,form : MyForm) => {};
+export const deleteForm =  (id : number) => {};
+export const putForm =  (form : MyForm) => {};
+export const patchForm =  (form : any) => {};
 
-const GetQuestion =  (id:number) => {};
-const postQuestion =  (question : FieldoForm) => {};
-const deleteQuestion =  (id : number) => {};
-const putQuestion =  (question : FieldoForm) => {};
-const patchQuestion =  (question : any) => {};
+export const GetQuestion =  (id:number) => {};
+export const postQuestion =  (question : FieldoForm) => {};
+export const deleteQuestion =  (id : number) => {};
+export const putQuestion =  (question : FieldoForm) => {};
+export const patchQuestion =  (question : any) => {};
