@@ -7,7 +7,7 @@ export default function Stars({count}:{count:number}) {
         starNumber.push(String(index));
     }
     return (
-        <div className="rating pt-3">
+        <div className="rating ">
             {starNumber.map(ix => 
                 <React.Fragment key={ix}><Form.Control type="radio" name="rating" value={ix} id={ix}></Form.Control><label htmlFor={ix} >☆</label></React.Fragment>
             )}
