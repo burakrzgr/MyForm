@@ -20,6 +20,7 @@ export default function SelectCriteriaType({
     { val: "ch_b", name: "Check Box" },
     { val: "date", name: "Date / Time" },
     { val: "rate", name: "Rate" },
+    { val: "f_up", name: "Upload" },
     { val: "ap_c", name: "Accept Policy" },
   ];
 

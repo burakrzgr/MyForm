@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { GetForm, GetAllForm } from "../../axios/new-form";
+import { GetAllForm } from "../../axios/new-form";
 import { MyForm } from "../new-form/class/MyForm";
 
 export default function FillFormList() {

@@ -10,6 +10,7 @@ import CheckValue from "./new-field/CheckValue";
 import AcceptPolicy from "./new-field/AcceptPolicy";
 import DateTime from "./new-field/DateTime";
 import { Display, FieldoForm } from "./class/FieldofForm";
+import UploadFile from "./new-field/UploadFile";
 
 
 
@@ -109,6 +110,7 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
                             "ch_b": <CheckValue text={checkText} setText={setCheckText} check={displays.items.checked} setCheck={(val: boolean) => setCheck("checked", val)}></CheckValue>,
                             "date": <DateTime check={displays.items} setCheck={(index: string, val: boolean) => setCheck(index, val)}></DateTime>,
                             "rate": <Rating count={count} setCount={setCount} ></Rating>,
+                            "f_up": <UploadFile ></UploadFile>,
                             "ap_c": <AcceptPolicy value={value} setValue={setValue} checkText={checkText} setCheckText={setCheckText} ></AcceptPolicy>
                         }[type]
                     }
