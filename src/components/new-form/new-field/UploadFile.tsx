@@ -1,3 +1,4 @@
+import { upload } from "@testing-library/user-event/dist/upload";
 import { useState } from "react";
 import { Button, Form, Stack } from "react-bootstrap";
 import { FileUploader } from "react-drag-drop-files";
@@ -7,11 +8,20 @@ import UploadFilePng from "../../../resources/UploadFile.png";
 
 export default function UploadFile() {
     const [tempUrl, setTempUrl] = useState<string>("");
+    const [uploaded, setUploaded] = useState<boolean>(false);
+    const [files, setFiles] = useState<string[]>([]);
     const [multi, setMulti] = useState<boolean>(false);
 
     const handleChange = (f: any) => {
+        setUploaded(true);
         if(multi){
-            setTempUrl(URL.createObjectURL(f)) 
+            
+            let list : string[] = [];
+            for(let i = 0; f.length>i;i++){
+                list.push(f[i].name);
+            }
+            setFiles(list);
+            console.log(list);
         }
         else
         {
@@ -19,10 +29,12 @@ export default function UploadFile() {
         }
     };
     const removeFiles = () => {
+        setUploaded(false);
         //setFile({changed:false,img:null});
         setTempUrl("");
     }; 
     const removeFile = (file : string) => {
+        setUploaded(false);
         //setFile({changed:false,img:null});
         setTempUrl("");
     };
@@ -43,11 +55,13 @@ export default function UploadFile() {
                 className="w-100"
                 handleChange={handleChange}
                 name="file"
-                children={ChildComponent({ tempUrl: (tempUrl ? tempUrl : ""), removeFile,multi })}
+               // children={}
                 hoverTitle="Drop Here"
                 types={selectedFileFormat}
                 multiple={multi}
-            />
+            >
+                <ChildComponent tempUrl={tempUrl} removeFile={removeFile} uploaded={uploaded} multi={multi} files={files} />
+            </FileUploader>
             {tempUrl ? (
                 <div className="d-grid mt-2">
                     <Button variant="danger" size="sm" onClick={() => removeFiles()}>
@@ -59,15 +73,15 @@ export default function UploadFile() {
 }
 
 
-const ChildComponent = ({ tempUrl, removeFile,multi }: { tempUrl: string, removeFile: Function,multi:boolean }) => (
+const ChildComponent = ({ tempUrl, removeFile,uploaded,multi,files }: { tempUrl: string, removeFile: Function,uploaded :boolean,multi:boolean,files:string[] }) => (
     <>
-        {tempUrl ? (
+        {uploaded ? (
             <>
                 <div
                     style={{ height: "28rem"}}
                     className="border border-secondary dashed rounded p-1 w-100 text-center"
                 >
-                    {multi ? <>Çoklu dosya yüklendi</>:
+                    {multi ? <>{files.map((x,key) => {return <div key={key}>"{x}" Yüklendi!</div>})}</>:
                     <img
                         src={tempUrl}
                         alt=""
