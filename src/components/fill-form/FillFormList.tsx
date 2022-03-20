@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { GetAllForm } from "../../axios/new-form";
 import MyTable from "../MyTable";
@@ -16,18 +17,17 @@ const go = (id:number) => {
   console.log("my",id);
 } 
   const { type } = useParams<{ type?: string }>();
-  var list = forms.list.map(x => {return {...x, actions:[{text:"Fill This Form", action:() => go(x.id),variant :"primary"},{text:"Don't Ask Me", action:() => go(x.id),variant :"outline-danger"}]}});
+  var list = forms.list.map(x => {return {...x, actions:[{text:"Fill This Form", action:() => go(x.id),variant :"primary"},{text:"Don't Ask Me Ever Again", action:() => go(x.id),variant :"outline-danger"}]}});
   return (
-    <>
-      <p>Fill Form From List : {type}</p>
-      {forms && forms.list ? forms.list.map((x) => (
-        <p key={x.id}>x.formName</p>
-      )) : <>Loading</>}
+    <Container>
+      <div className="text-start pt-5 pb-4">
+        <h3 style={{fontWeight:"700"}}>List of forms that you can fill</h3>
+        <hr />
+        <h5 className="text-muted">Please select most suitable form to meet for your needs</h5>
+      </div>
       {forms && forms.list && forms.list.length > 0 ?
-       // console.log("ee",forms.list)
-       
         <MyTable columns={TableHeader} data={list} actions={["Fill"]}></MyTable>
          : <></>}
-    </>
+    </Container>
   );
 }
