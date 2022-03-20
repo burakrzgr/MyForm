@@ -51,7 +51,7 @@ export default function AcceptPolicy({
 function TextChanged({ textChanged }: { textChanged: Function }) {
   const [text, setText] = useState<string>("");
   const optionAddedEvent = () => {
-    if (text.replace(/\s/g, "") != "") textChanged(text);
+    if (text.replace(/\s/g, "") !== "") textChanged(text);
   };
   return (
     <>
