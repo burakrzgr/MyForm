@@ -16,7 +16,6 @@ export default function CheckValue({
         setText("Check me! Click me! You can never break me!");
         console.log("ee");
       },[setText])
-  //const [text, setText] = useState<string>("Check here!");
   return (
     <>
       <TextChanged textChanged={(vl: any) => setText(vl)}></TextChanged>
