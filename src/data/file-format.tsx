@@ -18,6 +18,17 @@ export const fileformat = {
     AUDIO : {
         MP3 :["MP3"],
         WAV : ["WAV"]
-    } 
+    },
+    COMPRESSED : {
+        ZIP :["ZIP"],
+        RAR : ["RAR"]
+    },
+    CODE : {
+        CS :["CS"],
+        JS : ["JS","TS","JSX","TSX"],
+        HTML : ["HTML","HTM","XHTML"],
+        JAVA :["JAVA"]
+    }
+
 
 };
