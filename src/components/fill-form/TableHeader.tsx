@@ -8,6 +8,10 @@ export default [
         accessor: "dateofCreate",
     },
     {
+        Header: "Personal Info",
+        accessor: "personalInfo",
+    },
+    {
         Header: "Actions",
         accessor: "actions",
     },
