@@ -20,7 +20,6 @@ export default function FillFormList() {
   const getActions = (id: number) : (Array<TableAction>) => {
     return [{ text: "Fill This Form", onClick: () => go(id), variant: "primary" }, { text: "No no no!", onClick: () => go(id), variant: "outline-danger" }];
   }
-  const { type } = useParams<{ type?: string }>();
   var list = forms.list.map(x => { return { ...x, actions: getActions(x.id) } });
   return (
     <Container>

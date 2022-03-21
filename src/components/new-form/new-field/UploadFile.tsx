@@ -50,8 +50,8 @@ export default function UploadFile() {
                     onChange={(e: any) => setMulti(e.target.checked)}
                 ></Form.Check>
             </Form.Group>
+            <div className="w-100 expand-child">
             <FileUploader
-                className="w-100"
                 handleChange={handleChange}
                 name="file"
                // children={}
@@ -61,6 +61,7 @@ export default function UploadFile() {
             >
                 <ChildComponent tempUrl={tempUrl} removeFile={removeFile} uploaded={uploaded} multi={multi} files={files} />
             </FileUploader>
+            </div>
             {tempUrl ? (
                 <div className="d-grid mt-2">
                     <Button variant="danger" size="sm" onClick={() => removeFiles()}>
@@ -77,7 +78,7 @@ const ChildComponent = ({ tempUrl, removeFile,uploaded,multi,files }: { tempUrl:
         {uploaded ? (
             <>
                 <div
-                    style={{ height: "28rem"}}
+                    style={{ height: "18rem"}}
                     className="border border-secondary dashed rounded p-1 w-100 text-center"
                 >
                     {multi ? <>{files.map((x,key) => {return <div key={key}>"{x}" Yüklendi!</div>})}</>:
@@ -95,8 +96,8 @@ const ChildComponent = ({ tempUrl, removeFile,uploaded,multi,files }: { tempUrl:
             </>
         ) : (
             <div
-                style={{ height: "28rem"}}
-                className="border border-secondary dashed rounded p-1"
+                style={{ height: "18rem"}}
+                className="border-secondary border-dashed rounded p-1 w-100 "
             >
                 <Stack className="align-items-center justify-content-center h-100">
                     <div className="text-center ">Drag the image of<br />the pokemon here.</div>
