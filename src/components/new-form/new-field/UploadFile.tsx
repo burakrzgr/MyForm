@@ -15,7 +15,6 @@ export default function UploadFile() {
     const handleChange = (f: any) => {
         setUploaded(true);
         if(multi){
-            
             let list : string[] = [];
             for(let i = 0; f.length>i;i++){
                 list.push(f[i].name);

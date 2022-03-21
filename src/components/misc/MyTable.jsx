@@ -4,9 +4,9 @@ import { useTable } from "react-table";
 
 export default function MyTable({columns: myColumns,data:myData}) {
   const data = React.useMemo(
-    () => myData,[]);
+    () => myData,[myData]);
   const columns = React.useMemo(
-    () => myColumns,[]);
+    () => myColumns,[myColumns]);
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
   return (
@@ -50,7 +50,7 @@ export default function MyTable({columns: myColumns,data:myData}) {
 
 function Actions({actions}) {
   return(
-    actions.map((x,key) => {return (<Button size="sm" key={key} style={{minWidth:"3rem"}} className="ms-1 me-1" onClick={x.onClick} variant={x.variant}>{x.text}</Button>)})
+    actions.map((x ,key) => {return (<Button size="sm" key={key} style={{minWidth:"3rem"}} className="ms-1 me-1" onClick={x.onClick} variant={x.variant}>{x.text}</Button>)})
   );
   
 }
