@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { GetAllForm } from "../../axios/new-form";
-import { Action } from "../misc/class/Action";
+import { TableAction } from "../misc/class/TableAction";
 import MyTable from "../misc/MyTable";
 import { MyForm } from "../new-form/class/MyForm";
 import TableHeader from "./TableHeader";
@@ -17,7 +17,7 @@ export default function FillFormList() {
   const go = (id: number) => {
     console.log("my", id);
   }
-  const getActions = (id: number) : (Array<Action>) => {
+  const getActions = (id: number) : (Array<TableAction>) => {
     return [{ text: "Fill This Form", onClick: () => go(id), variant: "primary" }, { text: "No no no!", onClick: () => go(id), variant: "outline-danger" }];
   }
   const { type } = useParams<{ type?: string }>();
