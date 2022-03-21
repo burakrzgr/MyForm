@@ -1,14 +1,12 @@
-import { render } from "@testing-library/react";
 import React from "react";
 import { Button, Table } from "react-bootstrap";
 import { useTable } from "react-table";
 
-export default function MyTable({columns: myColumns,data:myData,actions}) {
+export default function MyTable({columns: myColumns,data:myData}) {
   const data = React.useMemo(
-    () => myData,[] );
-
+    () => myData,[]);
   const columns = React.useMemo(
-    () => myColumns, [] );
+    () => myColumns,[]);
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
   return (
@@ -31,7 +29,6 @@ export default function MyTable({columns: myColumns,data:myData,actions}) {
       <tbody {...getTableBodyProps()}>
         {rows.map((row) => {
           prepareRow(row);
-
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
@@ -53,7 +50,7 @@ export default function MyTable({columns: myColumns,data:myData,actions}) {
 
 function Actions({actions}) {
   return(
-    actions.map((x,key) => {return (<Button size="sm" key={key} style={{minWidth:"3rem"}} className="ms-1 me-1" onClick={x.action} variant={x.variant}>{x.text}</Button>)})
+    actions.map((x,key) => {return (<Button size="sm" key={key} style={{minWidth:"3rem"}} className="ms-1 me-1" onClick={x.onClick} variant={x.variant}>{x.text}</Button>)})
   );
   
 }
