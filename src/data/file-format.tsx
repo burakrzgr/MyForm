@@ -1,34 +1,90 @@
 export const fileformat = {
-    IMAGE: {
-        JPG: ["JPG", "JPEG"],
-        BMP: ["BMP"],
-        PNG: ["PNG"]
-    },
-    DOCUMENT: {
-        DOC: ["DOC", "DOCX"],
-        PDF: ["PDF"],
-        XLS: ["XLS", "XLSX"],
-        TXT: ["TXT"],
-    },
-    VIDEO: {
-        MP4: ["MP4"],
-        WMV: ["WMV"],
-        FLV: ["FLV"],
-    },
-    AUDIO : {
-        MP3 :["MP3"],
-        WAV : ["WAV"]
-    },
-    COMPRESSED : {
-        ZIP :["ZIP"],
-        RAR : ["RAR"]
-    },
-    CODE : {
-        CS :["CS"],
-        JS : ["JS","TS","JSX","TSX"],
-        HTML : ["HTML","HTM","XHTML"],
-        JAVA :["JAVA"]
-    }
-
-
+    IMAGE: [
+        {
+            name: "JPG",
+            list: ["JPG", "JPEG"]
+        },
+        {
+            name: "BMP",
+            list: ["BMP"]
+        },
+        {
+            name: "PNG",
+            list: ["PNG"]
+        },
+        {
+            name: "GIF",
+            list: ["GIF"]
+        }
+    ],
+    DOCUMENT: [
+        {
+            name: "DOC",
+            list: ["DOC", "DOCX"]
+        },
+        {
+            name: "PDF",
+            list: ["PDF"]
+        },
+        {
+            name: "XLS",
+            list: ["XLS", "XLSX"]
+        },
+        {
+            name: "TXT",
+            list: ["TXT"]
+        }
+    ],
+    MEDIA: [
+        {
+            name: "MP4",
+            list: ["MP4"]
+        },
+        {
+            name: "WMV",
+            list: ["WMV"]
+        },
+        {
+            name: "FLV",
+            list: ["FLV"]
+        },
+        {
+            name: "MP3",
+            list: ["MP3"]
+        },
+        {
+            name: "WAV",
+            list: ["WAV"]
+        },
+    ],
+    COMPRESSED: 
+    [
+        {
+            name: "ZIP",
+            list: ["ZIP"]
+        },
+        {
+            name: "RAR",
+            list: ["RAR"]
+        }
+    ],
+    CODE: 
+    [
+        {
+            name: "CS",
+            list: ["CS"]
+        },
+        {
+            name: "JS",
+            list: ["JS", "TS", "JSX", "TSX"]
+        },
+        {
+            name: "HTML",
+            list: ["HTML", "HTM", "XHTML"],
+        },
+        {
+            name: "JAVA",
+            list: ["JAVA"]
+        }
+    ]
 };
