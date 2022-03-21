@@ -17,7 +17,7 @@ export default function AddFieldButton({addedHandle} : {addedHandle:Function}) {
     }
     return (
         <>
-            <Button variant="warning" onClick={showPopupHandler}>Add New Criteria</Button>
+            <Button variant="warning" onClick={showPopupHandler} className="w-25" size="lg">Add New Criteria</Button>
             <PopupForAdd show={showPopup} closeHandle={closePopupHandler} addedHandle={addedItem}></PopupForAdd>
         </>
     );
