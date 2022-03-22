@@ -1,4 +1,4 @@
-import { ButtonGroup, ToggleButton, Row } from "react-bootstrap";
+import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import { fileformat } from "../../../data/file-format";
 
 export default function FileFormatPicker({ selectedFormat, selectedFormatAdded }: { selectedFormat: string[], selectedFormatAdded: Function }) {
@@ -14,7 +14,7 @@ export default function FileFormatPicker({ selectedFormat, selectedFormatAdded }
                         name="chk"
                         value={i.name}
                         checked={selectedFormat.includes(i.name)}
-                        onChange={() => selectedFormatAdded(i.name)}
+                        onChange={() => selectedFormatAdded(i.list)}
                     >
                         {i.name}
                     </ToggleButton>
@@ -30,7 +30,7 @@ export default function FileFormatPicker({ selectedFormat, selectedFormatAdded }
                         name="chk"
                         value={i.name}
                         checked={selectedFormat.includes(i.name)}
-                        onChange={() => selectedFormatAdded(i.name)}
+                        onChange={() => selectedFormatAdded(i.list)}
                     >
                         {i.name}
                     </ToggleButton>
@@ -46,7 +46,7 @@ export default function FileFormatPicker({ selectedFormat, selectedFormatAdded }
                         name="chk"
                         value={i.name}
                         checked={selectedFormat.includes(i.name)}
-                        onChange={() => selectedFormatAdded(i.name)}
+                        onChange={() => selectedFormatAdded(i.list)}
                     >
                         {i.name}
                     </ToggleButton>
@@ -62,7 +62,7 @@ export default function FileFormatPicker({ selectedFormat, selectedFormatAdded }
                         name="chk"
                         value={i.name}
                         checked={selectedFormat.includes(i.name)}
-                        onChange={() => selectedFormatAdded(i.name)}
+                        onChange={() => selectedFormatAdded(i.list)}
                     >
                         {i.name}
                     </ToggleButton>
@@ -78,7 +78,23 @@ export default function FileFormatPicker({ selectedFormat, selectedFormatAdded }
                         name="chk"
                         value={i.name}
                         checked={selectedFormat.includes(i.name)}
-                        onChange={() => selectedFormatAdded(i.name)}
+                        onChange={() => selectedFormatAdded(i.list)}
+                    >
+                        {i.name}
+                    </ToggleButton>
+                ))}
+            </ButtonGroup>
+            <ButtonGroup className=" bg-white control-shadow p-0 m-1" size="sm">
+                {fileformat.DATA.map((i) => (
+                    <ToggleButton
+                        key={i.name}
+                        type="checkbox"
+                        id={"chk-crt-" + i.name}
+                        variant="outline-secondary"
+                        name="chk"
+                        value={i.name}
+                        checked={selectedFormat.includes(i.name)}
+                        onChange={() => selectedFormatAdded(i.list)}
                     >
                         {i.name}
                     </ToggleButton>
@@ -93,7 +109,7 @@ export default function FileFormatPicker({ selectedFormat, selectedFormatAdded }
                     name="chk"
                     value="any-type"
                     checked={selectedFormat.includes("Any Format")}
-                    onChange={() => selectedFormatAdded("Any Format")}
+                    onChange={() => selectedFormatAdded(["Any Format"])}
                 >
                     Any Format
                 </ToggleButton>
