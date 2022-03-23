@@ -4,7 +4,7 @@ export type MyForm ={
     id : number;
     formName : string,
     formDesc : string,
-    personellInfo : string,
+    personalInfo : string,
     dateofCreate : string,
     questions : Array<FieldoForm>
 };

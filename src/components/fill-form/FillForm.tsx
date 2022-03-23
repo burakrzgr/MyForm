@@ -33,7 +33,7 @@ export default function FillForm({ }) {
                         <Form.Group className="pt-4 " controlId="formBasicPrInfo">
                             <Form.Label>Ask Personnel Information (Name, Surname, Identity Number...)</Form.Label>
                             <div style={mystyle.formControl}>
-                                <DisplayPersonnelInfo selected={form ? form.personellInfo : ""} selectedChanged={() => { }}></DisplayPersonnelInfo>
+                                <DisplayPersonnelInfo selected={form ? form.personalInfo : ""} selectedChanged={() => { }}></DisplayPersonnelInfo>
                             </div>
                             <Form.Text className="text-muted">
                                 Please notice that changing this area might/will force participant to share their personal information. Such as name and surname.
