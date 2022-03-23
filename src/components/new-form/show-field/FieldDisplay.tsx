@@ -1,6 +1,7 @@
 import React from "react";
 import { FieldoForm } from "../class/FieldofForm";
 import { TextField, TextArea, FieldSelect, FieldCombo, FieldCheck, FieldDateTime, FieldRate, FieldAcceptPolicy } from "./Field";
+import ShowInfo from "./ShowInfo";
 
 export default function FieldDisplay({
   areas,
@@ -28,6 +29,7 @@ export default function FieldDisplay({
               "date": <FieldDateTime item={i} removeEvent={(i: FieldoForm) => remove(i)} />,
               "rate": <FieldRate item={i} removeEvent={(i: FieldoForm) => remove(i)} />,
               "ap_c": <FieldAcceptPolicy item={i} removeEvent={(i: FieldoForm) => remove(i)} />,
+              "info": <ShowInfo item={i} removeEvent={(i: FieldoForm) => remove(i)} />,
             }[i.type]
           }
         </React.Fragment>
