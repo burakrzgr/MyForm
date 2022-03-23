@@ -15,6 +15,14 @@ export const fileformat = {
         {
             name: "GIF",
             list: ["GIF"]
+        },
+        {
+            name: "SVG",
+            list: ["SVG"]
+        },
+        {
+            name: "RAW",
+            list: ["RAW"]
         }
     ],
     DOCUMENT: [
@@ -29,6 +37,10 @@ export const fileformat = {
         {
             name: "XLS",
             list: ["XLS", "XLSX"]
+        },
+        {
+            name: "RTF",
+            list: ["RTF"]
         },
         {
             name: "TXT",
@@ -66,6 +78,10 @@ export const fileformat = {
         {
             name: "RAR",
             list: ["RAR"]
+        },
+        {
+            name: "7Z",
+            list: ["7Z"]
         }
     ],
     CODE: 
@@ -83,8 +99,25 @@ export const fileformat = {
             list: ["HTML", "HTM", "XHTML"],
         },
         {
+            name: "CSS",
+            list: ["CSS", "SASS", "SCSS"],
+        },
+        {
             name: "JAVA",
             list: ["JAVA"]
+        }],
+    DATA:[
+        {
+            name: "XML",
+            list: ["XML"]
+        },
+        {
+            name: "JSON",
+            list: ["JSON"]
+        },
+        {
+            name: "CSV",
+            list: ["CSV"]
         }
     ]
 };

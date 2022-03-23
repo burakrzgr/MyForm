@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button, Form, Stack } from "react-bootstrap";
 import { FileUploader } from "react-drag-drop-files";
-import { fileformat } from "../../../data/file-format";
 import UploadFilePng from "../../../resources/UploadFile.png";
 import FileFormatPicker from "../custom-component/FileFormatPicker";
 
@@ -11,7 +10,7 @@ export default function UploadFile() {
     const [uploaded, setUploaded] = useState<boolean>(false);
     const [files, setFiles] = useState<string[]>([]);
     const [multi, setMulti] = useState<boolean>(false);
-    const [selectedFormat, setSelectedFormat] = useState<{list:string[]}>({list :["BMP","PNG","PDF","RAR"]});
+    const [selectedFormat, setSelectedFormat] = useState<{ list: string[] }>({ list: ["BMP", "PNG", "PDF", "RAR"] });
 
     const handleChange = (f: any) => {
         setUploaded(true);
@@ -38,20 +37,22 @@ export default function UploadFile() {
         setTempUrl("");
     };
 
-    const addFormatToList = (str : string) => {
+    const addFormatToList = (strList: string[]) => {
         let newList = selectedFormat.list;
-        if(newList.includes(str))
-            newList = newList.filter(x => x !== str);
-        else
-            newList.push(str);
-        setSelectedFormat({list : newList});
+        strList.forEach(str => {
+            if (newList.includes(str))
+                newList = newList.filter(x => x !== str);
+            else
+                newList.push(str);
+        });
+        setSelectedFormat({ list: newList });
     }
 
     return (
         <>
             <Form.Group className="mb-3" controlId="chkIsMultiOk">
                 <Form.Label>Allowed types of the file</Form.Label>
-                <FileFormatPicker selectedFormat={selectedFormat.list} selectedFormatAdded={(val :string) => addFormatToList(val)}></FileFormatPicker>
+                <FileFormatPicker selectedFormat={selectedFormat.list} selectedFormatAdded={(val: string[]) => addFormatToList(val)}></FileFormatPicker>
             </Form.Group>
             <Form.Group className="mb-3" controlId="chkIsMultiOk">
                 <Form.Check
@@ -83,7 +84,7 @@ export default function UploadFile() {
 }
 
 
-const ChildComponent = ({ tempUrl, removeFile, uploaded, multi, files, formats }: { tempUrl: string, removeFile: Function, uploaded: boolean, multi: boolean, files: string[], formats:string[] }) => (
+const ChildComponent = ({ tempUrl, removeFile, uploaded, multi, files, formats }: { tempUrl: string, removeFile: Function, uploaded: boolean, multi: boolean, files: string[], formats: string[] }) => (
     <>
         {uploaded ? (
             <>
