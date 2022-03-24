@@ -88,7 +88,7 @@ export const fileformat = {
     [
         {
             name: "CS",
-            list: ["CS"]
+            list: ["CS","CSHTML","ASPX","ASP"]
         },
         {
             name: "JS",
@@ -118,6 +118,24 @@ export const fileformat = {
         {
             name: "CSV",
             list: ["CSV"]
+        }
+    ],
+    SYSTEM:[
+        {
+            name: "DLL",
+            list: ["DLL"]
+        },
+        {
+            name: "EXE",
+            list: ["EXE"]
+        },
+        {
+            name: "RUN",
+            list: ["RUN"]
+        },
+        {
+            name: "BAT",
+            list: ["BAT"]
         }
     ]
 };

@@ -100,6 +100,24 @@ export default function FileFormatPicker({ selectedFormat, selectedFormatAdded }
                     </ToggleButton>
                 ))}
             </ButtonGroup>
+            <ButtonGroup className=" bg-white control-shadow p-0 m-1" size="sm">
+                {fileformat.SYSTEM.map((i) => (
+                    <ToggleButton
+                        key={i.name}
+                        type="checkbox"
+                        id={"chk-crt-" + i.name}
+                        variant="outline-dark"
+                        name="chk"
+                        value={i.name}
+                        checked={selectedFormat.includes(i.name)}
+                        onChange={() => selectedFormatAdded(i.list)}
+                    >
+                        {i.name}
+                    </ToggleButton>
+                ))}
+            </ButtonGroup>
+            
+
             <ButtonGroup className=" bg-white control-shadow p-0 m-1 ms-5" size="sm" >
                 <ToggleButton
                     key="any-type"
