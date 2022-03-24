@@ -1,7 +1,7 @@
 import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import { fileformat } from "../../../data/file-format";
 
-export default function FileFormatPicker({ selectedFormat, selectedFormatAdded }: { selectedFormat: string[], selectedFormatAdded: Function }) {
+export default function FileFormatPicker({ selectedFormat, selectedFormatAdded,removeFormat }: { selectedFormat: string[], selectedFormatAdded: Function,removeFormat : Function }) {
     return (
         <div className="">
             <ButtonGroup className=" bg-white control-shadow p-0 m-1" size="sm">
@@ -119,6 +119,18 @@ export default function FileFormatPicker({ selectedFormat, selectedFormatAdded }
             
 
             <ButtonGroup className=" bg-white control-shadow p-0 m-1 ms-5" size="sm" >
+                <ToggleButton
+                    key="remove-type"
+                    type="checkbox"
+                    id={"chk-crt-removetype"}
+                    variant="outline-info"
+                    name="chk"
+                    value="remove-type"
+                    checked={false}
+                    onChange={() => removeFormat()}
+                >
+                    Remove All 
+                </ToggleButton>
                 <ToggleButton
                     key="any-type"
                     type="checkbox"

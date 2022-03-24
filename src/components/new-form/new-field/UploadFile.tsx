@@ -10,7 +10,7 @@ export default function UploadFile() {
     const [uploaded, setUploaded] = useState<boolean>(false);
     const [files, setFiles] = useState<string[]>([]);
     const [multi, setMulti] = useState<boolean>(false);
-    const [selectedFormat, setSelectedFormat] = useState<{ list: string[] }>({ list: ["BMP", "PNG", "PDF", "RAR"] });
+    const [selectedFormat, setSelectedFormat] = useState<{ list: string[] }>({ list: ["JPG","JPEG","BMP","PNG","PDF","RAR"] });
 
     const handleChange = (f: any) => {
         setUploaded(true);
@@ -52,7 +52,7 @@ export default function UploadFile() {
         <>
             <Form.Group className="mb-3" controlId="chkIsMultiOk">
                 <Form.Label>Allowed types of the file</Form.Label>
-                <FileFormatPicker selectedFormat={selectedFormat.list} selectedFormatAdded={(val: string[]) => addFormatToList(val)}></FileFormatPicker>
+                <FileFormatPicker selectedFormat={selectedFormat.list} selectedFormatAdded={(val: string[]) => addFormatToList(val)} removeFormat={() => { setSelectedFormat({ list: [] }); }}></FileFormatPicker>
             </Form.Group>
             <Form.Group className="mb-3" controlId="chkIsMultiOk">
                 <Form.Check
