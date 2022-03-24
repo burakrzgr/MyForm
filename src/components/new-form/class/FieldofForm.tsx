@@ -6,6 +6,7 @@ export type FieldoForm ={
     options? : string[],
     count? : number,
     checkText? : string,
+    variant? : string,
     displays? : Display
 };
 

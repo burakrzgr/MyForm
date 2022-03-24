@@ -1,18 +1,32 @@
-import { Alert, Form } from "react-bootstrap";
+import { Alert, Form, Stack } from "react-bootstrap";
 import { FieldoForm } from "../class/FieldofForm";
 import FieldHeader from "./FieldHeader";
 
-const questionClass ="border rounded p-3 pt-2 mt-4 ";
-export default function ShowInfo({ item, removeEvent }: { item: FieldoForm, removeEvent: Function }) {
+const questionClass = "border rounded p-3 pt-2 mt-4 ";
+export default function ShowInfo({ item,removeEvent }: { item: FieldoForm, removeEvent: Function }) {
     return (
-        <>
-            <Alert variant="danger" onClose={() => removeEvent(item)} dismissible>
-                <Alert.Heading> <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader></Alert.Heading>
-                <p>
-                Change this and that and try again. Duis mollis, est non commodo
-                luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-                Cras mattis consectetur purus sit amet fermentum.
-                </p>
+        <div className={questionClass}>
+            <Form.Label className="w-100">
+                <Stack direction="horizontal">
+                <div className="me-auto">
+                    <h5>Message</h5>
+                </div>
+                <div className="text-info ps-2">
+                    <u>Up</u>
+                </div>
+                <div className="text-info ps-2">
+                    <u>Down</u>
+                </div>
+                <div className="text-success ps-2">
+                    <u>Edit</u>
+                </div>
+                <div className="text-danger ps-2" onClick={() => removeEvent(item) }>
+                    <u>Delete</u>
+                </div>
+                </Stack>
+            </Form.Label>
+            <Alert variant={item.variant} onClose={() => {}} dismissible>
+                {item.name}
             </Alert>
-        </>);
+        </div>);
 }

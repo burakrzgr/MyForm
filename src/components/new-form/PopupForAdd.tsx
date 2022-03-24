@@ -11,6 +11,7 @@ import AcceptPolicy from "./new-field/AcceptPolicy";
 import DateTime from "./new-field/DateTime";
 import { Display, FieldoForm } from "./class/FieldofForm";
 import UploadFile from "./new-field/UploadFile";
+import InfoField from "./new-field/InfoField";
 
 
 
@@ -18,6 +19,7 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
     const [type, setType] = useState<string>("");
     const [name, setName] = useState<string>("");
     const [value, setValue] = useState<string>("");
+    const [variant, setVariant] = useState<string>("danger");
     const [checkText, setCheckText] = useState<string>("");
     const [count, setCount] = useState<number>(3);
     const [options, setOptions] = useState<{ items: string[] }>({ items: [] });
@@ -47,6 +49,10 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
             "ch_b": {...displays.items},
             "date": {...displays.items},
             "sel_": {...displays.items}
+        }[type];
+        
+        item.variant = {
+            "info": variant
         }[type];
 
         addedHandle(item);
@@ -100,7 +106,7 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
                             className="control-shadow"
                             onChange={(vl: any) => setName(vl.target.value)} />
                     </Form.Group>
-                    <hr />
+                    <hr /> 
                     {
                         {
                             "tx_b": <TextBox value={value} setValue={setValue} />,
@@ -111,7 +117,8 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
                             "date": <DateTime check={displays.items} setCheck={(index: string, val: boolean) => setCheck(index, val)}></DateTime>,
                             "rate": <Rating count={count} setCount={setCount} ></Rating>,
                             "f_up": <UploadFile ></UploadFile>,
-                            "ap_c": <AcceptPolicy value={value} setValue={setValue} checkText={checkText} setCheckText={setCheckText} ></AcceptPolicy>
+                            "ap_c": <AcceptPolicy value={value} setValue={setValue} checkText={checkText} setCheckText={setCheckText} ></AcceptPolicy>,
+                            "info": <InfoField text={name} closable={true} setClosable={() => {}} infoType={variant} setInfoType={(val : string) => setVariant(val)}></InfoField>
                         }[type]
                     }
                 </Modal.Body>

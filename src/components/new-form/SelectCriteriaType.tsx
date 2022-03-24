@@ -22,6 +22,7 @@ export default function SelectCriteriaType({
     { val: "rate", name: "Rate" },
     { val: "f_up", name: "Upload" },
     { val: "ap_c", name: "Accept Policy" },
+    { val: "info", name: "Info" }
   ];
 
   return (
