@@ -15,6 +15,9 @@ export default function FieldHeader({ item, removeEvent }: { item: FieldoForm, r
           <div className="text-info ps-2">
             <u>Down</u>
           </div>
+          <div className="text-warning ps-2">
+            <u>Condition</u>
+          </div>
           <div className="text-success ps-2">
             <u>Edit</u>
           </div>

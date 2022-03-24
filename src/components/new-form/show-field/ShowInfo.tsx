@@ -17,6 +17,9 @@ export default function ShowInfo({ item,removeEvent }: { item: FieldoForm, remov
                 <div className="text-info ps-2">
                     <u>Down</u>
                 </div>
+                <div className="text-warning ps-2">
+                    <u>Condition</u>
+                </div>
                 <div className="text-success ps-2">
                     <u>Edit</u>
                 </div>
