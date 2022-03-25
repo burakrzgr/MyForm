@@ -13,8 +13,6 @@ import { Display, enumQuestionType, FieldoForm, FormTemplate, QuestionTemplate }
 import UploadFile from "./new-field/UploadFile";
 import InfoField from "./new-field/InfoField";
 
-
-
 export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: { show: boolean, closeHandle: Function, questionAddedEvent: Function }) {
     const [question, setQuestion] = React.useState<QuestionTemplate>({
       answerArea: {},
