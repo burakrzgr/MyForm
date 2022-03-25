@@ -1,0 +1,28 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+
+$system-color :  $indigo-500;
+$system: (
+  "system": $system-color
+);
+.btn-system, .btn-outline-system{
+    border-color: $system-color !important;
+}
+.btn-system:not(:hover){
+    background-color: $system-color !important;
+}
+.btn-system{
+    color:white !important;
+}
+.btn-outline-system{
+    color: $system-color !important;
+}
+.btn-outline-system:hover{
+    color: white !important;
+}
+.btn-check:checked + .btn-outline-system{
+    color: white !important;
+}
+$theme-colors: map-merge($theme-colors, $system);
+
+@import '~bootstrap/scss/bootstrap';

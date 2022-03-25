@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
 import React from "react";
 
+import { Button } from "react-bootstrap";
+
 export default function Splash() {
     return(
         <>
@@ -17,6 +19,20 @@ export default function Splash() {
             >
                 Learn React
             </a>
+
+            <hr></hr>
+            <div>
+            <Button variant="outline-primary">Primary outline</Button>
+            </div>
+            <div>
+            <Button variant="primary">Primary Not</Button>
+            </div>
+            <div>
+            <Button variant="outline-system">System outline</Button>
+            </div>
+            <div>
+            <Button variant="system">System Not</Button>
+            </div>
         </>
     );
 

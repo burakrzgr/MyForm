@@ -106,7 +106,7 @@ export default function FileFormatPicker({ selectedFormat, selectedFormatAdded,r
                         key={i.name}
                         type="checkbox"
                         id={"chk-crt-" + i.name}
-                        variant="outline-dark"
+                        variant="outline-system"
                         name="chk"
                         value={i.name}
                         checked={selectedFormat.includes(i.name)}
