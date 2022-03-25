@@ -20,6 +20,7 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
       questionType: enumQuestionType.TextBox,
       id : 0
     });
+
     const [type, setType] = useState<string>("");
     const [name, setName] = useState<string>("");
     const [value, setValue] = useState<string>("");
@@ -31,6 +32,12 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
 
     const addCriteria = () => {
         let thisQuestion = {...question,questionType : enumQuestionType.TextBox};
+        setQuestion({
+            answerArea: {},
+            questionText: "",
+            questionType: enumQuestionType.TextBox,
+            id : 0
+          });
         questionAddedEvent(thisQuestion);
     }
 
@@ -85,8 +92,8 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
                     <hr /> 
                     {
                         {
-                            "tx_b": <TextBox value={question.answerArea.defaultText??""} setValue={(val : string) =>  setQuestion({...question,answerArea : {defaultText: val}})} />,
-                            "tx_a": <TextArea value={value} setValue={setValue} count={count} setCount={setCount} />,
+                            "tx_b": <TextBox value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />,
+                            "tx_a": <TextArea value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />,
                             "sel_": <SelectionList options={options} setOptions={setOptions} check={displays.items.multi} setCheck={(val: boolean) => setCheck("multi", val)}></SelectionList>,
                             "cm_b": <SelectionCombo options={options} setOptions={setOptions} ></SelectionCombo>,
                             "ch_b": <CheckValue text={checkText} setText={setCheckText} check={displays.items.checked} setCheck={(val: boolean) => setCheck("checked", val)}></CheckValue>,

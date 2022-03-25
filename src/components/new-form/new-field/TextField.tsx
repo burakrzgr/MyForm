@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { Button, Form, FormControl, InputGroup, Stack } from "react-bootstrap";
+import { AnswerTemplate_Text, QuestionTemplate } from "../class/FieldofForm";
 
 export function TextBox({
   value,
   setValue,
 }: {
-  value: string;
+  value: AnswerTemplate_Text;
   setValue: Function;
 }) {
   return (
@@ -14,9 +15,9 @@ export function TextBox({
         <Form.Control
           type="text"
           placeholder="Type default value if you have any"
-          value={value}
+          value={value.defaultText??""}
           className="control-shadow"
-          onChange={(vl: any) => setValue(vl.target.value)}
+          onChange={(vl: any) => setValue({...value, defaultText: vl.target.value})}
         />
         <Form.Text className="text-muted">
           If you type anything here. It will appear as default value.
@@ -28,27 +29,23 @@ export function TextBox({
 
 export function TextArea({
   value,
-  setValue,
-  count,
-  setCount,
+  setValue
 }: {
-  value: string;
+  value: AnswerTemplate_Text;
   setValue: Function;
-  count: number;
-  setCount: Function;
 }) {
   const setRowEvent = (val: number) => {
     if (val > 30) {
-      setCount(30);
+      setValue({...value,textHeight:30});
     } else if (val < 1) {
-      setCount(3);
+      setValue({...value,textHeight:3});
     } else {
-      setCount(val);
+      setValue({...value,textHeight:val});
     }
   };
 
   useEffect(() => {
-    setCount(3)
+    setValue({...value,textHeight:3})
   },[]);
   
   return (
@@ -62,7 +59,7 @@ export function TextArea({
             <Button
               variant="outline-danger"
               style={{ width: "2.5rem" }}
-              onClick={() => setRowEvent(count - 1)}
+              onClick={() => setRowEvent(value.textHeight - 1)}
             >
               -
             </Button>
@@ -71,13 +68,13 @@ export function TextArea({
               placeholder="Number of Column"
               aria-label="Inputgroupnoc"
               className="text-center "
-              value={count}
+              value={value.textHeight??3}
               onChange={(vl: any) => setRowEvent(vl.target.value)}
             />
             <Button
               variant="outline-success"
               style={{ width: "2.5rem" }}
-              onClick={() => setRowEvent(count + 1)}
+              onClick={() => setRowEvent(value.textHeight + 1)}
             >
               +
             </Button>
@@ -91,9 +88,9 @@ export function TextArea({
         <Form.Control
           type="text"
           placeholder="Type default value if you have any"
-          value={value}
-          onChange={(vl: any) => setValue(vl.target.value)}
-          rows={count}
+          value={value.defaultText??""}
+          onChange={(vl: any) => setValue({...value,defaultText :vl.target.value})}
+          rows={value.textHeight}
           as="textarea"
           className="control-shadow"
           style={{ resize: "none" }}
