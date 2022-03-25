@@ -53,8 +53,13 @@ export type AnswerTemplate_Date ={
     checkDate : boolean,
     checkTime : boolean
 }
-
-
+export type AnswerTemplate_Rate ={
+    stars : number
+}
+export type AnswerTemplate_Upload ={
+    multi : boolean,
+    fileTypes? : string[]
+}
 
 
 export type GUID = string & { isGuid: true};

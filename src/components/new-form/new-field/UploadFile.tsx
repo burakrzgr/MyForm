@@ -67,7 +67,7 @@ export default function UploadFile() {
                     handleChange={handleChange}
                     name="file"
                     hoverTitle="Drop Here"
-                    types={selectedFormat.list.includes("Any Format") ? ["*"] : selectedFormat.list}
+                    types={selectedFormat.list.includes("Any Format") ? undefined : selectedFormat.list}
                     multiple={multi}
                 >
                     <ChildComponent tempUrl={tempUrl} removeFile={removeFile} uploaded={uploaded} multi={multi} files={files} formats={selectedFormat.list.includes("Any Format") ? ["All file formats accepted."] : selectedFormat.list} />
