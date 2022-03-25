@@ -9,11 +9,9 @@ export default function FieldHeader({ item, removeEvent }: { item: QuestionTempl
           <div className="me-auto">
             <h5>{item.questionText}</h5>
           </div>
+          <Stack direction="horizontal" >
           <div className="text-info ps-2">
-            <u>Up</u>
-          </div>
-          <div className="text-info ps-2">
-            <u>Down</u>
+            <u>Move</u>
           </div>
           <div className="text-warning ps-2">
             <u>Condition</u>
@@ -24,6 +22,7 @@ export default function FieldHeader({ item, removeEvent }: { item: QuestionTempl
           <div className="text-danger ps-2" onClick={() => removeEvent(item) }>
             <u>Delete</u>
           </div>
+          </Stack>
         </Stack>
       </Form.Label>
     </>
