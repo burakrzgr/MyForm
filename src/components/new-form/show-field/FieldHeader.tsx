@@ -1,13 +1,13 @@
 import { Form, Stack } from "react-bootstrap";
-import { FieldoForm } from "../class/FieldofForm";
+import { QuestionTemplate } from "../class/FieldofForm";
 
-export default function FieldHeader({ item, removeEvent }: { item: FieldoForm, removeEvent: Function }) {
+export default function FieldHeader({ item, removeEvent }: { item: QuestionTemplate, removeEvent: Function }) {
   return (
     <>
       <Form.Label className="w-100">
         <Stack direction="horizontal">
           <div className="me-auto">
-            <h5>{item.name}</h5>
+            <h5>{item.questionText}</h5>
           </div>
           <div className="text-info ps-2">
             <u>Up</u>

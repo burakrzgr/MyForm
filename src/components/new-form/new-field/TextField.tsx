@@ -10,7 +10,7 @@ export function TextBox({
 }) {
   return (
     <>
-      <Form.Group controlId="formtextBox">
+      <Form.Group>
         <Form.Control
           type="text"
           placeholder="Type default value if you have any"

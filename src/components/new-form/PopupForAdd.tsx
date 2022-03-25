@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import SelectCriteriaType from "./SelectCriteriaType";
 import "../../css/form-input.css";
@@ -9,13 +9,19 @@ import Rating from "./new-field/Rating";
 import CheckValue from "./new-field/CheckValue";
 import AcceptPolicy from "./new-field/AcceptPolicy";
 import DateTime from "./new-field/DateTime";
-import { Display, FieldoForm } from "./class/FieldofForm";
+import { Display, enumQuestionType, FieldoForm, FormTemplate, QuestionTemplate } from "./class/FieldofForm";
 import UploadFile from "./new-field/UploadFile";
 import InfoField from "./new-field/InfoField";
 
 
 
-export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: boolean, closeHandle: Function, addedHandle: Function }) {
+export default function PopupForAdd({ show, closeHandle, addedHandle, questionAddedEvent }: { show: boolean, closeHandle: Function, addedHandle: Function, questionAddedEvent: Function }) {
+    const [question, setQuestion] = React.useState<QuestionTemplate>({
+      answerArea: {},
+      questionText: "",
+      questionType: enumQuestionType.TextBox,
+      id : 0
+    });
     const [type, setType] = useState<string>("");
     const [name, setName] = useState<string>("");
     const [value, setValue] = useState<string>("");
@@ -28,6 +34,8 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
     const addCriteria = () => {
         let item: FieldoForm = { name, type, value: undefined, checkText: undefined, options: undefined, count: undefined, displays: undefined };
 
+        let thisQuestion = {...question,questionType : enumQuestionType.TextBox};
+        questionAddedEvent(thisQuestion);
         item.value = {
             "tx_b": value,
             "tx_a": value,
@@ -99,17 +107,17 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
                         <Form.Control
                             type="text"
                             placeholder="Question"
-                            value={name}
+                            value={question.questionText}
                             rows={2}
                             as="textarea"
                             style={{ resize: "none" }}
                             className="control-shadow"
-                            onChange={(vl: any) => setName(vl.target.value)} />
+                            onChange={(vl: any) => setQuestion({...question, questionText : vl.target.value})} />
                     </Form.Group>
                     <hr /> 
                     {
                         {
-                            "tx_b": <TextBox value={value} setValue={setValue} />,
+                            "tx_b": <TextBox value={question.answerArea.defaultText??""} setValue={(val : string) =>  setQuestion({...question,answerArea : {defaultText: val}})} />,
                             "tx_a": <TextArea value={value} setValue={setValue} count={count} setCount={setCount} />,
                             "sel_": <SelectionList options={options} setOptions={setOptions} check={displays.items.multi} setCheck={(val: boolean) => setCheck("multi", val)}></SelectionList>,
                             "cm_b": <SelectionCombo options={options} setOptions={setOptions} ></SelectionCombo>,
@@ -124,7 +132,7 @@ export default function PopupForAdd({ show, closeHandle, addedHandle }: { show: 
                 </Modal.Body>
                 <Modal.Footer className="justify-content-between">
                     <Button variant="outline-dark" className="my-bg-white ps-4 pe-4 control-shadow" onClick={() => closeHandle()}>Cancel</Button>
-                    <Button variant="primary" className=" ps-4 pe-4 control-shadow" onClick={() => addCriteria()} disabled={!(name && name.length > 5)}>Add Question</Button>
+                    <Button variant="primary" className=" ps-4 pe-4 control-shadow" onClick={() => addCriteria()} disabled={!(question.questionText &&question.questionText.length > 5)}>Add Question</Button>
                 </Modal.Footer>
             </div>
         </Modal>

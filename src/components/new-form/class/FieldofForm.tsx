@@ -1,3 +1,4 @@
+import { GUID } from "./Guid";
 
 export type FieldoForm ={
     name : string,
@@ -21,6 +22,9 @@ export type Display ={
 export type FormTemplate = {
     id : number,
     creatorId : GUID,
+    formName : string,
+    formDesc : string,
+    personalInfo : enumPersonelInfo,
     createDate : Date,
     questions : Array<QuestionTemplate>,
 
@@ -28,7 +32,7 @@ export type FormTemplate = {
 
 export type QuestionTemplate = {
     id : number,
-    formTemplate : FormTemplate,
+    formTemplate? : FormTemplate,
     questionType : enumQuestionType,
     questionText : string,
     answerArea : any,
@@ -61,13 +65,6 @@ export type AnswerTemplate_Upload ={
     fileTypes? : string[]
 }
 
-
-export type GUID = string & { isGuid: true};
-
-function guid(guid: string) : GUID {
-    return  guid as GUID; // maybe add validation that the parameter is an actual guid ?
-}
-
 export enum enumQuestionType
 {
     TextBox = 1,
@@ -80,4 +77,10 @@ export enum enumQuestionType
     Upload = 8,
     Acceptpolicy = 9,
     Info = 10
+}
+export enum enumPersonelInfo
+{
+    dontAsk = 0,
+    ask = 1,
+    required = 2
 }

@@ -1,6 +1,7 @@
 import { ButtonGroup, ToggleButton } from "react-bootstrap";
+import { enumPersonelInfo } from "../class/FieldofForm";
 
-export default function AskPersonnelInfo({selected,selectedChanged }:{selected:string,selectedChanged:Function}) {
+export default function AskPersonalInfo({selected,selectedChanged }:{selected:enumPersonelInfo,selectedChanged:Function}) {
 
     const radioHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         selectedChanged(event.target.value);
@@ -13,8 +14,8 @@ export default function AskPersonnelInfo({selected,selectedChanged }:{selected:s
                 id="rbt-pi-0"
                 variant={'outline-success'}
                 name="radio"
-                value="0"
-                checked={"0" === selected}
+                value={enumPersonelInfo.dontAsk}
+                checked={enumPersonelInfo.dontAsk === Number(selected)}
                 onChange={radioHandler}
             >
                 Dont ask any information
@@ -24,8 +25,8 @@ export default function AskPersonnelInfo({selected,selectedChanged }:{selected:s
                 id="rbt-pi-1"
                 variant={'outline-warning'}
                 name="radio"
-                value="1"
-                checked={"1" === selected}
+                value={enumPersonelInfo.ask}
+                checked={enumPersonelInfo.ask === Number(selected)}
                 onChange={radioHandler}
             >
                 Only if participant accepts  
@@ -35,8 +36,8 @@ export default function AskPersonnelInfo({selected,selectedChanged }:{selected:s
                 id="rbt-pi-2"
                 variant={'outline-danger'}
                 name="radio"
-                value="2"
-                checked={"2" === selected}
+                value={enumPersonelInfo.required}
+                checked={enumPersonelInfo.required === Number(selected)}
                 onChange={radioHandler}
             >
                 Make required field

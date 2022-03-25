@@ -5,7 +5,7 @@ import { MyForm } from "../new-form/class/MyForm";
 import FieldDisplay from "../new-form/show-field/FieldDisplay";
 import mystyle from "../../mystyle";
 import DisplayPersonnelInfo from "../new-form/custom-component/DisplayPersonnelInfo";
-import { FieldoForm } from "../new-form/class/FieldofForm";
+import { FieldoForm, QuestionTemplate } from "../new-form/class/FieldofForm";
 import { GetForm } from "../../axios/new-form";
 
 
@@ -39,7 +39,7 @@ export default function FillForm({ }) {
                                 Please notice that changing this area might/will force participant to share their personal information. Such as name and surname.
                             </Form.Text>
                         </Form.Group>
-                        <FieldDisplay areas={{ items: form ? form.questions : ([] as Array<FieldoForm>) }} setAreas={() => { }} ></FieldDisplay>
+                        <FieldDisplay areas={{ items: form ? form.questions : ([] as Array<FieldoForm>) }} setAreas={() => { }} items={[] as QuestionTemplate[]} setItems={() => {}} ></FieldDisplay>
                     </Form>
                     <div className="pt-5">
                         <Button variant="primary" size="lg">Submit Form</Button>
