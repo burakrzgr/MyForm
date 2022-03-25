@@ -19,12 +19,7 @@ export default function CreateNewForm() {
       creatorId : getGuid("development-dev")
     } as FormTemplate);
     
-    
-    /*const [personnelInfo, setPersonnelInfo] = React.useState<string>("0");
-    const [formName, setFormName] = React.useState<string>("");
-    const [formDesc, setFormDesc] = React.useState<string>(""); */
     const [areas,setAreas] = React.useState<{items:Array<FieldoForm>}>({items:[]})
-
    
     const newComponentAdded = (val : FieldoForm) => {
         let list = areas;
