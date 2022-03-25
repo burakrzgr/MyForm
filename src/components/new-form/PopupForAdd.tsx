@@ -31,7 +31,13 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
     const [displays, setDisplays] = useState<{ items:Display }>({ items: {checked:false,multi:false, date:true, time:true} });
 
     const addCriteria = () => {
-        let thisQuestion = {...question,questionType : enumQuestionType.TextBox};
+        
+        let myType : enumQuestionType =  enumQuestionType.TextBox;
+        if(type === "tx_a")
+            myType = enumQuestionType.TextArea;
+
+
+        let thisQuestion = {...question,questionType : myType};
         setQuestion({
             answerArea: {},
             questionText: "",
