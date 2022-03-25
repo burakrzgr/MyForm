@@ -15,7 +15,7 @@ import InfoField from "./new-field/InfoField";
 
 
 
-export default function PopupForAdd({ show, closeHandle, addedHandle, questionAddedEvent }: { show: boolean, closeHandle: Function, addedHandle: Function, questionAddedEvent: Function }) {
+export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: { show: boolean, closeHandle: Function, questionAddedEvent: Function }) {
     const [question, setQuestion] = React.useState<QuestionTemplate>({
       answerArea: {},
       questionText: "",
@@ -32,38 +32,8 @@ export default function PopupForAdd({ show, closeHandle, addedHandle, questionAd
     const [displays, setDisplays] = useState<{ items:Display }>({ items: {checked:false,multi:false, date:true, time:true} });
 
     const addCriteria = () => {
-        let item: FieldoForm = { name, type, value: undefined, checkText: undefined, options: undefined, count: undefined, displays: undefined };
-
         let thisQuestion = {...question,questionType : enumQuestionType.TextBox};
         questionAddedEvent(thisQuestion);
-        item.value = {
-            "tx_b": value,
-            "tx_a": value,
-            "ap_c": value
-        }[type];
-        item.checkText = {
-            "ch_b": checkText,
-            "ap_c": checkText,
-        }[type];
-        item.options = {
-            "sel_": [...options.items],
-            "cm_b": [...options.items]
-        }[type];
-        item.count = {
-            "tx_a": count,
-            "rate": count
-        }[type];
-        item.displays = {
-            "ch_b": {...displays.items},
-            "date": {...displays.items},
-            "sel_": {...displays.items}
-        }[type];
-        
-        item.variant = {
-            "info": variant
-        }[type];
-
-        addedHandle(item);
     }
 
     const setCheck = (index: string, val: boolean) => {

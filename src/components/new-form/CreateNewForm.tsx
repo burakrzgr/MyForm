@@ -32,12 +32,9 @@ export default function CreateNewForm() {
         setAreas({...list});
     }  
     const newQuestionAdded = (qu : QuestionTemplate) => {
-        console.log("ww",qu)
         let list = formInfo.questions;
         list.push(qu);
-        setFormInfo({...formInfo, questions : list} );
-        console.log("ww",list)
-       // setAreas({...list});
+        setFormInfo({...formInfo, questions : list});
     }
     return (
         <Container className="pt-5">

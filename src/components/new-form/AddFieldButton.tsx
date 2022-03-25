@@ -12,14 +12,24 @@ export default function AddFieldButton({addedHandle,questionAddedEvent} : {added
     const closePopupHandler = () =>{
         setShowPopup(false);
     }
-    const addedItem = (vl:any) =>{
-        addedHandle(vl);
-        setShowPopup(false);
-    }
     return (
-        <>
-            <Button variant="warning" onClick={showPopupHandler} className="w-25" size="lg">Add New Criteria</Button>
-            <PopupForAdd show={showPopup} closeHandle={closePopupHandler} addedHandle={addedItem} questionAddedEvent={(qu : QuestionTemplate) => questionAddedEvent(qu)}></PopupForAdd>
-        </>
+      <>
+        <Button
+          variant="warning"
+          onClick={showPopupHandler}
+          className="w-25"
+          size="lg"
+        >
+          Add New Criteria
+        </Button>
+        <PopupForAdd
+          show={showPopup}
+          closeHandle={closePopupHandler}
+          questionAddedEvent={(qu: QuestionTemplate) => {
+            setShowPopup(false);
+            questionAddedEvent(qu);
+          }}
+        ></PopupForAdd>
+      </>
     );
 }
