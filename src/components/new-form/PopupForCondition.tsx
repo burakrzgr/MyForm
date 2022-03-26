@@ -66,6 +66,13 @@ export default function PopupForCondition({
                         {questions.map((x) => {
                             return x.questionText;
                         })}
+                        <Form.Select aria-label="Select Condition" className="mt-3 control-shadow me-auto" onChange={(e) => {}}>
+                            <option value="-">[Select area to add condition...]</option>
+                            {questions ? questions.map((i,key) => (
+                                <option value={i.questionText} key={key}>{i.questionText}</option>
+                            )):<></>}
+                        </Form.Select>
+
                     </Form.Group>
                 </Modal.Body>
                 <Modal.Footer className="justify-content-center">
