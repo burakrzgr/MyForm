@@ -39,19 +39,26 @@ export function SelectionList({
         </>
     );
 }
-export function SelectionCombo({ options, setOptions }: { options: { items: string[] }, setOptions: Function}) {
+export function SelectionCombo({
+    value,
+    setValue,
+  }: {
+    value: AnswerTemplate_Selection;
+    setValue: Function;
+  }) {
     const addNewOption = (vl: string) => {
-        if (vl !== "" && !options.items.includes(vl)) {
-            let list = options;
-            list.items.push(vl);
-            setOptions({ ...list });
+        value.options = value.options??[];
+        if (vl !== "" && value.options && !value.options.includes(vl)) {
+            let list = value.options;
+            list.push(vl);
+            setValue({...value,options:list});
         }
     };
     const removeOption = (vl: string) => {
-        let items = {  items: options.items.filter(x => {
+        let list = value.options ? value.options.filter(x => {
             return(x !== vl)
-        })};
-        setOptions({...items});
+        }):[];
+        setValue({...value,options:list});
     };
     const [selected,setSelected] = useState<string>("");
     return (
@@ -60,9 +67,9 @@ export function SelectionCombo({ options, setOptions }: { options: { items: stri
             <Stack direction="horizontal">
                 <Form.Select aria-label="Select option" className="mt-3 control-shadow me-auto" onChange={(e) => setSelected(e.target.value)}>
                     <option value="-">[Please select one of the options...]</option>
-                    {options.items.map(i => (
+                    {value.options ? value.options.map(i => (
                         <option value={i} key={i}>{i}</option>
-                    ))}
+                    )):<></>}
                 </Form.Select>
                 <Button variant="outline-danger ms-2 mt-3" onClick={() => removeOption(selected)}>🗑️</Button>
             </Stack>

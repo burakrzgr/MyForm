@@ -1,30 +1,25 @@
 import { useEffect, useState } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
+import { defaultValues } from "../class/defaultValues";
+import { AnswerTemplate_Check } from "../class/FieldofForm";
 
 export default function CheckValue({
-  check,
-  setCheck,
-  text,
-  setText,
+  value,
+  setValue,
 }: {
-  check: boolean;
-  setCheck: Function;
-  text: string;
-  setText: Function;
+  value: AnswerTemplate_Check;
+  setValue: Function;
 }) {
-    useEffect(() => {
-        setText("Check me! Click me! You can never break me!");
-        console.log("ee");
-      },[setText])
+ 
   return (
     <>
-      <TextChanged textChanged={(vl: any) => setText(vl)}></TextChanged>
+      <TextChanged textChanged={(vl: any) => setValue({...value,checkText : vl})}></TextChanged>
       <Form.Group className="mt-3">
         <Form.Check
           type="checkbox"
-          label={text}
-          checked={check}
-          onChange={(e: any) => setCheck(e.target.checked)}
+          label={value.checkText??defaultValues.emptyChecktext}
+          checked={value.defaultChecked??false}
+          onChange={(e: any) => setValue({...value,defaultChecked : e.target.checked})}
         ></Form.Check>
         <Form.Text className="text-muted">
           If you check here, default value for this item will be checked!

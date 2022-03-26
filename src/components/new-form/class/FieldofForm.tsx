@@ -49,7 +49,7 @@ export type AnswerTemplate_Selection ={
     multi : boolean
 }
 export type AnswerTemplate_Check ={
-    checkText : string,
+    checkText? : string,
     defaultChecked? : boolean,
     description : string
 }

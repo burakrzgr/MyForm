@@ -21,9 +21,8 @@ export default function FieldDisplay({
   return (
     <>
       {items.map((i, key) => (
-        <React.Fragment key={key}>{console.log(String(i.questionType))}
+        <React.Fragment key={key}>
           {
-            
             {
               "1" : <TextField item={i} removeEvent={(i: QuestionTemplate) => remove(i)} />,
               "2" : <TextArea item={i} removeEvent={(i: QuestionTemplate) => remove(i)} />,
