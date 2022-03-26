@@ -35,13 +35,14 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
         let myType : enumQuestionType =  enumQuestionType.TextBox;
         if(type === "tx_a")
             myType = enumQuestionType.TextArea;
-
+        if(type === "sel_")
+            myType = enumQuestionType.RadioButton;
 
         let thisQuestion = {...question,questionType : myType};
         setQuestion({
             answerArea: {},
             questionText: "",
-            questionType: enumQuestionType.TextBox,
+            questionType: myType,
             id : 0
           });
         questionAddedEvent(thisQuestion);
@@ -100,7 +101,7 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
                         {
                             "tx_b": <TextBox value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />,
                             "tx_a": <TextArea value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />,
-                            "sel_": <SelectionList options={options} setOptions={setOptions} check={displays.items.multi} setCheck={(val: boolean) => setCheck("multi", val)}></SelectionList>,
+                            "sel_": <SelectionList value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />,
                             "cm_b": <SelectionCombo options={options} setOptions={setOptions} ></SelectionCombo>,
                             "ch_b": <CheckValue text={checkText} setText={setCheckText} check={displays.items.checked} setCheck={(val: boolean) => setCheck("checked", val)}></CheckValue>,
                             "date": <DateTime check={displays.items} setCheck={(index: string, val: boolean) => setCheck(index, val)}></DateTime>,

@@ -1,19 +1,28 @@
 import { useState } from "react";
 import { Button, Form, FormControl, InputGroup, Stack } from "react-bootstrap";
+import { AnswerTemplate_Selection } from "../class/FieldofForm";
 
-export function SelectionList({ options, setOptions, check: multi, setCheck: setMulti }: { options: { items: string[] }, setOptions: Function, check: boolean, setCheck: Function, }) {
+export function SelectionList({
+        value,
+        setValue,
+      }: {
+        value: AnswerTemplate_Selection;
+        setValue: Function;
+      }
+) {
     const addNewOption = (vl: string) => {
-        if (vl !== "" && !options.items.includes(vl)) {
-            let list = options;
-            list.items.push(vl);
-            setOptions({ ...list });
+        value.options = value.options??[];
+        if (vl !== "" && value.options && !value.options.includes(vl)) {
+            let list = value.options;
+            list.push(vl);
+            setValue({...value,options:list});
         }
     };
     const removeOption = (vl: string) => {
-        let items = {  items: options.items.filter(x => {
+        let list = value.options ? value.options.filter(x => {
             return(x !== vl)
-        })};
-        setOptions({...items});
+        }) : [];
+        setValue({...value,options:list});
     };
     return (
         <>
@@ -21,12 +30,12 @@ export function SelectionList({ options, setOptions, check: multi, setCheck: set
                 <Form.Check
                     type="checkbox"
                     label="Allow Multi Select"
-                    checked={multi}
-                    onChange={(e: any) => setMulti(e.target.checked)}
+                    checked={value.multi??false}
+                    onChange={(e: any) => setValue({...value, multi: e.target.checked})}
                 ></Form.Check>
             </Form.Group>
             <AddOption optionAdded={addNewOption}></AddOption>
-            <DisplayOptions list={options.items} allowMulti={multi} ItemRemove={removeOption}></DisplayOptions>
+            <DisplayOptions list={value.options??[]} allowMulti={value.multi} ItemRemove={removeOption}></DisplayOptions>
         </>
     );
 }

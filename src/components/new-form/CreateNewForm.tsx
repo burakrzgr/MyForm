@@ -62,7 +62,7 @@ export default function CreateNewForm() {
                         Please notice that changing this area might/will force participant to share their personal information. Such as name and surname.
                     </Form.Text>
                 </Form.Group>
-                <FieldDisplay areas={areas} setAreas={setAreas} items={formInfo.questions} setItems={(list : QuestionTemplate[]) => setFormInfo({...formInfo,questions:list })} ></FieldDisplay>
+                <FieldDisplay setItems={(list : QuestionTemplate[]) => setFormInfo({...formInfo,questions:list })}  areas={areas} setAreas={setAreas} items={formInfo.questions}  ></FieldDisplay>
             </Form>
             <div className="pt-5">
                 <AddFieldButton addedHandle={newComponentAdded} questionAddedEvent={(qu : QuestionTemplate) => newQuestionAdded(qu)}></AddFieldButton>
