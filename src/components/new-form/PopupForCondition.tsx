@@ -63,16 +63,28 @@ export default function PopupForCondition({
                             </div>
                         </Stack>
                         <Form.Label>Condition is..</Form.Label>
-                        {questions.map((x) => {
-                            return x.questionText;
-                        })}
-                        <Form.Select aria-label="Select Condition" className="mt-3 control-shadow me-auto" onChange={(e) => {}}>
-                            <option value="-">[Select area to add condition...]</option>
-                            {questions ? questions.map((i,key) => (
-                                <option value={i.questionText} key={key}>{i.questionText}</option>
-                            )):<></>}
-                        </Form.Select>
-
+                        <Stack direction="horizontal">
+                            <Form.Select aria-label="Select Condition" className="mt-3 control-shadow me-auto" onChange={(e) => {}}>
+                                <option value="-">[Select area ...]</option>
+                                {questions ? questions.map((i,key) => (
+                                    (i.questionText !== item.questionText) ? <option value={i.questionText} key={key}>{i.questionText}</option>:<></>
+                                )):<></>}
+                            </Form.Select>
+                            <Form.Select aria-label="Select Condition" className="mt-3 control-shadow me-auto ms-3" style={{width:"10rem"}} onChange={(e) => {}}>
+                                <option value="equal">Equal</option>
+                                <option value="selected">Selected</option>
+                                <option value="contains">Contains</option>
+                                <option value="filled">Filled</option>
+                                <option value="empty">Empty</option>
+                            </Form.Select>
+                            <Form.Control
+                                type="text"
+                                placeholder="Condition value"
+                                value={""}
+                                className="control-shadow mt-3 me-auto ms-3"
+                                onChange={(vl: any) => {}}
+                            />
+                        </Stack>
                     </Form.Group>
                 </Modal.Body>
                 <Modal.Footer className="justify-content-center">
