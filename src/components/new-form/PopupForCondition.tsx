@@ -15,7 +15,7 @@ export default function PopupForCondition({
     item: QuestionTemplate;
     questions: QuestionTemplate[];
 }) {
-    const [condition, setCondition] = useState<{ action: number }>({ action: 1 });
+    const [condition, setCondition] = useState<{ action: number,target :QuestionTemplate,condition : string, value :any }>({ action: 1,target : {} as QuestionTemplate,condition : "equal" , value: "" });
     return (
         <Modal
             show={show}
@@ -70,19 +70,21 @@ export default function PopupForCondition({
                                     <option value={i.questionText} key={key}>{i.questionText}</option>
                                 )):<></>}
                             </Form.Select>
-                            <Form.Select aria-label="Select Condition" className="mt-3 control-shadow me-auto ms-3" style={{width:"10rem"}} onChange={(e) => {}}>
+                            <Form.Select aria-label="Select Condition" className="mt-3 control-shadow me-auto ms-3" style={{width:"10rem"}} onChange={(e) => setCondition({...condition, condition: e.target.value})}>
                                 <option value="equal">Equal</option>
                                 <option value="selected">Selected</option>
+                                <option value="notselected">Not Selected</option>
                                 <option value="contains">Contains</option>
+                                <option value="notcontains">Not Contains</option>
                                 <option value="filled">Filled</option>
                                 <option value="empty">Empty</option>
                             </Form.Select>
                             <Form.Control
                                 type="text"
                                 placeholder="Condition value"
-                                value={""}
+                                value={condition.value}
                                 className="control-shadow mt-3 me-auto ms-3"
-                                onChange={(vl: any) => {}}
+                                onChange={(vl: any) => setCondition({...condition, value: vl.target.value})}
                             />
                         </Stack>
                     </Form.Group>
