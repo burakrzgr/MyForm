@@ -6,21 +6,21 @@ import "../../../css/question-box.css"
 
 const questionClass ="border rounded p-3 pt-2 mt-4 question";
 
-export function TextField({ item, removeEvent }: { item: QuestionTemplate, removeEvent: Function }) {
+export function TextField({ item, removeEvent,addConditionEvent }: { item: QuestionTemplate, removeEvent: Function, addConditionEvent: Function }) {
     return (
         <>
             <Form.Group className={questionClass} controlId="trb">
-                <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader>
+                <FieldHeader item={item} removeEvent={removeEvent} addConditionEvent={addConditionEvent}></FieldHeader>
                 <Form.Control type="text" placeholder="Form Text" defaultValue={item.answerArea.defaultText} />
             </Form.Group>
         </>);
 }
 
-export function TextArea({ item , removeEvent}: { item: QuestionTemplate, removeEvent: Function }) {
+export function TextArea({ item, removeEvent,addConditionEvent }: { item: QuestionTemplate, removeEvent: Function, addConditionEvent: Function }) {
     return (
         <>
             <Form.Group className={questionClass} controlId="trb">
-                <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader>
+                <FieldHeader item={item} removeEvent={removeEvent}  addConditionEvent={addConditionEvent}></FieldHeader>
                 <Form.Control type="text"
                     placeholder="Form Text"
                     defaultValue={item.answerArea.defaultText}
@@ -31,11 +31,11 @@ export function TextArea({ item , removeEvent}: { item: QuestionTemplate, remove
         </>);
 }
 
-export function FieldSelect({ item, removeEvent }: { item: QuestionTemplate, removeEvent: Function }) {
+export function FieldSelect({ item, removeEvent,addConditionEvent }: { item: QuestionTemplate, removeEvent: Function, addConditionEvent: Function }) {
     return (
         <>
             <Form.Group className={questionClass} controlId="trb">
-                <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader>
+                <FieldHeader item={item} removeEvent={removeEvent}  addConditionEvent={addConditionEvent}></FieldHeader>
                 {item.answerArea.options ? item.answerArea.options.map((i : any , key : any) => (
                     <Form.Check
                         key={key}
@@ -48,11 +48,11 @@ export function FieldSelect({ item, removeEvent }: { item: QuestionTemplate, rem
             </Form.Group>
         </>);
 }
-export function FieldCombo({ item, removeEvent }: { item: QuestionTemplate, removeEvent: Function }) {
+export function FieldCombo({ item, removeEvent,addConditionEvent }: { item: QuestionTemplate, removeEvent: Function, addConditionEvent: Function }) {
     return (
         <>
             <Form.Group className={questionClass} controlId="trb">
-                <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader>
+                <FieldHeader item={item} removeEvent={removeEvent} addConditionEvent={addConditionEvent}></FieldHeader>
                 <Form.Select aria-label="Select option" className="control-shadow">
                     <option>[Please select one of the options...]</option>
                     {item.answerArea.options ? item.answerArea.options.map((i : any) => (
@@ -62,11 +62,11 @@ export function FieldCombo({ item, removeEvent }: { item: QuestionTemplate, remo
             </Form.Group>
         </>);
 }
-export function FieldCheck({ item, removeEvent }: { item: QuestionTemplate, removeEvent: Function }) {
+export function FieldCheck({ item, removeEvent,addConditionEvent }: { item: QuestionTemplate, removeEvent: Function, addConditionEvent: Function }) {
     return (
         <>
             <Form.Group className={questionClass} controlId="trb">
-                <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader>
+                <FieldHeader item={item} removeEvent={removeEvent} addConditionEvent={addConditionEvent}></FieldHeader>
                 <Form.Group >
                     <Form.Check
                         type="checkbox"
@@ -79,11 +79,11 @@ export function FieldCheck({ item, removeEvent }: { item: QuestionTemplate, remo
         </>);
 }
 
-export function FieldDateTime({ item, removeEvent }: { item: QuestionTemplate, removeEvent: Function }) {
+export function FieldDateTime({ item, removeEvent,addConditionEvent }: { item: QuestionTemplate, removeEvent: Function, addConditionEvent: Function }) {
     return (
         <>
             <Form.Group className={questionClass} controlId="trb">
-                <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader>
+                <FieldHeader item={item} removeEvent={removeEvent}  addConditionEvent={addConditionEvent}></FieldHeader>
                 <Stack direction="horizontal">
                     {item.answerArea && (item.answerArea.checkDate || item.answerArea.checkTime) ?
                         <>
@@ -103,21 +103,21 @@ export function FieldDateTime({ item, removeEvent }: { item: QuestionTemplate, r
         </>);
 }
 
-export function FieldRate({ item, removeEvent }: { item: QuestionTemplate, removeEvent: Function }) {
+export function FieldRate({ item, removeEvent,addConditionEvent }: { item: QuestionTemplate, removeEvent: Function, addConditionEvent: Function }) {
     return (
         <>
             <Form.Group className={questionClass} controlId="trb">
-                <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader>
+                <FieldHeader item={item} removeEvent={removeEvent}  addConditionEvent={addConditionEvent}></FieldHeader>
                 <Stars count={item.answerArea.stars ? item.answerArea.stars : 5}></Stars>
             </Form.Group>
         </>);
 }
 
-export function FieldAcceptPolicy({ item, removeEvent }: { item: QuestionTemplate, removeEvent: Function }) {
+export function FieldAcceptPolicy({ item, removeEvent,addConditionEvent }: { item: QuestionTemplate, removeEvent: Function, addConditionEvent: Function }) {
     return (
         <>
             <Form.Group className={questionClass} controlId="trb">
-                <FieldHeader item={item} removeEvent={removeEvent}></FieldHeader>
+                <FieldHeader item={item} removeEvent={removeEvent}  addConditionEvent={addConditionEvent}></FieldHeader>
                 <Form.Control type="text"
                     placeholder="Detail of the Policy is Here!"
                     defaultValue={item.answerArea.description}
