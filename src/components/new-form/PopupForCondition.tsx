@@ -66,8 +66,8 @@ export default function PopupForCondition({
                         <Stack direction="horizontal">
                             <Form.Select aria-label="Select Condition" className="mt-3 control-shadow me-auto" onChange={(e) => {}}>
                                 <option value="-">[Select area ...]</option>
-                                {questions ? questions.map((i,key) => (
-                                    (i.questionText !== item.questionText) ? <option value={i.questionText} key={key}>{i.questionText}</option>:<></>
+                                {questions ? questions.filter(x => x!==item).map((i,key) => (
+                                    <option value={i.questionText} key={key}>{i.questionText}</option>
                                 )):<></>}
                             </Form.Select>
                             <Form.Select aria-label="Select Condition" className="mt-3 control-shadow me-auto ms-3" style={{width:"10rem"}} onChange={(e) => {}}>
@@ -90,32 +90,18 @@ export default function PopupForCondition({
                 <Modal.Footer className="justify-content-center">
                     <ButtonGroup size="sm" className="w-50">
                     <Button
-                        variant="info"
+                        variant="success"
                         className=" control-shadow"
                         onClick={() => { }}
                     >
-                        And
-                    </Button>
-                    <Button
-                        variant="success"
-                        className="control-shadow"
-                        onClick={() => { }}
-                    >
-                        Or
-                    </Button>
-                    <Button
-                        variant="warning"
-                        className="control-shadow"
-                        onClick={() => { }}
-                    >
-                        Not
+                        Add Condition
                     </Button>
                     <Button
                         variant="danger"
                         className=" control-shadow"
                         onClick={() => { }}
                     >
-                        Remove
+                        Remove All
                     </Button>
                 </ButtonGroup>
                 </Modal.Footer>
