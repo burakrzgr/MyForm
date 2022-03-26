@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import { defaultValues } from "../class/defaultValues";
 import { AnswerTemplate_Check } from "../class/FieldofForm";
@@ -32,7 +32,7 @@ export default function CheckValue({
 function TextChanged({ textChanged }: { textChanged: Function }) {
   const [text, setText] = useState<string>("");
   const optionAddedEvent = () => {
-    if (text.replace(/\s/g, "") != "") textChanged(text);
+    if (text.replace(/\s/g, "") !== "") textChanged(text);
   };
   return (
     <>
