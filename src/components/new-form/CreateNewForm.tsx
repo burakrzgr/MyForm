@@ -6,6 +6,7 @@ import mystyle from "../../mystyle";
 import { enumPersonelInfo, FieldoForm, FormTemplate, QuestionTemplate } from "./class/FormTemplate";
 import { getGuid } from "./class/Guid";
 import AskPersonalInfo from "./custom-component/AskPersonnelInfo";
+import { putForm } from "../../axios/new-form";
 
 
 export default function CreateNewForm() {
@@ -31,6 +32,9 @@ export default function CreateNewForm() {
         list.push(qu);
         setFormInfo({...formInfo, questions : list});
     }
+    const postNewForm = () => {
+        putForm(formInfo);
+    }
     return (
         <Container className="pt-5">
             <Row>
@@ -38,7 +42,7 @@ export default function CreateNewForm() {
                     <h1>New Form</h1>
                 </Col>
                 <Col className="text-end">
-                <Button variant="primary" type="submit" size="lg" disabled={!(formInfo.formName && formInfo.formName.length > 5)}>
+                <Button variant="primary" type="submit" size="lg" disabled={!(formInfo.formName && formInfo.formName.length > 5)} onClick={() => postNewForm()}>
                     Create New Form
                 </Button>
                 </Col>
