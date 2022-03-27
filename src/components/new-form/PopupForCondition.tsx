@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, ButtonGroup, Form, Modal, Stack } from "react-bootstrap";
-import { QuestionTemplate } from "./class/FieldofForm";
+import { QuestionTemplate } from "./class/FormTemplate";
 
 export default function PopupForCondition({
     show,

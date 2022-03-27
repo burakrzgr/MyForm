@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { QuestionTemplate } from "./class/FieldofForm";
+import { QuestionTemplate } from "./class/FormTemplate";
 import PopupForAdd from "./PopupForAdd";
 
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Form, FormControl, InputGroup, Stack } from "react-bootstrap";
-import { AnswerTemplate_Selection } from "../class/FieldofForm";
+import { AnswerTemplate_Selection } from "../class/FormTemplate";
 
 export function SelectionList({
         value,

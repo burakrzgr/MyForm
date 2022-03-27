@@ -1,5 +1,5 @@
 import { Form, Stack } from "react-bootstrap";
-import { QuestionTemplate } from "../class/FieldofForm";
+import { QuestionTemplate } from "../class/FormTemplate";
 
 export default function FieldHeader({
   item,

@@ -3,7 +3,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import AddFieldButton from "./AddFieldButton"
 import FieldDisplay from "./show-field/FieldDisplay";
 import mystyle from "../../mystyle";
-import { enumPersonelInfo, FieldoForm, FormTemplate, QuestionTemplate } from "./class/FieldofForm";
+import { enumPersonelInfo, FieldoForm, FormTemplate, QuestionTemplate } from "./class/FormTemplate";
 import { getGuid } from "./class/Guid";
 import AskPersonalInfo from "./custom-component/AskPersonnelInfo";
 

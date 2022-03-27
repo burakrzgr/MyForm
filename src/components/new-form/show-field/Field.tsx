@@ -1,6 +1,6 @@
 import { Form, FormControl, Stack } from "react-bootstrap";
 import Stars from "../custom-component/Stars";
-import { QuestionTemplate } from "../class/FieldofForm";
+import { QuestionTemplate } from "../class/FormTemplate";
 import FieldHeader from "./FieldHeader";
 import "../../../css/question-box.css"
 

@@ -1,4 +1,4 @@
-import { FieldoForm } from "./FieldofForm";
+import { FieldoForm } from "./FormTemplate";
 
 export type MyForm ={
     id : number;

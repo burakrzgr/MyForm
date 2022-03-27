@@ -1,5 +1,5 @@
 import { ButtonGroup, ToggleButton } from "react-bootstrap";
-import { enumPersonelInfo } from "../class/FieldofForm";
+import { enumPersonelInfo } from "../class/FormTemplate";
 
 export default function AskPersonalInfo({selected,selectedChanged }:{selected:enumPersonelInfo,selectedChanged:Function}) {
 

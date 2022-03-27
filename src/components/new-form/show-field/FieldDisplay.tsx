@@ -1,5 +1,5 @@
 import React from "react";
-import { FieldoForm, QuestionTemplate } from "../class/FieldofForm";
+import { FieldoForm, QuestionTemplate } from "../class/FormTemplate";
 import PopupForCondition from "../PopupForCondition";
 import { TextField, TextArea, FieldSelect, FieldCombo, FieldCheck, FieldDateTime, FieldRate, FieldAcceptPolicy } from "./Field";
 

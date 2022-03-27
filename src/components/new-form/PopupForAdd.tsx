@@ -9,7 +9,7 @@ import Rating from "./new-field/Rating";
 import CheckValue from "./new-field/CheckValue";
 import AcceptPolicy from "./new-field/AcceptPolicy";
 import DateTime from "./new-field/DateTime";
-import { Display, enumQuestionType, QuestionTemplate } from "./class/FieldofForm";
+import { Display, enumQuestionType, QuestionTemplate } from "./class/FormTemplate";
 import UploadFile from "./new-field/UploadFile";
 import InfoField from "./new-field/InfoField";
 import { defaultValues } from "./class/defaultValues";

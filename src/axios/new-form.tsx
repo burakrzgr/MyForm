@@ -1,4 +1,4 @@
-import { FieldoForm } from "../components/new-form/class/FieldofForm";
+import { FieldoForm } from "../components/new-form/class/FormTemplate";
 import { MyForm } from "../components/new-form/class/MyForm";
 import axios from "axios";
 

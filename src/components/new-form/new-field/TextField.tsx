@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Button, Form, FormControl, InputGroup, Stack } from "react-bootstrap";
-import { AnswerTemplate_Text, QuestionTemplate } from "../class/FieldofForm";
+import { AnswerTemplate_Text, QuestionTemplate } from "../class/FormTemplate";
 
 export function TextBox({
   value,

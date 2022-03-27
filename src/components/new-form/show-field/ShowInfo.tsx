@@ -1,5 +1,5 @@
 import { Alert, Form, Stack } from "react-bootstrap";
-import { FieldoForm } from "../class/FieldofForm";
+import { FieldoForm } from "../class/FormTemplate";
 import FieldHeader from "./FieldHeader";
 
 const questionClass = "border rounded p-3 pt-2 mt-4 ";
