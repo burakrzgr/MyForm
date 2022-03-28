@@ -1,31 +1,24 @@
 import { useEffect, useState } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
+import { defaultValues } from "../class/defaultValues";
+import { AnswerTemplate_Check } from "../class/FormTemplate";
 
 export default function AcceptPolicy({
   value,
   setValue,
-  checkText,
-  setCheckText
 }: {
-  value : string;
-  setValue : Function,
-  checkText : string,
-  setCheckText : Function
-}) {
-
-  useEffect(() => {
-    setCheckText("I acknowledge that I have read and understood the above policies and procedures in its entirety and agree to abide by them.");
-  },[setCheckText])
-  
+  value: AnswerTemplate_Check;
+  setValue: Function;
+}) {  
   return (
     <>
-      <TextChanged textChanged={(vl: any) => setCheckText(vl)}></TextChanged>
-      <Form.Group controlId="formtextBoxPolicy" className="mt-3">
+      <TextChanged textChanged={(vl: any) => setValue({...value, checkText : vl})}></TextChanged>
+      <Form.Group className="mt-3">
         <Form.Control
           type="text"
           placeholder="Write your policy to make it required field for submitting form."
-          value={value}
-          onChange={(vl: any) => setValue(vl.target.value)}
+          value={value.description}
+          onChange={(vl: any) => setValue({...value, description : vl.target.value})}
           rows={5}
           as="textarea"
           style={{ resize: "none" }}
@@ -39,7 +32,7 @@ export default function AcceptPolicy({
       <Form.Group className="mt-3">
         <Form.Check
           type="checkbox"
-          label={checkText}
+          label={value.checkText??defaultValues.emptyAcceptPolicyText}
           checked={false}
           onChange={(e: any) => {}}
         ></Form.Check>
@@ -57,7 +50,7 @@ function TextChanged({ textChanged }: { textChanged: Function }) {
     <>
       <InputGroup size="sm" className="control-shadow">
         <FormControl 
-          placeholder={"Add new option"}
+          placeholder="Add new option"
           aria-label="Add Option"
           aria-describedby="opt-addon"
           onChange={(e) => {
@@ -67,7 +60,6 @@ function TextChanged({ textChanged }: { textChanged: Function }) {
         />
         <Button
           variant={"warning"}
-          id="button-addon-ac-pol"
           onClick={optionAddedEvent}
         >
           Alter Accept Policy Text

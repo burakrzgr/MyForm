@@ -39,7 +39,8 @@ export default function FieldDisplay({
               "5": <FieldCheck item={i} removeEvent={(i: QuestionTemplate) => remove(i)} addConditionEvent={(i: QuestionTemplate) => addCondition(i)}/>,
               "6": <FieldDateTime item={i} removeEvent={(i: QuestionTemplate) => remove(i)} addConditionEvent={(i: QuestionTemplate) => addCondition(i)}/>,
               "7": <FieldRate item={i} removeEvent={(i: QuestionTemplate) => remove(i)} addConditionEvent={(i: QuestionTemplate) => addCondition(i)}/>,
-              "8": <FieldAcceptPolicy item={i} removeEvent={(i: QuestionTemplate) => remove(i)} addConditionEvent={(i: QuestionTemplate) => addCondition(i)}/>,
+              "8": <div>Upload a file!</div>,
+              "9": <FieldAcceptPolicy item={i} removeEvent={(i: QuestionTemplate) => remove(i)} addConditionEvent={(i: QuestionTemplate) => addCondition(i)}/>,
             //  "info": <ShowInfo item={i} removeEvent={(i: QuestionTemplate) => remove(i)} />,
             }[String(i.questionType)]
           }
