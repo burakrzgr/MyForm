@@ -50,9 +50,10 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
             myType = enumQuestionType.ComboBox;
         if(type === "ch_b")
             myType = enumQuestionType.CheckBox;
-            
-        if(type === "ch_b")
-            myType = enumQuestionType.CheckBox;
+        if(type === "date")
+            myType = enumQuestionType.DateTime;
+        if(type === "rate")
+            myType = enumQuestionType.Rate;
 
             
         let thisQuestion = {...question,questionType : myType};
@@ -123,8 +124,8 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
                             "sel_": <SelectionList value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />,
                             "cm_b": <SelectionCombo value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />,
                             "ch_b": <CheckValue value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />,
-                            "date": <DateTime check={displays.items} setCheck={(index: string, val: boolean) => setCheck(index, val)}></DateTime>,
-                            "rate": <Rating count={count} setCount={setCount} ></Rating>,
+                            "date": <DateTime value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})}></DateTime>,
+                            "rate": <Rating value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})}></Rating>,
                             "f_up": <UploadFile ></UploadFile>,
                             "ap_c": <AcceptPolicy value={value} setValue={setValue} checkText={checkText} setCheckText={setCheckText} ></AcceptPolicy>,
                             "info": <InfoField text={question.questionText} closable={true} setClosable={() => {}} infoType={variant} setInfoType={(val : string) => setVariant(val)}></InfoField>

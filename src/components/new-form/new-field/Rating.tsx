@@ -1,44 +1,50 @@
 import { useEffect } from "react";
 import { Button, Form, FormControl, InputGroup, Stack } from "react-bootstrap";
 import "../../../css/rating.css";
+import { AnswerTemplate_Rate } from "../class/FormTemplate";
 import Stars from "../custom-component/Stars";
 
-export default function Rating({ count, setCount }: { count: number, setCount: Function }) {
+export default function Rating({
+    value,
+    setValue,
+  }: {
+    value: AnswerTemplate_Rate;
+    setValue: Function;
+  }) {
     const setRowEvent = (val: number) => {
+        console.log(val);
+        console.log(value);
         if (val > 25) {
-            setCount(20);
+            setValue({...value,stars:20});
         }
         else if (val < 1) {
-            setCount(5);
+            setValue({...value,stars:5});
         }
         else {
-            setCount(val);
+            setValue({...value,stars:val});
         }
 
     }
-    useEffect(() => {
-        setCount(5)
-      },[]);
 
     return (
         <>
             <Stack direction="horizontal" gap={3}>
                 <div ><Form.Label>Area Height</Form.Label></div>
                 <div ><InputGroup style={{ width: '9rem',backgroundColor:"white"}} className="control-shadow">
-                    <Button variant="outline-danger" style={{ width: '2.5rem' }} onClick={() => setRowEvent(count - 1)}>-</Button>
+                    <Button variant="outline-danger" style={{ width: '2.5rem' }} onClick={() => setRowEvent(value.stars ? value.stars - 1 : 4)}>-</Button>
                     <FormControl
                         type="Number"
                         placeholder="Number of Column"
                         aria-label="Inputgroupnoc"
                         className="text-center"
-                        value={count}
+                        value={value.stars??5}
                         onChange={(vl: any) => setRowEvent(vl.target.value)}
                     />
-                    <Button variant="outline-success" style={{ width: '2.5rem' }} onClick={() => setRowEvent(count + 1)}>+</Button>
+                    <Button variant="outline-success" style={{ width: '2.5rem' }} onClick={() => setRowEvent(value.stars ? value.stars + 1 : 6)}>+</Button>
                 </InputGroup>
                 </div>
             </Stack>
-                <Stars count={count}></Stars>
+                <Stars count={value.stars??5}></Stars>
         </>
     );
 }
