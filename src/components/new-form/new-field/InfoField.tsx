@@ -1,14 +1,23 @@
 import { Alert } from "react-bootstrap";
+import { AnswerTemplate_Info } from "../class/FormTemplate";
 import VariantPicker from "../custom-component/VariantPicker";
 
 
-export default function InfoField({text,infoType,setInfoType,closable,setClosable}:{text:string,infoType:string, setInfoType:Function,closable:boolean,setClosable:Function}) {
+export default function InfoField({
+    text,
+    value,
+    setValue,
+  }: {
+    text:string;
+    value: AnswerTemplate_Info;
+    setValue: Function;
+  }) {
     
     return(
         <>
-            <VariantPicker infoType={infoType} setInfoType={setInfoType}></VariantPicker>
-            <Alert variant={infoType} dismissible={closable}>
-                {text ? text : infoType+"!"}
+            <VariantPicker infoType={value.variant} setInfoType={(val:string) => setValue({...value,variant : val})}></VariantPicker>
+            <Alert variant={value.variant} dismissible={value.dismissive}>
+                {text ? text : value.variant+"!"}
             </Alert>
         </>)
     

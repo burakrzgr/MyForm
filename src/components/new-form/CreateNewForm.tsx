@@ -68,7 +68,7 @@ export default function CreateNewForm() {
                 </Form.Group>
                 <FieldDisplay setItems={(list : QuestionTemplate[]) => setFormInfo({...formInfo,questions:list })}  areas={areas} setAreas={setAreas} items={formInfo.questions}  ></FieldDisplay>
             </Form>
-            <div className="pt-5">
+            <div className="pt-5 pb-5">
                 <AddFieldButton addedHandle={newComponentAdded} questionAddedEvent={(qu : QuestionTemplate) => newQuestionAdded(qu)}></AddFieldButton>
             </div>
         </Container>

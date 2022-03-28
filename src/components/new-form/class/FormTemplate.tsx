@@ -64,6 +64,10 @@ export type AnswerTemplate_Upload ={
     multi : boolean,
     fileTypes? : string[]
 }
+export type AnswerTemplate_Info ={
+    variant : string,
+    dismissive : boolean
+}
 
 export enum enumQuestionType
 {

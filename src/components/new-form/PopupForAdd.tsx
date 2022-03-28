@@ -39,9 +39,10 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
     const [displays, setDisplays] = useState<{ items:Display }>({ items: {checked:false,multi:false, date:true, time:true} });
 
     const addCriteria = () => {
-        
         let myType : enumQuestionType =  enumQuestionType.Info;
-
+        
+        if(type === "tx_b")
+            myType = enumQuestionType.TextBox;
         if(type === "tx_a")
             myType = enumQuestionType.TextArea;
         if(type === "sel_")
@@ -56,6 +57,8 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
             myType = enumQuestionType.Rate;
         if(type === "ap_c")
             myType = enumQuestionType.Acceptpolicy;
+        if(type === "info")
+            myType = enumQuestionType.Info;
 
             
         let thisQuestion = {...question,questionType : myType};
@@ -133,7 +136,7 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
                             "rate": <Rating value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />,
                             "f_up": <UploadFile ></UploadFile>,
                             "ap_c": <AcceptPolicy value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />,
-                            "info": <InfoField text={question.questionText} closable={true} setClosable={() => {}} infoType={variant} setInfoType={(val : string) => setVariant(val)}></InfoField>
+                            "info": <InfoField text={question.questionText} value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />
                         }[type]
                     }
                 </Modal.Body>

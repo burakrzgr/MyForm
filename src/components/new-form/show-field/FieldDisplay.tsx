@@ -2,6 +2,7 @@ import React from "react";
 import { FieldoForm, QuestionTemplate } from "../class/FormTemplate";
 import PopupForCondition from "../PopupForCondition";
 import { TextField, TextArea, FieldSelect, FieldCombo, FieldCheck, FieldDateTime, FieldRate, FieldAcceptPolicy } from "./Field";
+import ShowInfo from "./ShowInfo";
 
 export default function FieldDisplay({
   areas,
@@ -41,7 +42,7 @@ export default function FieldDisplay({
               "7": <FieldRate item={i} removeEvent={(i: QuestionTemplate) => remove(i)} addConditionEvent={(i: QuestionTemplate) => addCondition(i)}/>,
               "8": <div>Upload a file!</div>,
               "9": <FieldAcceptPolicy item={i} removeEvent={(i: QuestionTemplate) => remove(i)} addConditionEvent={(i: QuestionTemplate) => addCondition(i)}/>,
-            //  "info": <ShowInfo item={i} removeEvent={(i: QuestionTemplate) => remove(i)} />,
+              "10": <ShowInfo item={i} removeEvent={(i: QuestionTemplate) => remove(i)} addConditionEvent={(i: QuestionTemplate) => addCondition(i)}/>,
             }[String(i.questionType)]
           }
         </React.Fragment>

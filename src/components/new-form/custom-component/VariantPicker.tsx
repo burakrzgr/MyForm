@@ -1,6 +1,6 @@
 import { ButtonGroup, Form, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 
-const variants = ["danger", "warning", "success", "info","primary","secondary","dark"];
+const variants = ["danger", "warning", "success", "info","primary","secondary","system","dark"];
 export default function VariantPicker({
   infoType,
   setInfoType,
