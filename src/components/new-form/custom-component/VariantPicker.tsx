@@ -1,4 +1,4 @@
-import { ButtonGroup, Form, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
+import { ButtonGroup, ToggleButton} from "react-bootstrap";
 
 const variants = ["danger", "warning", "success", "info","primary","secondary","system","dark"];
 export default function VariantPicker({
@@ -23,7 +23,7 @@ export default function VariantPicker({
               type="radio"
               variant={"outline-" + x}
               value={x}
-              checked={x == infoType}
+              checked={x === infoType}
               onChange={radioHandler}
             >
               {x}

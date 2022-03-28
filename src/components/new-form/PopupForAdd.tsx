@@ -9,7 +9,7 @@ import Rating from "./new-field/Rating";
 import CheckValue from "./new-field/CheckValue";
 import AcceptPolicy from "./new-field/AcceptPolicy";
 import DateTime from "./new-field/DateTime";
-import { Display, enumQuestionType, QuestionTemplate } from "./class/FormTemplate";
+import { enumQuestionType, QuestionTemplate } from "./class/FormTemplate";
 import UploadFile from "./new-field/UploadFile";
 import InfoField from "./new-field/InfoField";
 import { defaultValues } from "./class/defaultValues";
@@ -30,14 +30,8 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
             id : 0
           });
     }, [show]);
-
-
     const [type, setType] = useState<string>("");
-    const [value, setValue] = useState<string>("");
-    const [variant, setVariant] = useState<string>("danger");
-    const [checkText, setCheckText] = useState<string>("");
-    const [displays, setDisplays] = useState<{ items:Display }>({ items: {checked:false,multi:false, date:true, time:true} });
-
+    
     const addCriteria = () => {
         let myType : enumQuestionType =  enumQuestionType.Info;
         
@@ -77,15 +71,6 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
             id : 0
           });
         questionAddedEvent(thisQuestion);
-    }
-
-    const setCheck = (index: string, val: boolean) => {
-        let list = displays.items;
-        list.checked = index === "checked" ? val : list.checked;
-        list.multi = index === "multi" ? val : list.multi;
-        list.date = index === "date" ? val : list.date;
-        list.time = index === "time" ? val : list.time;
-        setDisplays({ ...displays, items: list })
     }
 
     return (

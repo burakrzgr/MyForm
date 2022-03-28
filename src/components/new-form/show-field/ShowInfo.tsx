@@ -1,6 +1,5 @@
 import { Alert, Form, Stack } from "react-bootstrap";
-import { FieldoForm, QuestionTemplate } from "../class/FormTemplate";
-import FieldHeader from "./FieldHeader";
+import { QuestionTemplate } from "../class/FormTemplate";
 
 const questionClass = "border rounded p-3 pt-2 mt-4 ";
 export default function ShowInfo({ item,removeEvent,addConditionEvent }: { item: QuestionTemplate, removeEvent: Function, addConditionEvent: Function }) {

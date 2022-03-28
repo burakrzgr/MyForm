@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Button, Form, FormControl, InputGroup, Stack } from "react-bootstrap";
 import "../../../css/rating.css";
 import { AnswerTemplate_Rate } from "../class/FormTemplate";

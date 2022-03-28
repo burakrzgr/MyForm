@@ -1,6 +1,6 @@
 import { Form, FormControl, Stack } from "react-bootstrap";
 import {TringleExclamationSolid} from "../../../FontAwesome/fontAwesome"
-import { AnswerTemplate_Date, Display } from "../class/FormTemplate";
+import { AnswerTemplate_Date } from "../class/FormTemplate";
 
 export default function DateTime({
     value,
