@@ -32,7 +32,7 @@ function ConfigureRouter() {
                         <Route path="maps" element={<h3>Henüz Tamamlanmadı.</h3>} />
                         <Route path=":regionId" element={<CreateNewForm />} />
                     </Route>
-                </Route>
+                </Route> 
             </Routes>
         </BrowserRouter>
     );
