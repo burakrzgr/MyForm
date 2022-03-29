@@ -3,7 +3,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import AddFieldButton from "./AddFieldButton"
 import FieldDisplay from "./show-field/FieldDisplay";
 import mystyle from "../../mystyle";
-import { enumPersonelInfo, FieldoForm, FormTemplate, QuestionTemplate } from "./class/FormTemplate";
+import { enumPersonelInfo, FormTemplate, QuestionTemplate } from "./class/FormTemplate";
 import { getGuid } from "./class/Guid";
 import AskPersonalInfo from "./custom-component/AskPersonnelInfo";
 import { putForm } from "../../axios/new-form";
@@ -19,14 +19,7 @@ export default function CreateNewForm() {
       id : 0,
       creatorId : getGuid("development-dev")
     } as FormTemplate);
-    
-    const [areas,setAreas] = React.useState<{items:Array<FieldoForm>}>({items:[]})
-   
-    const newComponentAdded = (val : FieldoForm) => {
-        let list = areas;
-        list.items.push(val);
-        setAreas({...list});
-    }  
+       
     const newQuestionAdded = (qu : QuestionTemplate) => {
         let list = formInfo.questions;
         list.push(qu);
@@ -66,10 +59,10 @@ export default function CreateNewForm() {
                         Please notice that changing this area might/will force participant to share their personal information. Such as name and surname.
                     </Form.Text>
                 </Form.Group>
-                <FieldDisplay setItems={(list : QuestionTemplate[]) => setFormInfo({...formInfo,questions:list })}  areas={areas} setAreas={setAreas} items={formInfo.questions}  ></FieldDisplay>
+                <FieldDisplay setItems={(list : QuestionTemplate[]) => setFormInfo({...formInfo,questions:list })} items={formInfo.questions}  ></FieldDisplay>
             </Form>
             <div className="pt-5 pb-5">
-                <AddFieldButton addedHandle={newComponentAdded} questionAddedEvent={(qu : QuestionTemplate) => newQuestionAdded(qu)}></AddFieldButton>
+                <AddFieldButton questionAddedEvent={(qu : QuestionTemplate) => newQuestionAdded(qu)}></AddFieldButton>
             </div>
         </Container>
     );

@@ -1,17 +1,13 @@
 import React from "react";
-import { FieldoForm, QuestionTemplate } from "../class/FormTemplate";
+import { QuestionTemplate } from "../class/FormTemplate";
 import PopupForCondition from "../PopupForCondition";
 import { TextField, TextArea, FieldSelect, FieldCombo, FieldCheck, FieldDateTime, FieldRate, FieldAcceptPolicy } from "./Field";
 import ShowInfo from "./ShowInfo";
 
 export default function FieldDisplay({
-  areas,
-  setAreas,
   items,
   setItems,
 }: {
-  areas: { items: Array<FieldoForm> };
-  setAreas: Function;
   items : Array<QuestionTemplate>;
   setItems : Function;
 }) {

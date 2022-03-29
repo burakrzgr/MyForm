@@ -4,11 +4,11 @@ import { useParams } from "react-router-dom";
 import FieldDisplay from "../new-form/show-field/FieldDisplay";
 import mystyle from "../../mystyle";
 import DisplayPersonnelInfo from "../new-form/custom-component/DisplayPersonnelInfo";
-import { enumPersonelInfo, FieldoForm, FormTemplate, QuestionTemplate } from "../new-form/class/FormTemplate";
+import { enumPersonelInfo, FormTemplate, QuestionTemplate } from "../new-form/class/FormTemplate";
 import { GetForm } from "../../axios/new-form";
 
 
-export default function FillForm({ }) {
+export default function FillForm() {
     const [form, setForm] = useState<FormTemplate>();
     const { id } = useParams<string>();
     useEffect(() => {
@@ -38,7 +38,7 @@ export default function FillForm({ }) {
                                 Please notice that changing this area might/will force participant to share their personal information. Such as name and surname.
                             </Form.Text>
                         </Form.Group>
-                        <FieldDisplay areas={{items:[] as Array<FieldoForm>}} setAreas={() => { }} items={form.questions as QuestionTemplate[]} setItems={() => {}} ></FieldDisplay>
+                        <FieldDisplay items={form.questions as QuestionTemplate[]} setItems={() => {}} ></FieldDisplay>
                     </Form>
                     <div className="pt-5">
                         <Button variant="primary" size="lg">Submit Form</Button>

@@ -4,7 +4,7 @@ import { QuestionTemplate } from "./class/FormTemplate";
 import PopupForAdd from "./PopupForAdd";
 
 
-export default function AddFieldButton({addedHandle,questionAddedEvent} : {addedHandle:Function,questionAddedEvent:Function}) {
+export default function AddFieldButton({questionAddedEvent} : {questionAddedEvent:Function}) {
     const [showPopup,setShowPopup] = React.useState<boolean>(false);
     const showPopupHandler = () =>{
         setShowPopup(true);

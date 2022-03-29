@@ -1,28 +1,27 @@
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { GetAllForm } from "../../axios/new-form";
 import { TableAction } from "../misc/class/TableAction";
 import MyTable from "../misc/MyTable";
-import { MyForm } from "../new-form/class/MyForm";
+import { FormTemplate } from "../new-form/class/FormTemplate";
 import TableHeader from "./TableHeader";
 
 export default function FillFormList() {
   let navigate = useNavigate();
-  const [forms, setForms] = useState<{ list: MyForm[] }>({ list: [] });
+  const [forms, setForms] = useState<{ data: FormTemplate[], loading: number }>({ data: [] as FormTemplate[], loading: 0 });
   useEffect(() => {
     GetAllForm()
-      .then((val) => setForms({ list: val.data }))
-      .catch((e) => console.log("GetFormError", e));
+      .then((val) => setForms({ data: val.data, loading: 1 }))
+      .catch((e) => { console.log("GetFormError", e); setForms({ data: [] as FormTemplate[], loading: 2 }) });
   }, []);
   const go = (id: number) => {
-    navigate("/FillForm/"+id);
-    //console.log("my", id);
+    navigate("/FillForm/" + id);
   }
-  const getActions = (id: number) : (Array<TableAction>) => {
+  const getActions = (id: number): (Array<TableAction>) => {
     return [{ text: "Fill This Form", onClick: () => go(id), variant: "primary" }, { text: "No no no!", onClick: () => go(id), variant: "outline-danger" }];
   }
-  var list = forms.list.map(x => { return { ...x, actions: getActions(x.id) } });
+  var list = forms.data.map(x => { return { ...x, actions: getActions(x.id) } });
   return (
     <Container>
       <div className="text-start pt-5 pb-4">
@@ -30,9 +29,11 @@ export default function FillFormList() {
         <hr />
         <h5 className="text-muted">Please select most suitable form to meet for your needs</h5>
       </div>
-      {forms && forms.list && forms.list.length > 0 ?
+      {forms.loading === 0 ? <h4 className="p-5 text-info align-middle">Loading Data...</h4> : <></>}
+      {forms.loading === 1 ? (forms.data.length > 0 ?
         <MyTable columns={TableHeader} data={list}></MyTable>
-        : <></>}
+        : <h4 className="p-5 text-warning align-middle">Unfortunately there is any form that you can fill!</h4>) : <></>}
+      {forms.loading === 2 ? <h4 className="p-5 text-danger align-middle">There is error in the system. Couldn't get data!</h4> : <></>}
     </Container>
   );
 }
