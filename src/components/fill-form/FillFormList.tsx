@@ -4,9 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { GetAllForm } from "../../axios/new-form";
 import { TableAction } from "../misc/class/TableAction";
 import MyTable from "../misc/MyTable";
-import { FormTemplate } from "../new-form/class/FormTemplate";
+import { enumPersonelInfo, FormTemplate } from "../new-form/class/FormTemplate";
 import TableHeader from "./TableHeader";
 
+
+const getPersonelInfo = (info : string) => {
+  return { 
+    "0": <div className="text-success bg-dark btn m-0 pt-1 pb-1 ">Anonymous</div>,
+    "1": <div className="text-warning bg-dark btn m-0 pt-1 pb-1 ">Only if accepts</div>,
+    "2": <div className="text-danger bg-dark btn m-0 pt-1 pb-1 ">Required Field</div>
+  } [info];
+}
 export default function FillFormList() {
   let navigate = useNavigate();
   const [forms, setForms] = useState<{ data: FormTemplate[], loading: number }>({ data: [] as FormTemplate[], loading: 0 });
@@ -22,9 +30,9 @@ export default function FillFormList() {
     navigate("/FillForm/" + id);
   }
   const getActions = (id: number): (Array<TableAction>) => {
-    return [{ text: "Fill This Form", onClick: () => go(id), variant: "primary" }, { text: "Share", onClick: () => share(id), variant: "outline-info" }];
+    return [{ text: "Fill This Form", onClick: () => go(id), variant: "primary" }, { text: "Share", onClick: () => share(id), variant: "info" }];
   }
-  var list = forms.data.map(x => { return { ...x, actions: getActions(x.id) } });
+  var list = forms.data.map(x => { return { ...x, personalInfo : getPersonelInfo(String(x.personalInfo)) , actions: getActions(x.id) } });
   return (
     <Container>
       <div className="text-start pt-5 pb-4">
