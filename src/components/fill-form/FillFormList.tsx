@@ -17,9 +17,12 @@ export default function FillFormList() {
   }, []);
   const go = (id: number) => {
     navigate("/FillForm/" + id);
+  } 
+  const share = (id: number) => {
+    navigate("/FillForm/" + id);
   }
   const getActions = (id: number): (Array<TableAction>) => {
-    return [{ text: "Fill This Form", onClick: () => go(id), variant: "primary" }, { text: "No no no!", onClick: () => go(id), variant: "outline-danger" }];
+    return [{ text: "Fill This Form", onClick: () => go(id), variant: "primary" }, { text: "Share", onClick: () => share(id), variant: "outline-info" }];
   }
   var list = forms.data.map(x => { return { ...x, actions: getActions(x.id) } });
   return (
