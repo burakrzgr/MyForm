@@ -138,8 +138,8 @@ export default function FileFormatPicker({ selectedFormat, selectedFormatAdded,r
                     variant="outline-info"
                     name="chk"
                     value="any-type"
-                    checked={selectedFormat.includes("Any Format")}
-                    onChange={() => selectedFormatAdded(["Any Format"])}
+                    checked={selectedFormat.includes("Any")}
+                    onChange={() => selectedFormatAdded(["Any"])}
                 >
                     Any Format
                 </ToggleButton>

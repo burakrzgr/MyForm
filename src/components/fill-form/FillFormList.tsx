@@ -10,9 +10,9 @@ import TableHeader from "./TableHeader";
 
 const getPersonelInfo = (info : string) => {
   return { 
-    "0": <div className="text-success bg-dark btn m-0 pt-1 pb-1 ">Anonymous</div>,
-    "1": <div className="text-warning bg-dark btn m-0 pt-1 pb-1 ">Only if accepts</div>,
-    "2": <div className="text-danger bg-dark btn m-0 pt-1 pb-1 ">Required Field</div>
+    "0": <div className="text-success bg-dark btn m-0 pt-1 pb-1 soft-shadow">Anonymous</div>,
+    "1": <div className="text-warning bg-dark btn m-0 pt-1 pb-1 soft-shadow">Only if accepts</div>,
+    "2": <div className="text-danger bg-dark btn m-0 pt-1 pb-1 soft-shadow">Required Field</div>
   } [info];
 }
 export default function FillFormList() {
@@ -30,7 +30,9 @@ export default function FillFormList() {
     navigate("/FillForm/" + id);
   }
   const getActions = (id: number): (Array<TableAction>) => {
-    return [{ text: "Fill This Form", onClick: () => go(id), variant: "primary" }, { text: "Share", onClick: () => share(id), variant: "info" }];
+    return [
+      { text: "Fill This Form", onClick: () => go(id), variant: "primary" }, 
+      { text: "Share", onClick: () => share(id), variant: "info" }];
   }
   var list = forms.data.map(x => { return { ...x, personalInfo : getPersonelInfo(String(x.personalInfo)) , actions: getActions(x.id) } });
   return (

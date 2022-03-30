@@ -22,3 +22,6 @@ code {
 .expand-child > * {
   width: 100% !important;
 }
+.soft-shadow{
+  box-shadow: 0 0 4px #fff3;
+}
