@@ -140,7 +140,7 @@ export function FieldUpload({ item, removeEvent, addConditionEvent }: { item: Qu
         <>
             <Form.Group className={questionClass} >
                 <FieldHeader item={item} removeEvent={removeEvent} addConditionEvent={addConditionEvent}></FieldHeader>
-                <div className="w-100 expand-child">
+                <div className="w-100 expand-child bg-light text-dark p-1 rounded">
                     <MyFileUploader
                         fileTypes={item.answerArea.fileTypes}
                         multi={item.answerArea.multi}
