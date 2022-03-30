@@ -22,39 +22,32 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
       id : 0
     });
 
-    useEffect(() => {
+    const close =() =>{
         setQuestion({
             answerArea: {},
             questionText: "",
             questionType: enumQuestionType.Info,
             id : 0
           });
-    }, [show]);
-    const [type, setType] = useState<string>("");
+          closeHandle();
+    }
+    const [type, setType] = useState<string>("tx_b");
     
     const addCriteria = () => {
-        let myType : enumQuestionType =  enumQuestionType.Info;
-        
-        if(type === "tx_b")
-            myType = enumQuestionType.TextBox;
-        if(type === "tx_a")
-            myType = enumQuestionType.TextArea;
-        if(type === "sel_")
-            myType = enumQuestionType.RadioButton;
-        if(type === "cm_b")
-            myType = enumQuestionType.ComboBox;
-        if(type === "ch_b")
-            myType = enumQuestionType.CheckBox;
-        if(type === "date")
-            myType = enumQuestionType.DateTime;
-        if(type === "rate")
-            myType = enumQuestionType.Rate;
-        if(type === "ap_c")
-            myType = enumQuestionType.Acceptpolicy;
-        if(type === "info")
-            myType = enumQuestionType.Info;
+        let myType : enumQuestionType; // =  enumQuestionType.Info;
+        myType = {
+            "tx_b" : enumQuestionType.TextBox,
+            "tx_a" : enumQuestionType.TextArea,
+            "sel_" : enumQuestionType.RadioButton,
+            "cm_b" : enumQuestionType.ComboBox,
+            "ch_b" : enumQuestionType.CheckBox,
+            "date" : enumQuestionType.DateTime,
+            "rate" : enumQuestionType.Rate,
+            "ap_c" : enumQuestionType.Acceptpolicy,
+            "f_up" : enumQuestionType.Upload,
+            "info" : enumQuestionType.Info
+        }[type]??enumQuestionType.Info;
 
-            
         let thisQuestion = {...question,questionType : myType};
 
         if(type === "ch_b" && !thisQuestion.answerArea.checkText)
@@ -78,7 +71,7 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
             show={show}
             size="xl"
             aria-labelledby="contained-modal-title-vcenter"
-            onHide={() => closeHandle()}
+            onHide={() => close()}
             backdrop="static"
             centered
         >
@@ -111,6 +104,7 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
                     </Form.Group>
                     <hr /> 
                     {
+                        show ? 
                         {
                             "tx_b": <TextBox value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />,
                             "tx_a": <TextArea value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />,
@@ -119,14 +113,14 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
                             "ch_b": <CheckValue value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />,
                             "date": <DateTime value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />,
                             "rate": <Rating value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />,
-                            "f_up": <UploadFile ></UploadFile>,
+                            "f_up": <UploadFile value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} ></UploadFile>,
                             "ap_c": <AcceptPolicy value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />,
                             "info": <InfoField text={question.questionText} value={question.answerArea} setValue={(val : string) =>  setQuestion({...question,answerArea : val})} />
-                        }[type]
+                        }[type] :<></>
                     }
                 </Modal.Body>
                 <Modal.Footer className="justify-content-between">
-                    <Button variant="outline-dark" className="my-bg-white ps-4 pe-4 control-shadow" onClick={() => closeHandle()}>Cancel</Button>
+                    <Button variant="outline-dark" className="my-bg-white ps-4 pe-4 control-shadow" onClick={() => close()}>Cancel</Button>
                     <Button variant="primary" className=" ps-4 pe-4 control-shadow" onClick={() => addCriteria()} disabled={!(question.questionText &&question.questionText.length > 5)}>Add Question</Button>
                 </Modal.Footer>
             </div>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Form, FormControl, Stack } from "react-bootstrap";
 import {TringleExclamationSolid} from "../../../FontAwesome/fontAwesome"
 import { AnswerTemplate_Date } from "../class/FormTemplate";
@@ -8,24 +9,22 @@ export default function DateTime({
   }: {
     value: AnswerTemplate_Date;
     setValue: Function;
-  }) {
+  }) { 
     return (
       <>
         <Form.Group className="mt-3">
           <Form.Check
             type="checkbox"
             label="Show Date"
-            checked={value.checkDate}
-            onChange={(e: any) =>
-              setValue({ ...value, checkDate: e.target.checked })
+            checked={value.checkDate??false}
+            onChange={(e: any) => setValue({ ...value, checkDate: e.target.checked })
             }
           ></Form.Check>
           <Form.Check
             type="checkbox"
             label="Show Time"
-            checked={value.checkTime}
-            onChange={(e: any) =>
-              setValue({ ...value, checkTime: e.target.checked })
+            checked={value.checkTime??false}
+            onChange={(e: any) => setValue({ ...value, checkTime: e.target.checked })
             }
           ></Form.Check>
         </Form.Group>
@@ -35,9 +34,10 @@ export default function DateTime({
               <Form.Label>Date</Form.Label>
               <FormControl
                 type="date"
-                id="myDate"
                 style={{ width: "10rem" }}
                 className="control-shadow"
+              //  value={date}
+               // onChange={(e:any) => setDate(e.target.value)}
               ></FormControl>
             </div>
           ) : (
@@ -48,9 +48,10 @@ export default function DateTime({
               <Form.Label>Time</Form.Label>
               <FormControl
                 type="time"
-                id="myTime"
                 style={{ width: "10rem" }}
                 className="control-shadow"
+            //    value={time}
+            //    onChange={(e : any) => setTime(e.target.value)}
               ></FormControl>
             </div>
           ) : (

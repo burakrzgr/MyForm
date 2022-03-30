@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { GetAllForm } from "../../axios/new-form";
 import { TableAction } from "../misc/class/TableAction";
 import MyTable from "../misc/MyTable";
-import { enumPersonelInfo, FormTemplate } from "../new-form/class/FormTemplate";
+import { FormTemplate } from "../new-form/class/FormTemplate";
 import TableHeader from "./TableHeader";
 
 

@@ -1,20 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Form, Stack } from "react-bootstrap";
 import { FileUploader } from "react-drag-drop-files";
 import UploadFilePng from "../../../resources/UploadFile.png";
+import { defaultValues } from "../class/defaultValues";
+import { AnswerTemplate_Upload } from "../class/FormTemplate";
 import FileFormatPicker from "../custom-component/FileFormatPicker";
 
 
-export default function UploadFile() {
+export default function UploadFile({
+    value,
+    setValue,
+  }: {
+    value: AnswerTemplate_Upload;
+    setValue: Function;
+  }) {
     const [tempUrl, setTempUrl] = useState<string>("");
     const [uploaded, setUploaded] = useState<boolean>(false);
     const [files, setFiles] = useState<string[]>([]);
-    const [multi, setMulti] = useState<boolean>(false);
-    const [selectedFormat, setSelectedFormat] = useState<{ list: string[] }>({ list: ["JPG","JPEG","BMP","PNG","PDF","RAR"] });
+    //const [multi, setMulti] = useState<boolean>(false);
+    //const [selectedFormat, setSelectedFormat] = useState<{ list: string[] }>({ list: ["JPG","JPEG","BMP","PNG","PDF","RAR"] });
 
     const handleChange = (f: any) => {
         setUploaded(true);
-        if (multi) {
+        if (value.multi) {
             let list: string[] = [];
             for (let i = 0; f.length > i; i++) {
                 list.push(f[i].name);
@@ -28,38 +36,38 @@ export default function UploadFile() {
     };
     const removeFiles = () => {
         setUploaded(false);
-        //setFile({changed:false,img:null});
-        setTempUrl("");
-    };
-    const removeFile = (file: string) => {
-        setUploaded(false);
-        //setFile({changed:false,img:null});
         setTempUrl("");
     };
 
     const addFormatToList = (strList: string[]) => {
-        let newList = selectedFormat.list;
+        let newList = value.fileTypes??([...defaultValues.emptyUploadFileTypes]);
         strList.forEach(str => {
             if (newList.includes(str))
                 newList = newList.filter(x => x !== str);
             else
                 newList.push(str);
         });
-        setSelectedFormat({ list: newList });
+        setValue({...value,fileTypes:newList});
     }
+    useEffect(() => {
+      if(value.fileTypes == null){
+           console.log("a",value.fileTypes);
+          setValue({...value,fileTypes: [...defaultValues.emptyUploadFileTypes]})
+      }
+    })
 
     return (
         <>
-            <Form.Group className="mb-3" controlId="chkIsMultiOk">
+            <Form.Group className="mb-3">
                 <Form.Label>Allowed types of the file</Form.Label>
-                <FileFormatPicker selectedFormat={selectedFormat.list} selectedFormatAdded={(val: string[]) => addFormatToList(val)} removeFormat={() => { setSelectedFormat({ list: [] }); }}></FileFormatPicker>
+                <FileFormatPicker selectedFormat={value.fileTypes??["Error"]} selectedFormatAdded={(val: string[]) => addFormatToList(val)} removeFormat={() => setValue({...value,fileTypes:[]}) }></FileFormatPicker>
             </Form.Group>
             <Form.Group className="mb-3" controlId="chkIsMultiOk">
                 <Form.Check
                     type="checkbox"
                     label="Allow Multi Upload"
-                    checked={multi}
-                    onChange={(e: any) => setMulti(e.target.checked)}
+                    checked={value.multi}
+                    onChange={(e: any) => setValue({...value,multi: e.target.checked})}
                 ></Form.Check>
             </Form.Group>
             <div className="w-100 expand-child">
@@ -67,10 +75,10 @@ export default function UploadFile() {
                     handleChange={handleChange}
                     name="file"
                     hoverTitle="Drop Here"
-                    types={selectedFormat.list.includes("Any Format") ? undefined : selectedFormat.list}
-                    multiple={multi}
+                    types={value.fileTypes?.includes("Any") ? undefined : value.fileTypes}
+                    multiple={value.multi}
                 >
-                    <ChildComponent tempUrl={tempUrl} removeFile={removeFile} uploaded={uploaded} multi={multi} files={files} formats={selectedFormat.list.includes("Any Format") ? ["All file formats accepted."] : selectedFormat.list} />
+                    <ChildComponent tempUrl={tempUrl} uploaded={uploaded} multi={value.multi} files={files} formats={value.fileTypes?(value.fileTypes.includes("Any") ? ["All file formats accepted."] : value.fileTypes):["Error"]} />
                 </FileUploader>
             </div>
             {tempUrl ? (
@@ -84,7 +92,7 @@ export default function UploadFile() {
 }
 
 
-const ChildComponent = ({ tempUrl, removeFile, uploaded, multi, files, formats }: { tempUrl: string, removeFile: Function, uploaded: boolean, multi: boolean, files: string[], formats: string[] }) => (
+const ChildComponent = ({ tempUrl,  uploaded, multi, files, formats }: { tempUrl: string, uploaded: boolean, multi: boolean, files: string[], formats: string[] }) => (
     <>
         {uploaded ? (
             <>
