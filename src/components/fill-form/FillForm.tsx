@@ -37,8 +37,8 @@ export default function FillForm() {
                         </Form.Group>
                         <FillFieldDisplay items={form.questions as QuestionTemplate[]} setItems={() => {}} ></FillFieldDisplay>
                     </Form>
-                    <div className="pt-5">
-                        <Button variant="primary" size="lg">Submit Form</Button>
+                    <div className="pt-3 pb-5">
+                        <Button variant="primary" size="lg" className="w-25" >Submit Form</Button>
                     </div>
                 </Container>
                 : <div>Yükleniyor!!</div>}
