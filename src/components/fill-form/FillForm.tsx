@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import FieldDisplay from "../new-form/show-field/FieldDisplay";
 import mystyle from "../../mystyle";
 import DisplayPersonnelInfo from "../new-form/custom-component/DisplayPersonnelInfo";
 import { enumPersonelInfo, FormTemplate, QuestionTemplate } from "../new-form/class/FormTemplate";
 import { GetForm } from "../../axios/new-form";
+import FillFieldDisplay from "./display-form/FillFieldDisplay";
 
 
 export default function FillForm() {
@@ -34,11 +34,8 @@ export default function FillForm() {
                             <div style={mystyle.formControl}>
                                 <DisplayPersonnelInfo selected={form ? form.personalInfo : enumPersonelInfo.dontAsk} selectedChanged={() => { }}></DisplayPersonnelInfo>
                             </div>
-                            <Form.Text className="text-muted">
-                                Please notice that changing this area might/will force participant to share their personal information. Such as name and surname.
-                            </Form.Text>
                         </Form.Group>
-                        <FieldDisplay items={form.questions as QuestionTemplate[]} setItems={() => {}} ></FieldDisplay>
+                        <FillFieldDisplay items={form.questions as QuestionTemplate[]} setItems={() => {}} ></FillFieldDisplay>
                     </Form>
                     <div className="pt-5">
                         <Button variant="primary" size="lg">Submit Form</Button>
