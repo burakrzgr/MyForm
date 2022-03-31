@@ -13,6 +13,7 @@ export type FormTemplate = {
 
 export type QuestionTemplate = {
     id : number,
+    clientId? : number,
     formTemplate? : FormTemplate,
     questionType : enumQuestionType,
     questionText : string,

@@ -9,6 +9,7 @@ import AskPersonalInfo from "./custom-component/AskPersonnelInfo";
 import { putForm } from "../../axios/new-form";
 
 
+var lastClientId : number = 0;
 export default function CreateNewForm() {
     const [formInfo, setFormInfo] = React.useState<FormTemplate>({
       personalInfo: enumPersonelInfo.dontAsk,
@@ -22,8 +23,9 @@ export default function CreateNewForm() {
        
     const newQuestionAdded = (qu : QuestionTemplate) => {
         let list = formInfo.questions;
-        list.push(qu);
+        list.push({...qu,clientId : lastClientId++});
         setFormInfo({...formInfo, questions : list});
+        console.log(formInfo);
     }
     const postNewForm = () => {
         putForm(formInfo);

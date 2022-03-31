@@ -54,8 +54,6 @@ export default function PopupForAdd({ show, closeHandle, questionAddedEvent }: {
             thisQuestion = {...thisQuestion, answerArea : {...thisQuestion.answerArea, checkText: defaultValues.emptyChecktext }};
         if(type === "ap_c" && !thisQuestion.answerArea.checkText)
             thisQuestion = {...thisQuestion, answerArea : {...thisQuestion.answerArea, checkText: defaultValues.emptyAcceptPolicyText }};
-                
-        console.log(thisQuestion);
 
         setQuestion({
             answerArea: {},
