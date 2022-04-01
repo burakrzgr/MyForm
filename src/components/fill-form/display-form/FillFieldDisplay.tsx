@@ -2,14 +2,13 @@ import React from "react";
 import PopupForCondition from "../../new-form/PopupForCondition";
 import { QuestionTemplate } from "../../new-form/class/FormTemplate";
 import { FillFieldAcceptPolicy, FillFieldCheck, FillFieldCombo, FillFieldDateTime, FillFieldInfo, FillFieldRate, FillFieldSelect, FillFieldUpload, FillTextArea, FillTextField } from "./FillFields";
-import ShowInfo from "../../new-form/show-field/ShowInfo";
-import { Alert } from "react-bootstrap";
+import { FilledQuestion } from "../class/FilledForm";
 
 export default function FillFieldDisplay({
   items,
   setItems,
 }: {
-  items : Array<QuestionTemplate>;
+  items : Array<FilledQuestion>;
   setItems : Function;
 }) {
 
