@@ -28,7 +28,7 @@ export default function FillForm() {
     const { id } = useParams<string>();
     useEffect(() => {
         GetForm(Number(id))
-            .then((val) => setForm(val.data))
+            .then((val) => setForm(EmptyFilledForm(val.data)))
             .catch((e) => console.log("GetFormError", e));
     }, [id])
 
@@ -50,7 +50,7 @@ export default function FillForm() {
                                 <DisplayPersonnelInfo selected={form ? form.template.personalInfo : enumPersonelInfo.dontAsk} selectedChanged={() => { }}></DisplayPersonnelInfo>
                             </div>
                         </Form.Group>
-                        <FillFieldDisplay items={form.questions as FilledForm[]} setItems={() => {}} ></FillFieldDisplay>
+                        <FillFieldDisplay items={form.questions as FilledQuestion[]} setItems={() => {}} ></FillFieldDisplay>
                     </Form>
                     <div className="pt-3 pb-5">
                         <Button variant="primary" size="lg" className="w-25" >Submit Form</Button>
