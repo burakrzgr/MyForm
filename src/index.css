@@ -25,3 +25,6 @@ code {
 .soft-shadow{
   box-shadow: 0 0 4px #fff3;
 }
+.confirm-me{
+  filter: grayscale(80%) blur(4px);
+}

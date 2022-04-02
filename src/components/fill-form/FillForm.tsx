@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import mystyle from "../../mystyle";
 import DisplayPersonnelInfo from "../new-form/custom-component/DisplayPersonnelInfo";
@@ -8,6 +8,7 @@ import { GetForm } from "../../axios/new-form";
 import FillFieldDisplay from "./display-form/FillFieldDisplay";
 import { FilledForm, FilledQuestion } from "./class/FilledForm";
 import { getGuid } from "../new-form/class/Guid";
+import SubmitButton from "./SubmitButton";
 
 const EmptyFilledForm = ( val : FormTemplate) => {
     return (
@@ -25,6 +26,7 @@ const EmptyFilledForm = ( val : FormTemplate) => {
 
 export default function FillForm() {
     const [form, setForm] = useState<FilledForm>();
+    const [blur, setBlur] = useState<boolean>(false);
     const { id } = useParams<string>();
     useEffect(() => {
         GetForm(Number(id))
@@ -33,7 +35,7 @@ export default function FillForm() {
     }, [id])
 
     return (
-        <>
+        <div className={blur?"confirm-me":""}>
             {form ?
                 <Container className="pt-5">
                     <Form className="text-start">
@@ -51,10 +53,8 @@ export default function FillForm() {
                         </Form.Group>
                         <FillFieldDisplay items={form.questions as FilledQuestion[]} setItems={setForm} ></FillFieldDisplay>
                     </Form>
-                    <div className="pt-3 pb-5">
-                        <Button variant="primary" size="lg" className="w-25" >Submit Form</Button>
-                    </div>
+                    <SubmitButton confirmedEvent={() => console.log("submit!",form)} blurEvent={(val :boolean) => setBlur(val)}></SubmitButton>
                 </Container>
                 : <div>Yükleniyor!!</div>}
-        </>);
+        </div>);
 }
