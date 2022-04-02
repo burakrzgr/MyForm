@@ -34,7 +34,6 @@ export default function FillForm() {
 
     return (
         <>
-        {console.log("dd",form)}
             {form ?
                 <Container className="pt-5">
                     <Form className="text-start">
@@ -50,7 +49,7 @@ export default function FillForm() {
                                 <DisplayPersonnelInfo selected={form ? form.template.personalInfo : enumPersonelInfo.dontAsk} selectedChanged={() => { }}></DisplayPersonnelInfo>
                             </div>
                         </Form.Group>
-                        <FillFieldDisplay items={form.questions as FilledQuestion[]} setItems={() => {}} ></FillFieldDisplay>
+                        <FillFieldDisplay items={form.questions as FilledQuestion[]} setItems={setForm} ></FillFieldDisplay>
                     </Form>
                     <div className="pt-3 pb-5">
                         <Button variant="primary" size="lg" className="w-25" >Submit Form</Button>

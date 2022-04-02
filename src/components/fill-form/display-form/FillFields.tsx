@@ -13,7 +13,9 @@ export function FillTextField({ item, valueChangedEvent }: { item: FilledQuestio
         <>
             <Form.Group className={questionClass} >
                 <FillFieldHeader item={item.template} />
-                <Form.Control type="text" placeholder="Form Text" defaultValue={item.template.answerArea.defaultText} />
+                <Form.Control type="text" placeholder="Form Text" 
+                    value={item.answeredValue.text??item.template.answerArea.defaultText??""} 
+                    onChange={(tx) => valueChangedEvent({...item,answeredValue :{text :tx.target.value }})} />
             </Form.Group>
         </>);
 }
@@ -25,10 +27,12 @@ export function FillTextArea({ item, valueChangedEvent }: { item: FilledQuestion
                 <FillFieldHeader item={item.template} />
                 <Form.Control type="text"
                     placeholder="Form Text"
-                    defaultValue={item.template.answerArea.defaultText}
                     rows={item.template.answerArea.textHeight}
                     as="textarea"
-                    style={{ resize: "none" }} />
+                    style={{ resize: "none" }} 
+                    value={item.answeredValue.text??item.template.answerArea.defaultText??""} 
+                    onChange={(tx) => valueChangedEvent({...item,answeredValue :{text :tx.target.value }})}
+                    />
             </Form.Group>
         </>);
 }
@@ -38,14 +42,25 @@ export function FillFieldSelect({ item, valueChangedEvent }: { item: FilledQuest
         <>
             <Form.Group className={questionClass} >
                 <FillFieldHeader item={item.template} />
+                {console.log("zzz",item)}
                 {item.template.answerArea.options ? item.template.answerArea.options.map((i: any, key: any) => (
-                    <Form.Check
-                        key={key}
-                        type={item.template.answerArea.multi ? (item.template.answerArea.multi ? "checkbox" : "radio") : "radio"}
-                        label={i}
-                        checked={false}
-                        onChange={(e: any) => { }}
-                    ></Form.Check>
+                    item.template.answerArea.multi ?
+                        <Form.Check
+                            key={key}
+                            type= "checkbox"
+                            label={i}
+                            value={i}
+                            checked={item.answeredValue.selected ?item.answeredValue.selected.includes(i):false}
+                            onChange={(e: any) => valueChangedEvent({...item,answeredValue :{ selected : e.target.value}})}
+                        ></Form.Check> :
+                        <Form.Check
+                            key={key}
+                            type= "radio"
+                            label={i}
+                            value={i}
+                            checked={item.answeredValue.selected ?item.answeredValue.selected.includes(i):false}
+                            onChange={(e: any) => valueChangedEvent({...item,answeredValue :{ selected : e.target.value}})}
+                        ></Form.Check> 
                 )) : <></>}
             </Form.Group>
         </>);
