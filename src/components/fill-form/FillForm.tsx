@@ -13,7 +13,7 @@ const EmptyFilledForm = ( val : FormTemplate) => {
     return (
         { 
             participantId : getGuid("me-me-me"), 
-            template : val, 
+            template : {...val,questions : []}, 
             questions : val.questions.map(x => {
                 return({ 
                         condition : [],
