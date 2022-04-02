@@ -20,3 +20,25 @@ export type DisplayCondition = {
     question : FilledQuestion,
     condition : Function
 }
+
+
+export type FilledFormValue_Text ={
+    text : string
+}
+export type FilledFormValue_Selection ={
+    selected : string[]
+}
+export type FilledFormValue_Check ={
+    checked : boolean
+}
+export type FilledFormValue_Date ={
+    date : string,
+    time : string
+}
+export type FilledFormValue_Rate ={
+    stars : number
+}
+export type FilledFormValue_Upload ={
+    filePath : string[]
+}
+
