@@ -14,7 +14,6 @@ export default function FillFieldDisplay({
 }) {
 
 const setProperItem = (n : FilledQuestion) => {
-  console.log("ddd",n);
   setItems((pr:FilledForm)  => {return {...pr,questions:items.map(i => i.template === n.template?n:i)}});
 }
   return (

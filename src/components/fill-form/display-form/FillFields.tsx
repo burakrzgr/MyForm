@@ -38,11 +38,18 @@ export function FillTextArea({ item, valueChangedEvent }: { item: FilledQuestion
 }
 
 export function FillFieldSelect({ item, valueChangedEvent }: { item: FilledQuestion, valueChangedEvent: Function  }) {
+    const switchItem = (list:string[],item:string) => {
+        if(!list.includes(item)){
+            list.push(item);
+        }else{
+            list = list.filter(x => x !== item);//deleting
+        }
+        return list;
+    }
     return (
         <>
             <Form.Group className={questionClass} >
                 <FillFieldHeader item={item.template} />
-                {console.log("zzz",item)}
                 {item.template.answerArea.options ? item.template.answerArea.options.map((i: any, key: any) => (
                     item.template.answerArea.multi ?
                         <Form.Check
@@ -51,7 +58,7 @@ export function FillFieldSelect({ item, valueChangedEvent }: { item: FilledQuest
                             label={i}
                             value={i}
                             checked={item.answeredValue.selected ?item.answeredValue.selected.includes(i):false}
-                            onChange={(e: any) => valueChangedEvent({...item,answeredValue :{ selected : e.target.value}})}
+                            onChange={(e: any) => valueChangedEvent({...item,answeredValue :{ selected : switchItem(item.answeredValue.selected??[], e.target.value)}})}
                         ></Form.Check> :
                         <Form.Check
                             key={key}
