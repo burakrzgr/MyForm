@@ -77,7 +77,9 @@ export function FillFieldCombo({ item, valueChangedEvent }: { item: FilledQuesti
         <>
             <Form.Group className={questionClass} >
                 <FillFieldHeader item={item.template} />
-                <Form.Select aria-label="Select option" className="control-shadow">
+                <Form.Select aria-label="Select option" className="control-shadow" 
+                    value={item.answeredValue.picked??""} 
+                    onChange={(e:any) => valueChangedEvent({...item,answeredValue :{ picked : e.target.value}})} >
                     <option>[Please select one of the options...]</option>
                     {item.template.answerArea.options ? item.template.answerArea.options.map((i: any) => (
                         <option value={i} key={i}>{i}</option>
@@ -95,8 +97,8 @@ export function FillFieldCheck({ item, valueChangedEvent }: { item: FilledQuesti
                     <Form.Check
                         type="checkbox"
                         label={item.template.answerArea.checkText}
-                        checked={item.template.answerArea.defaultChecked}
-                        onChange={(e: any) => { }}
+                        checked={item.answeredValue.checked??item.template.answerArea.defaultChecked}
+                        onChange={(e: any) =>  valueChangedEvent({...item,answeredValue :{ checked : e.target.checked}})}
                     ></Form.Check>
                 </Form.Group>
             </Form.Group>

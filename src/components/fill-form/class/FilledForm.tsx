@@ -28,6 +28,9 @@ export type FilledFormValue_Text ={
 export type FilledFormValue_Selection ={
     selected : string[]
 }
+export type FilledFormValue_Combobox={
+    picked : string
+}
 export type FilledFormValue_Check ={
     checked : boolean
 }
