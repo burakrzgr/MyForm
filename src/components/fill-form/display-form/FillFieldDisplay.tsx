@@ -27,10 +27,10 @@ const setProperItem = (n : FilledQuestion) => {
               "3": <FillFieldSelect item={i} valueChangedEvent={(i: FilledQuestion) => setProperItem(i)} />,
               "4": <FillFieldCombo item={i} valueChangedEvent={(i: FilledQuestion) => setProperItem(i)}  />,
               "5": <FillFieldCheck item={i} valueChangedEvent={(i: FilledQuestion) => setProperItem(i)} />,
-              "6": <FillFieldDateTime item={i} valueChangedEvent={(i: QuestionTemplate) => {}} />,
+              "6": <FillFieldDateTime item={i} valueChangedEvent={(i: FilledQuestion) => setProperItem(i)}  />,
               "7": <FillFieldRate item={i} valueChangedEvent={(i: QuestionTemplate) => {}} />,
               "8": <FillFieldUpload item={i} valueChangedEvent={(i: QuestionTemplate) => {}} />,
-              "9": <FillFieldAcceptPolicy item={i} valueChangedEvent={(i: QuestionTemplate) => {}} />,
+              "9": <FillFieldAcceptPolicy item={i} valueChangedEvent={(i: FilledQuestion) => setProperItem(i)} />,
               "10": <FillFieldInfo item={i.template} /> ,
             }[String(i.template.questionType)]
           }

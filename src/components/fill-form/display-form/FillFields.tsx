@@ -115,12 +115,18 @@ export function FillFieldDateTime({ item, valueChangedEvent }: { item: FilledQue
                             {item.template.answerArea.checkDate ?
                                 <div className="p-2">
                                     <Form.Label>Date</Form.Label>
-                                    <FormControl type="date" style={{ width: "10rem" }} className="control-shadow"></FormControl>
+                                    <FormControl type="date" style={{ width: "10rem" }} className="control-shadow" 
+                                        value={item.answeredValue.date??""} 
+                                        onChange={(e: any) => valueChangedEvent({...item,answeredValue :{ date : e.target.value, time : item.answeredValue.time}})} 
+                                    ></FormControl>
                                 </div> : <></>}
                             {item.template.answerArea.checkTime ?
                                 <div className="p-2">
                                     <Form.Label>Time</Form.Label>
-                                    <FormControl type="time" style={{ width: "10rem" }} className="control-shadow"></FormControl>
+                                    <FormControl type="time" style={{ width: "10rem" }} className="control-shadow"
+                                        value={item.answeredValue.time??""} 
+                                        onChange={(e: any) =>  valueChangedEvent({...item,answeredValue :{ time : e.target.value, date : item.answeredValue.date}})} 
+                                    ></FormControl>
                                 </div> : <></>}
                         </> : <span className="alert alert-danger p-2 ps-4 pe-4 mt-4">Date Time Error!</span>}
                 </Stack>
@@ -144,7 +150,7 @@ export function FillFieldAcceptPolicy({ item, valueChangedEvent }: { item: Fille
             <Form.Group className={questionClass} >
                 <FillFieldHeader item={item.template} />
                 <Form.Control type="text"
-                    placeholder="Detail of the Policy is Here!"
+                    placeholder="Detail of the Policy is in Here!"
                     defaultValue={item.template.answerArea.description}
                     rows={12}
                     as="textarea"
@@ -153,8 +159,8 @@ export function FillFieldAcceptPolicy({ item, valueChangedEvent }: { item: Fille
                 <Form.Check
                     type="checkbox"
                     label={item.template.answerArea.checkText}
-                    checked={false}
-                    onChange={(e: any) => { }}
+                    checked={item.answeredValue.checked??item.template.answerArea.defaultChecked}
+                    onChange={(e: any) =>  valueChangedEvent({...item,answeredValue :{ checked : e.target.checked}})}
                 ></Form.Check>
             </Form.Group>
         </>);
