@@ -6,7 +6,7 @@ import mystyle from "../../mystyle";
 import { enumPersonelInfo, FormTemplate, QuestionTemplate } from "./class/FormTemplate";
 import { getGuid } from "./class/Guid";
 import AskPersonalInfo from "./custom-component/AskPersonnelInfo";
-import { putForm } from "../../axios/new-form";
+import { PutForm } from "../../axios/new-form";
 
 
 var lastClientId : number = 0;
@@ -28,7 +28,7 @@ export default function CreateNewForm() {
         console.log(formInfo);
     }
     const postNewForm = () => {
-        putForm(formInfo);
+        PutForm(formInfo);
     }
     return (
         <Container className="pt-5">

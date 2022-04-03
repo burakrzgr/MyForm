@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import mystyle from "../../mystyle";
 import DisplayPersonnelInfo from "../new-form/custom-component/DisplayPersonnelInfo";
 import { enumPersonelInfo, FormTemplate, QuestionTemplate } from "../new-form/class/FormTemplate";
-import { GetForm } from "../../axios/new-form";
+import { GetForm, PutFilledForm } from "../../axios/new-form";
 import FillFieldDisplay from "./display-form/FillFieldDisplay";
 import { FilledForm, FilledQuestion } from "./class/FilledForm";
 import { getGuid } from "../new-form/class/Guid";
@@ -32,7 +32,10 @@ export default function FillForm() {
         GetForm(Number(id))
             .then((val) => setForm(EmptyFilledForm(val.data)))
             .catch((e) => console.log("GetFormError", e));
-    }, [id])
+    }, [id]);
+    const postFilledForm = () =>{
+        if(form) PutFilledForm(form);
+    }
 
     return (
         <div className={blur?"confirm-me":""}>
@@ -53,7 +56,7 @@ export default function FillForm() {
                         </Form.Group>
                         <FillFieldDisplay items={form.questions as FilledQuestion[]} setItems={setForm} ></FillFieldDisplay>
                     </Form>
-                    <SubmitButton confirmedEvent={() => console.log("submit!",form)} blurEvent={(val :boolean) => setBlur(val)}></SubmitButton>
+                    <SubmitButton confirmedEvent={() => postFilledForm()} blurEvent={(val :boolean) => setBlur(val)}></SubmitButton>
                 </Container>
                 : <div>Yükleniyor!!</div>}
         </div>);
