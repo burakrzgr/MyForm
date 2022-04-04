@@ -6,6 +6,7 @@ export type SubmitedForm = {
     id? : number,
     participantId : GUID,
     templateId : number,
+    PersonelInfoShared : boolean,
     questions : SubmittedQuestion[]
 }
 export type SubmittedQuestion = {

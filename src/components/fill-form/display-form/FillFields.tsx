@@ -14,7 +14,7 @@ export function FillTextField({ item, valueChangedEvent }: { item: FilledQuestio
             <Form.Group className={questionClass} >
                 <FillFieldHeader item={item.template} />
                 <Form.Control type="text" placeholder="Form Text" 
-                    value={item.answeredValue.text??item.template.answerArea.defaultText??""} 
+                    value={item.answeredValue.text??""} 
                     onChange={(tx) => valueChangedEvent({...item,answeredValue :{text :tx.target.value }})} />
             </Form.Group>
         </>);
@@ -30,7 +30,7 @@ export function FillTextArea({ item, valueChangedEvent }: { item: FilledQuestion
                     rows={item.template.answerArea.textHeight}
                     as="textarea"
                     style={{ resize: "none" }} 
-                    value={item.answeredValue.text??item.template.answerArea.defaultText??""} 
+                    value={item.answeredValue.text??""} 
                     onChange={(tx) => valueChangedEvent({...item,answeredValue :{text :tx.target.value }})}
                     />
             </Form.Group>
@@ -97,7 +97,7 @@ export function FillFieldCheck({ item, valueChangedEvent }: { item: FilledQuesti
                     <Form.Check
                         type="checkbox"
                         label={item.template.answerArea.checkText}
-                        checked={item.answeredValue.checked??item.template.answerArea.defaultChecked}
+                        checked={item.answeredValue.checked}
                         onChange={(e: any) =>  valueChangedEvent({...item,answeredValue :{ checked : e.target.checked}})}
                     ></Form.Check>
                 </Form.Group>
@@ -159,7 +159,7 @@ export function FillFieldAcceptPolicy({ item, valueChangedEvent }: { item: Fille
                 <Form.Check
                     type="checkbox"
                     label={item.template.answerArea.checkText}
-                    checked={item.answeredValue.checked??item.template.answerArea.defaultChecked}
+                    checked={false}
                     onChange={(e: any) =>  valueChangedEvent({...item,answeredValue :{ checked : e.target.checked}})}
                 ></Form.Check>
             </Form.Group>

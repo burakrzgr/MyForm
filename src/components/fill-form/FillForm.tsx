@@ -4,12 +4,29 @@ import { useParams } from "react-router-dom";
 import mystyle from "../../mystyle";
 import DisplayPersonnelInfo from "../new-form/custom-component/DisplayPersonnelInfo";
 import { enumPersonelInfo, FormTemplate, QuestionTemplate } from "../new-form/class/FormTemplate";
-import { GetForm, PutFilledForm } from "../../axios/new-form";
+import { GetForm, SubmitForm } from "../../axios/new-form";
 import FillFieldDisplay from "./display-form/FillFieldDisplay";
 import { FilledForm, FilledQuestion } from "./class/FilledForm";
 import { getGuid } from "../new-form/class/Guid";
 import SubmitButton from "./SubmitButton";
+import { SubmitedForm, SubmittedQuestion } from "./class/SubmitedForm";
 
+
+const GetFromTemplate = (template : QuestionTemplate) => {
+    const result = {
+        "1":{text : template.answerArea.defaultText},
+        "2":{text : template.answerArea.defaultText},
+        "3":{},
+        "4":{},
+        "5":{check : template.answerArea.defaultChecked},
+        "6":{},
+        "7":{},
+        "8":{},
+        "9":{},
+        "10":{}
+    }[template.questionType];
+    return result;
+}
 const EmptyFilledForm = ( val : FormTemplate) => {
     return (
         { 
@@ -19,7 +36,7 @@ const EmptyFilledForm = ( val : FormTemplate) => {
                 return({ 
                         condition : [],
                         template : x,
-                        answeredValue : {} 
+                        answeredValue : GetFromTemplate(x) 
                     } as FilledQuestion)})
         } as FilledForm);
 }
@@ -34,7 +51,12 @@ export default function FillForm() {
             .catch((e) => console.log("GetFormError", e));
     }, [id]);
     const postFilledForm = () =>{
-        if(form) PutFilledForm(form);
+        if(form) 
+        {
+            const submited = { id : form.id, templateId : form.template.id, PersonelInfoShared : true, participantId : form.participantId } as SubmitedForm;            //form.questions.map(x => { return({} as SubmittedQuestion)}) 
+            submited.questions = form.questions.map(x => { return({id : x.id, templateId : x.template.id,answeredValue : x.answeredValue } as SubmittedQuestion)});
+            SubmitForm(submited);
+        }
     }
 
     return (

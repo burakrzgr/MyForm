@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FilledForm } from "../components/fill-form/class/FilledForm";
+import { SubmitedForm } from "../components/fill-form/class/SubmitedForm";
 import { FormTemplate } from "../components/new-form/class/FormTemplate";
 
 
@@ -11,4 +11,4 @@ export const DeleteForm =  (id : number) => {};
 export const PutForm =  (form : FormTemplate) => {return axios.put("https://localhost:7213/Form",form);};
 export const PatchForm =  (form : any) => {};
 
-export const PutFilledForm = (form : FilledForm) => {return axios.put("https://localhost:7213/FillForm",form);};
+export const SubmitForm = (form : SubmitedForm) => {return axios.put("https://localhost:7213/Submit",form);};
