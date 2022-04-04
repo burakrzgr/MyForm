@@ -19,7 +19,6 @@ export default function ConfirmMe({
   return (
     <Modal
         show={show}
-        size="sm"
         aria-labelledby="contained-modal-title-vcenter"
         onHide={() => rejectedEvent()}
         centered
@@ -28,7 +27,7 @@ export default function ConfirmMe({
         <Modal.Header >
             <Modal.Title>{header}</Modal.Title>
         </Modal.Header>
-        <Modal.Body style={{ height: '5rem' }}>
+        <Modal.Body style={{ height: '8rem' }}>
             <Container fluid>
                 <div>{message}</div>
             </Container>
