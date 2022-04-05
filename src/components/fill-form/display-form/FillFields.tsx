@@ -66,7 +66,7 @@ export function FillFieldSelect({ item, valueChangedEvent }: { item: FilledQuest
                             label={i}
                             value={i}
                             checked={item.answeredValue.selected ?item.answeredValue.selected.includes(i):false}
-                            onChange={(e: any) => valueChangedEvent({...item,answeredValue :{ selected : e.target.value}})}
+                            onChange={(e: any) => valueChangedEvent({...item,answeredValue :{ selected : [e.target.value]}})}
                         ></Form.Check> 
                 )) : <></>}
             </Form.Group>
