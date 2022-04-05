@@ -27,7 +27,7 @@ export default function ConfirmMe({
         <Modal.Header >
             <Modal.Title>{header}</Modal.Title>
         </Modal.Header>
-        <Modal.Body style={{ height: '8rem' }}>
+        <Modal.Body style={{ height: '4rem' }}>
             <Container fluid>
                 <div>{message}</div>
             </Container>

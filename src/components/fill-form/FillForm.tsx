@@ -54,7 +54,7 @@ export default function FillForm() {
         if(form) 
         {
             const submited = { id : form.id, templateId : form.template.id, PersonelInfoShared : true, participantId : form.participantId } as SubmitedForm;            //form.questions.map(x => { return({} as SubmittedQuestion)}) 
-            submited.questions = form.questions.map(x => { return({id : x.id, templateId : x.template.id,answeredValue : x.answeredValue } as SubmittedQuestion)});
+            submited.questions = form.questions.map(x => { return({id : x.id, templateId : x.template.id,answeredValue : x.answeredValue, questionType : x.template.questionType } as SubmittedQuestion)});
             SubmitForm(submited);
         }
     }

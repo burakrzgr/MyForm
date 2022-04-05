@@ -12,5 +12,6 @@ export type SubmitedForm = {
 export type SubmittedQuestion = {
     id? : number,
     templateId : number,
+    questionType : number,
     answeredValue : any
 }
