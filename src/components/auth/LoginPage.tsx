@@ -2,13 +2,15 @@ import { Button, Container, Form } from "react-bootstrap";
 import { SetToken } from "../../database/Token";
 import "../../css/login.css";
 import { useState } from "react";
+import { Login } from "../../axios/login-operation";
 
 export default function LoginPage() {
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
+    const [error,setError] = useState("");
     const login = () => {
-        
-        SetToken(username);
+        const result = Login({UserName :username,Password:password, UserId:0,Token:""})
+        result.then(x => {x.data.IsSuccess?SetToken(x.data.Data.token):setError(x.data.Data.Message)})
     }
     return (
         <Container >
@@ -20,6 +22,7 @@ export default function LoginPage() {
                     </div>
                     <div className="col-lg-12 login-form">
                         <div className="col-lg-12 login-form">
+                            {error?<div className="text-danger">{error}</div>:<></>}
                             <Form>
                                 <Form.Group>
                                     <Form.Label className="form-control-label">Username</Form.Label>
