@@ -27,11 +27,7 @@ function ConfigureRouter() {
                         <Route path="Archived" element={<h3>Archived Tamamlanmadı.</h3>} />
                         <Route path=":regionId" element={<CreateNewForm />} />
                     </Route>
-                    <Route path="login" >
-                        <Route index element={<LoginPage login={true}></LoginPage>} ></Route>
-                        <Route path="maps" element={<h3>Henüz Tamamlanmadı.</h3>} />
-                        <Route path=":regionId" element={<CreateNewForm />} />
-                    </Route>
+                    <Route path="login"  element={<LoginPage login={true}></LoginPage>} />
                 </Route> 
             </Routes>
         </BrowserRouter>
