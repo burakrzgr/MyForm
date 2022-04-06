@@ -27,7 +27,7 @@ function ConfigureRouter() {
                         <Route path="Archived" element={<h3>Archived Tamamlanmadı.</h3>} />
                         <Route path=":regionId" element={<CreateNewForm />} />
                     </Route>
-                    <Route path="login"  element={<LoginPage login={true}></LoginPage>} />
+                    <Route path="login"  element={<LoginPage ></LoginPage>} />
                 </Route> 
             </Routes>
         </BrowserRouter>
