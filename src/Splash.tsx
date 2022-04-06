@@ -9,16 +9,26 @@ export default function Splash() {
         <>
             <img src={logo} className="App-logo" alt="logo" />
         <p>
-            Edit </p>
-        <code>src/App.tsx</code>
-        <p> and save to reload.</p>
+            This project developed with </p>
+        <code>React TypeScript & Bootstrapt</code>
+        <p> by Burak Rüzgar.</p>
+            <p>
+                <a
+                    className="App-link"
+                    href="https://reactjs.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Learn React
+                </a>
+            </p>
             <a
                 className="App-link"
-                href="https://reactjs.org"
+                href="https://github.com/burakrzgr"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                Learn React
+                About Me
             </a>
 
             <hr></hr>
