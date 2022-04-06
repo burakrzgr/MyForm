@@ -8,9 +8,17 @@ export default function LoginPage() {
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
     const [error,setError] = useState("");
+    const [fadingIn,setFadingIn] = useState(false);
+    const displayError = (message:string) => {
+        setError(message);
+        setFadingIn(true);
+        setTimeout(() => {
+            setFadingIn(false);
+        }, 5000);
+    }
     const login = () => {
         const result = Login({UserName :username,Password:password, UserId:0,Token:""})
-        result.then(x => {x.data.IsSuccess?SetToken(x.data.Data.token):setError(x.data.Data.Message)})
+        result.then(x => {x.data.isSuccess?SetToken(x.data.data.token):displayError(x.data.message)}).catch(ex => console.log(ex));
     }
     return (
         <Container >
@@ -22,7 +30,7 @@ export default function LoginPage() {
                     </div>
                     <div className="col-lg-12 login-form">
                         <div className="col-lg-12 login-form">
-                            {error?<div className="text-danger">{error}</div>:<></>}
+                            {<div className={"text-danger pb-1 " + (fadingIn?'fadeIn':'fadeOut')} >{error}</div>}
                             <Form>
                                 <Form.Group>
                                     <Form.Label className="form-control-label">Username</Form.Label>
@@ -36,7 +44,7 @@ export default function LoginPage() {
                                     <div className="col-lg-6 login-btm login-text">
                                     </div>
                                     <div className="col-lg-6 login-btm login-button w-100">
-                                        <Button type="submit" variant="outline-primary" className="ps-4 pe-4 login" onClick={login} disabled={!(password.length>2&&username.length>2)}>LOGIN</Button>
+                                        <Button variant="outline-primary" className="ps-4 pe-4 login" onClick={login} disabled={!(password.length>2&&username.length>2)}>LOGIN</Button>
                                     </div>
                                 </div>
                             </Form>

@@ -129,3 +129,14 @@ label {
 .loginbttm {
     padding: 0px;
 }
+
+.fadeOut{
+    opacity:0;
+    height: 0;
+    transition: width 0s 5s, height 3s 1s, opacity 3s;
+}
+.fadeIn{
+    opacity:1;
+    height: 2rem;
+    transition: width 1s, height 1s, opacity 1s 0s;
+}
