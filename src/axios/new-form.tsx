@@ -12,3 +12,4 @@ export const PutForm =  (form : FormTemplate) => {return axios.put("https://loca
 export const PatchForm =  (form : any) => {};
 
 export const SubmitForm = (form : SubmitedForm) => {return axios.put("https://localhost:7213/Submit",form);};
+

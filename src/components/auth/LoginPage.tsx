@@ -7,6 +7,7 @@ export default function LoginPage() {
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
     const login = () => {
+        
         SetToken(username);
     }
     return (
@@ -32,7 +33,7 @@ export default function LoginPage() {
                                     <div className="col-lg-6 login-btm login-text">
                                     </div>
                                     <div className="col-lg-6 login-btm login-button w-100">
-                                        <Button type="submit" variant="outline-primary" className="ps-4 pe-4" onClick={login} disabled={!(password.length>2&&username.length>2)}>LOGIN</Button>
+                                        <Button type="submit" variant="outline-primary" className="ps-4 pe-4 login" onClick={login} disabled={!(password.length>2&&username.length>2)}>LOGIN</Button>
                                     </div>
                                 </div>
                             </Form>
