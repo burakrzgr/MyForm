@@ -1,2 +1,4 @@
-export const GetToken = () => { return(localStorage.getItem('token'))};
-export const SetToken = (str : string) => { localStorage.setItem("token", str);};
+import { UserModal } from "../components/auth/UserModal";
+
+export const GetToken = () => { return(JSON.parse(localStorage.getItem('user')??"{}") as UserModal)};
+export const SetToken = (obj : UserModal) => { localStorage.setItem("user", JSON.stringify(obj));};

@@ -1,6 +1,6 @@
 export type UserModal ={
-    UserId : number,
-    UserName : string,
-    Password : string,
-    Token : string
+    userId : number,
+    userName : string,
+    password : string,
+    token : string
 };

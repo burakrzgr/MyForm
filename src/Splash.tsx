@@ -32,7 +32,7 @@ export default function Splash() {
             </a>
 
             <hr></hr>
-            <div className="p-2">Welcome Back {GetToken()}</div>
+            <div className="p-2">Welcome Back {GetToken()?.userName??""}</div>
             <div className="p-2">
             <Button variant="outline-primary">Primary outline</Button>
             </div>

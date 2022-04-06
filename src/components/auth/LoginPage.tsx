@@ -3,6 +3,8 @@ import { SetToken } from "../../database/Token";
 import "../../css/login.css";
 import { useState } from "react";
 import { Login } from "../../axios/login-operation";
+import { UserModal } from "./UserModal";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
     const [username,setUsername] = useState("");
@@ -16,9 +18,14 @@ export default function LoginPage() {
             setFadingIn(false);
         }, 5000);
     }
+    let navigate = useNavigate();
+    const setTokenData = (data : UserModal)=>{
+        SetToken(data);
+        navigate("/");
+    }
     const login = () => {
-        const result = Login({UserName :username,Password:password, UserId:0,Token:""})
-        result.then(x => {x.data.isSuccess?SetToken(x.data.data.token):displayError(x.data.message)}).catch(ex => console.log(ex));
+        const result = Login({userName: username,password :password, userId:0,token:""})
+        result.then(x => {x.data.isSuccess?setTokenData(x.data.data):displayError(x.data.message)}).catch(ex => console.log(ex));
     }
     return (
         <Container >
