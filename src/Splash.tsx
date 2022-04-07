@@ -1,7 +1,6 @@
 import logo from "./logo.svg";
 import React from "react";
 import { GetToken } from "./database/Token";
-
 import { Button } from "react-bootstrap";
 
 export default function Splash() {
@@ -30,20 +29,20 @@ export default function Splash() {
             >
                 About Me
             </a>
-
+            <i className="fa-brands fa-github"></i>
             <hr></hr>
             <div className="p-2">Welcome Back {GetToken()?.userName??""}</div>
             <div className="p-2">
             <Button variant="outline-primary">Primary outline</Button>
             </div>
             <div className="p-2">
-            <Button variant="primary">Primary Not</Button>
+            <Button variant="primary">Primary Main</Button>
             </div>
             <div className="p-2">
             <Button variant="outline-system">System outline</Button>
             </div>
             <div className="p-2">
-            <Button variant="system">System Not</Button>
+            <Button variant="system">System Main</Button>
             </div>
         </>
     );
