@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import React from "react";
 import { GetToken } from "./database/Token";
 import { Button } from "react-bootstrap";
+import { ReactIcon } from "./FontAwesome";
 
 export default function Splash() {
     return(
@@ -12,6 +13,7 @@ export default function Splash() {
         <code>React TypeScript & Bootstrapt</code>
         <p> by Burak Rüzgar.</p>
             <p>
+                <ReactIcon mystyle={{paddingRight:"1rem"}}></ReactIcon>
                 <a
                     className="App-link"
                     href="https://reactjs.org"
@@ -29,7 +31,6 @@ export default function Splash() {
             >
                 About Me
             </a>
-            <i className="fa-brands fa-github"></i>
             <hr></hr>
             <div className="p-2">Welcome Back {GetToken()?.userName??""}</div>
             <div className="p-2">

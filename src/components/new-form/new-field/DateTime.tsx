@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Form, FormControl, Stack } from "react-bootstrap";
-import {TringleExclamationSolid} from "../../../FontAwesome/fontAwesome"
+import { DangerIcon} from "../../../FontAwesome"
 import { AnswerTemplate_Date } from "../class/FormTemplate";
 
 export default function DateTime({
@@ -61,16 +61,8 @@ export default function DateTime({
           (
             <div className="alert alert-danger p-2 ps-4 pe-4 mt-4 ">
               <Stack direction="horizontal">
-                <div
-                  style={{
-                    width: "1.7rem",
-                    height: "1.7rem",
-                    filter:
-                      "invert(27%) sepia(49%) saturate(3040%) hue-rotate(333deg) brightness(94%) contrast(90%)",
-                  }}
-                  className="text-danger me-1"
-                >
-                  <TringleExclamationSolid />
+                <div>
+                  <DangerIcon mystyle={{paddingRight:"0.5rem",height:"1.3rem"}} />
                 </div>
                 <div>
                   This component is useless right now! Please select at least

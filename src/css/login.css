@@ -35,7 +35,7 @@
     text-align: left;
 }
 
-input[type=text] {
+input[type=text].login {
     background-color: #1A2226;
     border: none;
     border-bottom: 1px solid #0DB8DE;
@@ -48,7 +48,7 @@ input[type=text] {
     margin-bottom: 20px;
 }
 
-input[type=password] {
+input[type=password].login {
     background-color: #1A2226;
     border: none;
     border-bottom: 1px solid #0DB8DE;
@@ -60,12 +60,12 @@ input[type=password] {
     color: #ECF0F5;
 }
 
-.form-group {
+.form-group.login {
     margin-bottom: 20px;
     outline: 0px;
 }
 
-.form-control:focus {
+.form-control:focus.login {
     border-color: inherit;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -75,7 +75,7 @@ input[type=password] {
     color: #ECF0F5;
 }
 
-input:focus {
+input:focus.login {
     outline: none;
     box-shadow: 0 0 0;
 }
@@ -84,7 +84,7 @@ label {
     margin-bottom: 0px;
 }
 
-.form-control-label {
+.form-control-label.login {
     font-size: 13px;
     color: #6C6C6C;
     font-weight: bold;

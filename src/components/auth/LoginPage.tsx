@@ -40,18 +40,18 @@ export default function LoginPage() {
                             {<div className={"text-danger pb-1 " + (fadingIn?'fadeIn':'fadeOut')} >{error}</div>}
                             <Form>
                                 <Form.Group>
-                                    <Form.Label className="form-control-label">Username</Form.Label>
-                                    <Form.Control type="text" value={username} onChange={(val) => setUsername(val.target.value)} />
+                                    <Form.Label className="form-control-label login">Username</Form.Label>
+                                    <Form.Control className="login" type="text" value={username} onChange={(val) => setUsername(val.target.value)} />
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label className="form-control-label">Password</Form.Label>
-                                    <Form.Control type="password" value={password} onChange={(val) => setPassword(val.target.value)} />
+                                    <Form.Label className="form-control-label login">Password</Form.Label>
+                                    <Form.Control className="login" type="password" value={password} onChange={(val) => setPassword(val.target.value)} />
                                 </Form.Group>
                                 <div className="col-lg-12 loginbttm">
                                     <div className="col-lg-6 login-btm login-text">
                                     </div>
                                     <div className="col-lg-6 login-btm login-button w-100">
-                                        <Button variant="outline-primary" className="ps-4 pe-4 login" onClick={login} disabled={!(password.length>2&&username.length>2)}>LOGIN</Button>
+                                        <Button variant="outline-primary login" className="ps-4 pe-4 login" onClick={login} disabled={!(password.length>2&&username.length>2)}>LOGIN</Button>
                                     </div>
                                 </div>
                             </Form>
