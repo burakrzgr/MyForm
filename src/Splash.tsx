@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import { GetToken } from "./database/Token";
 import { Button } from "react-bootstrap";
-import { GithubIcon, ReactIcon } from "./FontAwesome";
+import { GithubIcon, InstagramIcon, ReactIcon } from "./FontAwesome";
 
 export default function Splash() {
     return (
@@ -14,7 +14,8 @@ export default function Splash() {
             <div>
                 <Button
                     variant="dark"
-                    className="ps-4 pe-4 border-info mb-2"
+                    className="mb-2 ps-4 text-start"
+                    style={{width:"12rem"}}
                     href="https://reactjs.org"
                     target="_blank"
                     rel="noopener noreferrer" >
@@ -27,13 +28,28 @@ export default function Splash() {
             <div>
                 <Button
                     variant="dark"
-                    className="ps-4 pe-4 border-info mb-2"
+                    className="mb-2 ps-4 text-start"
+                    style={{width:"12rem"}}
                     href="https://github.com/burakrzgr"
                     target="_blank"
                     rel="noopener noreferrer" >
                     <GithubIcon mystyle={{ paddingRight: "1rem" }}></GithubIcon>
                     <a className="App-link">
                         About Me
+                    </a>
+                </Button>
+            </div>
+            <div>
+                <Button
+                    variant="dark"
+                    className="mb-2 ps-4 text-start"
+                    style={{width:"12rem"}}
+                    href="https://www.instagram.com/burak.rzgr/"
+                    target="_blank"
+                    rel="noopener noreferrer" >
+                    <InstagramIcon mystyle={{ paddingRight: "1rem" }}></InstagramIcon>
+                    <a className="App-link">
+                        More About Me
                     </a>
                 </Button>
             </div>
