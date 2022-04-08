@@ -1,7 +1,24 @@
 import logo from "./logo.svg";
 import { GetToken } from "./database/Token";
 import { Button } from "react-bootstrap";
-import { GithubIcon, InstagramIcon, ReactIcon } from "./FontAwesome";
+import { GithubIcon, InstagramIcon, LinkedInIcon, ReactIcon } from "./FontAwesome";
+
+function AboutMe({Component,text,link}:{Component:any,text:string,link:string}){
+    return( <div>
+        <Button
+            variant="dark"
+            className="mb-2 ps-3 text-start"
+            style={{width:"13rem"}}
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer" >
+            <Component mystyle={{ paddingRight: "1rem" }}></Component>
+            <span className="App-link">
+                {text}
+            </span>
+        </Button>
+    </div>);
+}
 
 export default function Splash() {
     return (
@@ -11,48 +28,10 @@ export default function Splash() {
                 This project developed with </p>
             <code>React TypeScript & Bootstrapt</code>
             <p> by Burak Rüzgar.</p>
-            <div>
-                <Button
-                    variant="dark"
-                    className="mb-2 ps-4 text-start"
-                    style={{width:"12rem"}}
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer" >
-                    <ReactIcon mystyle={{ paddingRight: "1rem" }}></ReactIcon>
-                    <a className="App-link">
-                        Learn React
-                    </a>
-                </Button>
-            </div>
-            <div>
-                <Button
-                    variant="dark"
-                    className="mb-2 ps-4 text-start"
-                    style={{width:"12rem"}}
-                    href="https://github.com/burakrzgr"
-                    target="_blank"
-                    rel="noopener noreferrer" >
-                    <GithubIcon mystyle={{ paddingRight: "1rem" }}></GithubIcon>
-                    <a className="App-link">
-                        About Me
-                    </a>
-                </Button>
-            </div>
-            <div>
-                <Button
-                    variant="dark"
-                    className="mb-2 ps-4 text-start"
-                    style={{width:"12rem"}}
-                    href="https://www.instagram.com/burak.rzgr/"
-                    target="_blank"
-                    rel="noopener noreferrer" >
-                    <InstagramIcon mystyle={{ paddingRight: "1rem" }}></InstagramIcon>
-                    <a className="App-link">
-                        More About Me
-                    </a>
-                </Button>
-            </div>
+                <AboutMe Component={ReactIcon} link="https://reactjs.org" text="Learn React"></AboutMe>
+                <AboutMe Component={GithubIcon} link="https://github.com/burakrzgr" text="About Me"></AboutMe>
+                <AboutMe Component={InstagramIcon} link="https://www.instagram.com/burak.rzgr/" text="More About Me"></AboutMe>
+                <AboutMe Component={LinkedInIcon} link="https://www.linkedin.com/in/burak-r%C3%BCzgar-0aa358106" text="Professional Me"></AboutMe>
             <hr></hr>
             <div className="p-2">Welcome Back {GetToken()?.userName ?? ""}</div>
             <div className="p-2">
