@@ -31,7 +31,7 @@ export default function Splash() {
                 <AboutMe Component={ReactIcon} link="https://reactjs.org" text="Learn React"></AboutMe>
                 <AboutMe Component={GithubIcon} link="https://github.com/burakrzgr" text="About Me"></AboutMe>
                 <AboutMe Component={InstagramIcon} link="https://www.instagram.com/burak.rzgr/" text="More About Me"></AboutMe>
-                <AboutMe Component={LinkedInIcon} link="https://www.linkedin.com/in/burak-r%C3%BCzgar-0aa358106" text="Professional Me"></AboutMe>
+                <AboutMe Component={LinkedInIcon} link="https://www.linkedin.com/in/burak-r%C3%BCzgar-0aa358106" text="Me As Professional"></AboutMe>
             <hr></hr>
             <div className="p-2">Welcome Back {GetToken()?.userName ?? ""}</div>
             <div className="p-2">
