@@ -82,9 +82,6 @@ export function TextArea({
         </div>
       </Stack>
       <Form.Group controlId="formtextBox">
-        <Form.Label>
-          <h5></h5>
-        </Form.Label>
         <Form.Control
           type="text"
           placeholder="Type default value if you have any"
