@@ -81,7 +81,7 @@ export function TextArea({
           </InputGroup>
         </div>
       </Stack>
-      <Form.Group controlId="formtextBox">
+      <Form.Group className="pt-3">
         <Form.Control
           type="text"
           placeholder="Type default value if you have any"
