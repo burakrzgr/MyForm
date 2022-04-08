@@ -13,9 +13,9 @@ function AboutMe({Component,text,link}:{Component:any,text:string,link:string}){
             target="_blank"
             rel="noopener noreferrer" >
             <Component mystyle={{ paddingRight: "1rem" }}></Component>
-            <span className="App-link">
+            <u className="App-link">
                 {text}
-            </span>
+            </u>
         </Button>
     </div>);
 }
