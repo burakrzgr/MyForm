@@ -3,6 +3,10 @@ import { GetToken } from "./database/Token";
 import { Button } from "react-bootstrap";
 import { GithubIcon, InstagramIcon, LinkedInIcon, ReactIcon } from "./FontAwesome";
 
+const findTimeDiff = (dateTime : Date) => {
+    if(!dateTime) return "";
+    return Math.floor((new Date(dateTime).getTime() - new Date().getTime()) / 3600000);
+}
 function AboutMe({Component,text,link}:{Component:any,text:string,link:string}){
     return( <div>
         <Button
@@ -34,6 +38,7 @@ export default function Splash() {
                 <AboutMe Component={LinkedInIcon} link="https://www.linkedin.com/in/burak-r%C3%BCzgar-0aa358106" text="Me As Professional"></AboutMe>
             <hr></hr>
             <div className="p-2">Welcome Back {GetToken()?.userName ?? ""}</div>
+            <div className="p-2">{new Date() < new Date(GetToken().tokenExpiration) ? <>This token will expire in {findTimeDiff(GetToken()?.tokenExpiration)} hours.</>:<>This token is expired.</>}</div>
             <div className="p-2">
                 <Button variant="outline-primary">Primary outline</Button>
             </div>

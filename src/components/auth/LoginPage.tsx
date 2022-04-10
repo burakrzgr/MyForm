@@ -24,7 +24,7 @@ export default function LoginPage() {
         navigate("/");
     }
     const login = () => {
-        const result = Login({userName: username,password :password, userId:0,token:""})
+        const result = Login({userName: username,password :password, userId:0,token:"",tokenExpiration:new Date()})
         result.then(x => {x.data.isSuccess?setTokenData(x.data.data):displayError(x.data.message)}).catch(ex => console.log(ex));
     }
     return (
