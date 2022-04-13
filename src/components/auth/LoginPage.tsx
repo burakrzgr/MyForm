@@ -23,6 +23,9 @@ export default function LoginPage() {
         SetToken(data);
         navigate("/");
     }
+    const CreateNewAccount =() => {
+        navigate("../Register");
+    }
     const login = () => {
         const result = Login({userName: username,password :password, userId:0,token:"",tokenExpiration:new Date()})
         result.then(x => {x.data.isSuccess?setTokenData(x.data.data):displayError(x.data.message)}).catch(ex => console.log(ex));
@@ -53,8 +56,12 @@ export default function LoginPage() {
                                     </div>
                                 </div>
                             </Form>
+
                         </div>
-                    <div className="col-lg-3 col-md-2"></div>
+                    <div className="col-lg-12 ">
+                                    <div style={{marginTop: "115px", marginBottom: "20px"}} className="border-bottom border-light"/>
+                                    <Form.Label>Dont have account <a className="link-info" onClick={CreateNewAccount}>create a new one.</a></Form.Label>
+                                </div>
                 </div>
             </div>
         </Container>

@@ -4,6 +4,7 @@ import Splash from "./Splash";
 import CreateNewForm from "./components/new-form/CreateNewForm";
 import FillFormList from "./components/fill-form/FillFormList";
 import FillForm from "./components/fill-form/FillForm";
+import RegisterPage from "./components/auth/RegisterPage";
 
 function ConfigureRouter() {
     return (
@@ -27,7 +28,8 @@ function ConfigureRouter() {
                         <Route path="Archived" element={<h3>Archived Tamamlanmadı.</h3>} />
                         <Route path=":regionId" element={<CreateNewForm />} />
                     </Route>
-                    <Route path="login"  element={<LoginPage ></LoginPage>} />
+                    <Route path="Login"  element={<LoginPage ></LoginPage>} />
+                    <Route path="Register"  element={<RegisterPage ></RegisterPage>} />
                 </Route> 
             </Routes>
         </BrowserRouter>
