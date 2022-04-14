@@ -23,7 +23,7 @@ function AboutMe({Component,text,link}:{Component:any,text:string,link:string}){
         </Button>
     </div>);
 }
-
+const token = GetToken();
 export default function Splash() {
     return (
         <>
@@ -37,9 +37,9 @@ export default function Splash() {
                 <AboutMe Component={InstagramIcon} link="https://www.instagram.com/burak.rzgr/" text="More About Me"></AboutMe>
                 <AboutMe Component={LinkedInIcon} link="https://www.linkedin.com/in/burak-r%C3%BCzgar-0aa358106" text="Me As Professional"></AboutMe>
             <hr></hr>
-            <div className="p-2">Welcome Back {GetToken()?.userName ?? ""}</div>
-            <div className="p-2">{new Date() < new Date(GetToken().tokenExpiration) ? <>This token will expire in {findTimeDiff(GetToken()?.tokenExpiration)} hours.</>:<>This token is expired.</>}</div>
-            <div className="p-2">Your role is {GetToken()?.role??"anonymous"}.</div>
+            <div className="p-2">Welcome Back {token?.userName ?? ""}</div>
+            <div className="p-2">{new Date() < new Date(token.tokenExpiration) ? <>This token will expire in {findTimeDiff(token?.tokenExpiration)} hours.</>:<>This token is expired.</>}</div>
+            <div className="p-2">Your role is {token?.role??"anonymous"}.</div>
             <div className="p-2">
                 <Button variant="outline-primary">Primary outline</Button>
             </div>
