@@ -29,9 +29,13 @@ export default function BroadcastList() {
   const $delete = (id: number) => {
     navigate("/FillForm/" + id);
   }
+  const edit = (id: number) => {
+    navigate("/FillForm/" + id);
+  }
   const getActions = (id: number): (Array<TableAction>) => {
     return [
-      { text: "Broadcast Form", onClick: () => go(id), variant: "primary" }, 
+      { text: "Broadcast", onClick: () => go(id), variant: "primary" }, 
+      { text: "Edit", onClick: () => edit(id), variant: "success" },
       { text: "Delete", onClick: () => $delete(id), variant: "danger" }];
   }
   var list = forms.data.map(x => { return { ...x, personalInfo : getPersonelInfo(String(x.personalInfo)) , actions: getActions(x.id) } });
