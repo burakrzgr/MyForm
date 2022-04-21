@@ -26,13 +26,13 @@ export default function BroadcastList() {
   const go = (id: number) => {
     navigate("/FillForm/" + id);
   } 
-  const share = (id: number) => {
+  const $delete = (id: number) => {
     navigate("/FillForm/" + id);
   }
   const getActions = (id: number): (Array<TableAction>) => {
     return [
-      { text: "Fill This Form", onClick: () => go(id), variant: "primary" }, 
-      { text: "Share", onClick: () => share(id), variant: "info" }];
+      { text: "Broadcast Form", onClick: () => go(id), variant: "primary" }, 
+      { text: "Delete", onClick: () => $delete(id), variant: "danger" }];
   }
   var list = forms.data.map(x => { return { ...x, personalInfo : getPersonelInfo(String(x.personalInfo)) , actions: getActions(x.id) } });
   return (
