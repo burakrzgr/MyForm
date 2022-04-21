@@ -11,6 +11,7 @@ export enum Role{
     Developer,
     Admin,
     Creator,
+    Broadcaster,
     Examiner,
     Redirector,
     Participant,
