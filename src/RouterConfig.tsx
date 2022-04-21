@@ -5,6 +5,7 @@ import CreateNewForm from "./components/new-form/CreateNewForm";
 import FillFormList from "./components/fill-form/FillFormList";
 import FillForm from "./components/fill-form/FillForm";
 import RegisterPage from "./components/auth/RegisterPage";
+import BroadcastList from "./components/broadcast/BroadcastList";
 
 function ConfigureRouter() {
     return (
@@ -15,6 +16,10 @@ function ConfigureRouter() {
                     <Route path="NewForm">
                         <Route index element={<CreateNewForm></CreateNewForm>} />
                         <Route path=":search" element={<CreateNewForm></CreateNewForm>} />
+                    </Route>
+                    <Route path="Broadcast" >
+                        <Route index element={<BroadcastList></BroadcastList>}></Route>
+                        <Route path=":id" element={<BroadcastList></BroadcastList>}></Route>
                     </Route>
                     <Route path="FillForm" >
                         <Route index element={<FillFormList></FillFormList>}></Route>
