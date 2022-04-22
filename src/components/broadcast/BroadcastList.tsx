@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { GetAllForm } from "../../axios/new-form";
+import { DeleteForm, GetAllForm } from "../../axios/new-form";
 import { TableAction } from "../misc/class/TableAction";
 import MyTable from "../misc/MyTable";
 import { FormTemplate } from "../new-form/class/FormTemplate";
@@ -27,7 +27,7 @@ export default function BroadcastList() {
     navigate("/FillForm/" + id);
   } 
   const $delete = (id: number) => {
-    navigate("/FillForm/" + id);
+    DeleteForm(id).then(x => x.data).catch(x => console.log(x));
   }
   const edit = (id: number) => {
     navigate("/FillForm/" + id);
