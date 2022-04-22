@@ -32,9 +32,6 @@ export default function BroadcastList() {
   const edit = (id: number) => {
     navigate("/FillForm/" + id);
   }
-  const view = (id: number) => {
-    navigate("/FillForm/" + id);
-  }
   const getActions = (id: number): (Array<TableAction>) => {
     return [
       { text: "Broadcast Form", onClick: () => go(id), variant: "primary" }, 

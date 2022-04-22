@@ -2,7 +2,7 @@ export type UserModal ={
     userId : number,
     userName : string,
     password : string,
-    role? : Role,
+    roles? : Role[],
     token : string,
     tokenExpiration : Date
 };
