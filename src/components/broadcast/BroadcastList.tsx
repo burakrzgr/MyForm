@@ -18,16 +18,19 @@ const getPersonelInfo = (info : string) => {
 export default function BroadcastList() {
   let navigate = useNavigate();
   const [forms, setForms] = useState<{ data: FormTemplate[], loading: number }>({ data: [] as FormTemplate[], loading: 0 });
-  useEffect(() => {
+  const loadData = () => {
     GetAllForm()
       .then((val) => setForms({ data: val.data, loading: 1 }))
       .catch((e) => { console.log("GetFormError", e); setForms({ data: [] as FormTemplate[], loading: 2 }) });
+  }
+  useEffect(() => {
+    loadData();
   }, []);
   const go = (id: number) => {
     navigate("/FillForm/" + id);
   } 
   const $delete = (id: number) => {
-    DeleteForm(id).then(x => x.data).catch(x => console.log(x));
+    DeleteForm(id).then(x => {return x.data? loadData():""}).catch(x => console.log(x));
   }
   const edit = (id: number) => {
     navigate("/FillForm/" + id);

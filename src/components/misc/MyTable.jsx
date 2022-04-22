@@ -10,6 +10,7 @@ export default function MyTable({columns: myColumns,data:myData}) {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
   return (
+    
     <Table {...getTableProps()} striped bordered hover variant="dark">
       <thead>
         {headerGroups.map((headerGroup ) => (
