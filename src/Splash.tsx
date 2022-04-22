@@ -39,7 +39,7 @@ export default function Splash() {
             <hr></hr>
             <div className="p-2">Welcome Back {token?.userName ?? ""}</div>
             <div className="p-2">{new Date() < new Date(token.tokenExpiration) ? <>This token will expire in {findTimeDiff(token?.tokenExpiration)} hours.</>:<>This token is expired.</>}</div>
-            <div className="p-2">Your role is {token?.role??"anonymous"}.</div>
+            <div className="p-2">Your role is {token?.roles??"anonymous"}.</div>
             <div className="p-2">
                 <Button variant="outline-primary">Primary outline</Button>
             </div>

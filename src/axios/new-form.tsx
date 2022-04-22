@@ -16,7 +16,7 @@ export const GetForm =  (id:number) => {return axios.get(`${baseApi.link}/Form/$
 export const GetAllForm =  () => {return axios.get(`${baseApi.link}/Form`);}
 export const GetFormCriteria =  (criteria:string) => {};
 export const PostForm =  (id:number,form : FormTemplate) => {return axios.post(`${baseApi.link}/Form`,{...form,id:id}, getHeader())};
-export const DeleteForm =  (id : number) => {};
+export const DeleteForm =  (id : number) => {return axios.delete(`${baseApi.link}/Form/${id}`, getHeader())};
 export const PutForm =  (form : FormTemplate) => {return axios.post(`${baseApi.link}/Form`,form), getHeader()};
 export const PatchForm =  (form : any) => {};
 
