@@ -27,7 +27,7 @@ export default function LoginPage() {
         navigate("../Register");
     }
     const login = () => {
-        const result = Login({userName: username,password :password, userId:0,token:"",tokenExpiration:new Date() })
+        const result = Login({userName: username,password :password, userId:0,token:"",roles:[],tokenExpiration:new Date() })
         result.then(x => {x.data.isSuccess?setTokenData(x.data.data):displayError(x.data.message)}).catch(ex => console.log(ex));
     }
     return (

@@ -8,12 +8,12 @@ export type UserModal ={
 };
 
 export enum Role{
+    Anonymous,
     Developer,
     Admin,
     Creator,
     Broadcaster,
     Examiner,
     Redirector,
-    Participant,
-    Guest
+    Participant
 }
