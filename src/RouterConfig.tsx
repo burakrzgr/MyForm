@@ -6,6 +6,7 @@ import FillFormList from "./components/fill-form/FillFormList";
 import FillForm from "./components/fill-form/FillForm";
 import RegisterPage from "./components/auth/RegisterPage";
 import BroadcastList from "./components/broadcast/BroadcastList";
+import CompletedList from "./components/completed/CompletedList";
 
 function ConfigureRouter() {
     return (
@@ -25,6 +26,7 @@ function ConfigureRouter() {
                         <Route index element={<FillFormList></FillFormList>}></Route>
                         <Route path=":id" element={<FillForm></FillForm>}></Route>
                     </Route>
+                    <Route path="MyForms"  element={<CompletedList ></CompletedList>} />
                     <Route path="Forms" >
                         <Route index element={<p>Pick Form</p>} ></Route>
                         <Route path="All" element={<h3>All Tamamlanmadı.</h3>} />
