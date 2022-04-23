@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { DeleteForm, GetAllForm } from "../../axios/new-form";
 import { TableAction } from "../misc/class/TableAction";
+import ConfirmMe from "../misc/ConfirmMe";
 import MyTable from "../misc/MyTable";
 import { FormTemplate } from "../new-form/class/FormTemplate";
 import TableHeader from "./TableHeader";
@@ -18,6 +19,8 @@ const getPersonelInfo = (info : string) => {
 export default function BroadcastList() {
   let navigate = useNavigate();
   const [forms, setForms] = useState<{ data: FormTemplate[], loading: number }>({ data: [] as FormTemplate[], loading: 0 });
+  const [deleteForm,setDeleteForm] = useState<{id:number,show:boolean}>({id:0,show:false});
+
   const loadData = () => {
     GetAllForm()
       .then((val) => setForms({ data: val.data, loading: 1 }))
@@ -30,8 +33,10 @@ export default function BroadcastList() {
     navigate("/FillForm/" + id);
   } 
   const $delete = (id: number) => {
+    setDeleteForm({id:0,show:false});
     DeleteForm(id).then(x => {return x.data? loadData():""}).catch(x => console.log(x));
   }
+  
   const edit = (id: number) => {
     navigate("/FillForm/" + id);
   }
@@ -39,7 +44,7 @@ export default function BroadcastList() {
     return [
       { text: "Broadcast Form", onClick: () => go(id), variant: "primary" }, 
       { text: "View / Edit", onClick: () => edit(id), variant: "success" }, 
-      { text: "Delete", onClick: () => $delete(id), variant: "danger" }];
+      { text: "Delete", onClick: () => setDeleteForm({id: id,show:true}), variant: "danger" }];
   }
   var list = forms.data.map(x => { return { ...x, personalInfo : getPersonelInfo(String(x.personalInfo)) , actions: getActions(x.id) } });
   return (
@@ -54,6 +59,14 @@ export default function BroadcastList() {
         <MyTable columns={TableHeader} data={list}></MyTable>
         : <h4 className="p-5 text-warning align-middle">Unfortunately there is any form that you can fill!</h4>) : <></>}
       {forms.loading === 2 ? <h4 className="p-5 text-danger align-middle">There is error in the system. Couldn't get data!</h4> : <></>}
+      <ConfirmMe 
+                show={deleteForm.show} 
+                rejectedEvent={() => setDeleteForm({id:0, show: false})} 
+                header="Confirm delete" 
+                message="Do you really want to delete this form?" 
+                confirmedEvent={() => $delete(deleteForm.id)} 
+                variant="danger"
+            ></ConfirmMe>
     </Container>
   );
 }
