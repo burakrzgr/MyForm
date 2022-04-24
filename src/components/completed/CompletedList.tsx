@@ -56,13 +56,13 @@ export default function CompletedList() {
         : <h4 className="p-5 text-warning align-middle">Unfortunately there is no form that you can fill!</h4>) : <></>}
       {forms.loading === 2 ? <h4 className="p-5 text-danger align-middle">There is error in the system. Couldn't get data!</h4> : <></>}
       <ConfirmMe 
-                show={deleteForm.show} 
-                rejectedEvent={() => setDeleteForm({id:0, show: false})} 
-                header="Confirm delete" 
-                message="Do you really want to delete this form?" 
-                confirmedEvent={() => $delete(deleteForm.id)} 
-                variant="danger"
-            ></ConfirmMe>
+          show={deleteForm.show} 
+          rejectedEvent={() => setDeleteForm({id:0, show: false})} 
+          header="Confirm revoke" 
+          message="Do you really want to revoke this form? It won't be viewed by form creaters anymore." 
+          confirmedEvent={() => $delete(deleteForm.id)} 
+          variant="danger"
+      ></ConfirmMe>
     </Container>
   );
 }
