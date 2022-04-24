@@ -42,6 +42,16 @@ export default function ViewForm({ form, show, setShow }: { form?: CompletedForm
                                             </div>
                                         )
                                     })}
+                                    {form.completedQuestions?.map(x => {
+                                        return (
+                                            <div key={x.id}>
+                                                <div>{x.questionText}
+                                                    {x.questionDetail}
+                                                    {x.questionType}</div>
+                                                <div>{x.answer}</div>
+                                            </div>
+                                        )
+                                    })}
                                 </div>
                             </Container>
                         </Modal.Body>
