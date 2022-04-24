@@ -19,4 +19,5 @@ export const PutForm =  (form : FormTemplate) => {return axios.post(`${baseApi.l
 export const PatchForm =  (form : any) => {};
 
 export const SubmitForm = (form : SubmitedForm) => {return axios.put(`${baseApi.link}/Submit`,form, configAuth)};
-export const GetAllCompletedForm =  () => {return axios.get(`${baseApi.link}/View`);}
+export const GetCompleted =  (id: number) => {return axios.get(`${baseApi.link}/View/${id}`,configAuth);}
+export const GetAllCompleted =  () => {return axios.get(`${baseApi.link}/View`);}

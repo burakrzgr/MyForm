@@ -8,5 +8,13 @@ export type CompletedForm = {
     creatorUser: UserModal,
     personalInfoShared: boolean,
     submitterUser: UserModal,
-    completedQuestions?: string
+    completedQuestions?: CompletedQuestion[]
+}
+
+export type CompletedQuestion =  {
+    id: number, 
+    questionText: string, 
+    questionDetail?: string, 
+    questionType: string, 
+    answer : string
 }
