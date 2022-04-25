@@ -3,17 +3,10 @@
     --portrait-width: 80vw;
     --header-height: 4rem;
     --secs: 0.4s;
-    --bg-right: rgb(66, 66, 66);
+    --bg-right: rgb(72, 72, 67);
   }
   
-  body {
-    min-height: 100vh;
-    max-width: 100vw;
-    margin: 0;
-    overflow: hidden; // Disable scrolling on body
-  }
-  
-  #layout {
+  #layoutSidebar {
     display: flex; // Flexbox definition
     overflow: hidden; // Disable scrolling on layout
   
@@ -21,7 +14,7 @@
     .header {
       position: relative;
       height: var(--header-height);
-      text-align: center; // Horizontal center
+      text-align: end; // Horizontal center
       .title { position: absolute; left: 0; right: 0; }
     }
     .content {
@@ -33,7 +26,7 @@
   }
   
   // Main area specific style:
-  #main { flex-grow: 1;
+  #mainSidebar { flex-grow: 1;
     .header { background: linear-gradient(to right, var(--bg-left), var(--bg-right));
       @media (orientation: landscape) {
         .title { transition: left var(--secs), right var(--secs);
@@ -45,7 +38,7 @@
   }
   
   // Style in common for both sidebars:
-  #right { transition: width var(--secs); width: 0;
+  #rightSidebar { transition: width var(--secs); width: 0;
     @media (orientation: landscape) {
       &.open { width: calc(1% * var(--landscape-width)); }
     } // <-- Landscape ONLY sidebars
@@ -62,7 +55,7 @@
   }
     
   // Right sidebar specific style:
-  #right { .icon { right: 0; }
+  #rightSidebar { .icon { right: 0; }
     .sidebar { background: var(--bg-right);
       @media (orientation: portrait) {
         &.open { transform: translateX(-100%); }
