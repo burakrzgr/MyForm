@@ -36,7 +36,7 @@ function ConfigureRouter() {
                         <Route path="Archived" element={<h3>Archived Tamamlanmadı.</h3>} />
                         <Route path=":regionId" element={<CreateNewForm />} />
                     </Route>
-                    <Route path="Testing"  element={<Testing></Testing>} />
+                    <Route path="Testing"  element={<Testing show={true} closeEvent={()=> {}} ></Testing>} />
                     <Route path="Login"  element={<LoginPage ></LoginPage>} />
                     <Route path="Register"  element={<RegisterPage ></RegisterPage>} />
                 </Route> 

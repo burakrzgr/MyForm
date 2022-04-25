@@ -1,5 +1,5 @@
   :root {
-    --landscape-width: 25; // % OR vw for responsive window resizing!
+    --landscape-width: 35; 
     --portrait-width: 80vw;
     --header-height: 4rem;
     --secs: 0.4s;
@@ -7,10 +7,9 @@
   }
   
   #layoutSidebar {
-    display: flex; // Flexbox definition
-    overflow: hidden; // Disable scrolling on layout
+    display: flex; 
+    overflow: hidden; 
   
-    // Style in common for sidebars and main area:
     .header {
       position: relative;
       height: var(--header-height);
@@ -25,7 +24,6 @@
     }
   }
   
-  // Main area specific style:
   #mainSidebar { flex-grow: 1;
     .header { background: linear-gradient(to right, var(--bg-left), var(--bg-right));
       @media (orientation: landscape) {
@@ -37,11 +35,13 @@
     }
   }
   
-  // Style in common for both sidebars:
   #rightSidebar { transition: width var(--secs); width: 0;
     @media (orientation: landscape) {
-      &.open { width: calc(1% * var(--landscape-width)); }
-    } // <-- Landscape ONLY sidebars
+      &.open { 
+        width: calc(1% * var(--landscape-width));
+        padding-right: calc(1vw * var(--landscape-width));
+      }
+    }
     .icon { position: fixed; z-index: 10;
       width: var(--header-height); height: var(--header-height);
       line-height: var(--header-height); font-size: var(--header-height);
@@ -54,11 +54,10 @@
     }
   }
     
-  // Right sidebar specific style:
   #rightSidebar { .icon { right: 0; }
     .sidebar { background: var(--bg-right);
       @media (orientation: portrait) {
         &.open { transform: translateX(-100%); }
-      } // <-- Right portrait sidebar ONLY!
+      } 
     }
   }

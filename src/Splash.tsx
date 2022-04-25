@@ -53,7 +53,7 @@ export default function Splash() {
             <div className="p-2">
                 <Button variant="system">System Main</Button>
             </div>
- 
+            
         </>
     );
 
