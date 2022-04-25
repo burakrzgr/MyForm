@@ -1,5 +1,4 @@
 import React from "react";
-import PopupForCondition from "../../new-form/PopupForCondition";
 import { QuestionTemplate } from "../../new-form/class/FormTemplate";
 import { FillFieldAcceptPolicy, FillFieldCheck, FillFieldCombo, FillFieldDateTime, FillFieldInfo, FillFieldRate, FillFieldSelect, FillFieldUpload, FillTextArea, FillTextField } from "./FillFields";
 import { FilledForm, FilledQuestion } from "../class/FilledForm";

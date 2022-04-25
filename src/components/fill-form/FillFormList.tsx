@@ -13,7 +13,7 @@ const getPersonelInfo = (info : string) => {
     "0": <div className="text-success bg-dark btn m-0 pt-1 pb-1 soft-shadow">Anonymous</div>,
     "1": <div className="text-warning bg-dark btn m-0 pt-1 pb-1 soft-shadow">Only if accepts</div>,
     "2": <div className="text-danger bg-dark btn m-0 pt-1 pb-1 soft-shadow">Required Field</div>
-  } [info];
+  }[info];
 }
 export default function FillFormList() {
   let navigate = useNavigate();
