@@ -1,15 +1,9 @@
-div {
-    outline: 1px solid red;
-  }
-  
   :root {
     --landscape-width: 25; // % OR vw for responsive window resizing!
     --portrait-width: 80vw;
     --header-height: 4rem;
     --secs: 0.4s;
-    --bg-left: springgreen;
-    --bg-right: cyan;
-    --bg-main: lemonchiffon;
+    --bg-right: rgb(66, 66, 66);
   }
   
   body {
@@ -39,7 +33,7 @@ div {
   }
   
   // Main area specific style:
-  #main { background: var(--bg-main); flex-grow: 1;
+  #main { flex-grow: 1;
     .header { background: linear-gradient(to right, var(--bg-left), var(--bg-right));
       @media (orientation: landscape) {
         .title { transition: left var(--secs), right var(--secs);
