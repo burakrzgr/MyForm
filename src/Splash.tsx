@@ -2,7 +2,6 @@ import logo from "./logo.svg";
 import { GetToken } from "./database/Token";
 import { Button } from "react-bootstrap";
 import { GithubIcon, InstagramIcon, LinkedInIcon, ReactIcon } from "./FontAwesome";
-import SidebarCollapsible from "./components/misc/SideBarCollapsible";
 
 const findTimeDiff = (dateTime : Date) => {
     if(!dateTime) return "";
