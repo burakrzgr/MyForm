@@ -1,5 +1,6 @@
 import { Container, Modal } from "react-bootstrap";
 import { CompletedForm } from "./class/CompletedForm";
+import ViewQuestion from "./ViewQuestion";
 
 export default function ViewForm({ form, show, setShow }: { form?: CompletedForm, show: boolean, setShow: Function }) {
     return (
@@ -15,41 +16,23 @@ export default function ViewForm({ form, show, setShow }: { form?: CompletedForm
                     <div style={{ boxShadow: '0px 0px 5px #3e3e3e' }} >
 
                         <Modal.Header >
-                            <Modal.Title>{form.formName}</Modal.Title>
+                        <Modal.Title><h3 style={{fontWeight:"700"}}>{form.formName}</h3></Modal.Title>
                         </Modal.Header>
                         <Modal.Body style={{ maxHeight: '75vh',overflowY:"auto" }}>
                             <Container fluid>
-                                <div>{form.formDesc}</div>
+                                <h4 style={{fontWeight:"500"}} className="text-muted">Form Detail</h4>
+                                <h5 style={{fontWeight:"500"}}>{form.formDesc}</h5>
                                 <div>{form.personalInfoShared ? <div className="text-danger">Personel info shared.</div> : <div className="text-success">Participant is anonymous.</div>}</div>
+                                <h4 style={{fontWeight:"500"}} className="text-muted pt-5">Questions & Answers</h4>
                                 <div >
                                     {form.completedQuestions?.map(x => {
                                         return (
-                                            <div key={x.id}>
-                                                <div>{x.questionText}
-                                                    {x.questionDetail}
-                                                    {x.questionType}</div>
-                                                <div>{x.answer}</div>
-                                            </div>
+                                            <ViewQuestion key={x.id} question={x}></ViewQuestion>
                                         )
                                     })}
                                     {form.completedQuestions?.map(x => {
                                         return (
-                                            <div key={x.id}>
-                                                <div>{x.questionText}
-                                                    {x.questionDetail}
-                                                    {x.questionType}</div>
-                                                <div>{x.answer}</div>
-                                            </div>
-                                        )
-                                    })}
-                                    {form.completedQuestions?.map(x => {
-                                        return (
-                                            <div key={x.id}>
-                                                <div>{x.questionText}
-                                                    {x.questionDetail}
-                                                    {x.questionType}</div>
-                                                <div>{x.answer}</div>
-                                            </div>
+                                            <ViewQuestion key={x.id} question={x}></ViewQuestion>
                                         )
                                     })}
                                 </div>
