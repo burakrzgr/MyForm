@@ -14,16 +14,15 @@ export default function ViewForm({ form, show, setShow }: { form?: CompletedForm
             >
                 {form ?
                     <div style={{ boxShadow: '0px 0px 5px #3e3e3e' }} >
-
-                        <Modal.Header >
-                        <Modal.Title><h3 style={{fontWeight:"700"}}>{form.formName}</h3></Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body style={{ maxHeight: '75vh',overflowY:"auto" }}>
-                            <Container fluid>
-                                <h4 style={{fontWeight:"500"}} className="text-muted">Form Detail</h4>
-                                <h5 style={{fontWeight:"500"}}>{form.formDesc}</h5>
+                        <Modal.Body  className="p-0">
+                                <div className="text-dark p-2 pt-3" style={{backgroundColor:"#b5d5ea"}}>
+                                    <h3 style={{fontWeight:"700"}}>{form.formName}</h3>
+                                    <h5 style={{fontWeight:"500"}}>{form.formDesc}</h5>
                                 <div>{form.personalInfoShared ? <div className="text-danger">Personel info shared.</div> : <div className="text-success">Participant is anonymous.</div>}</div>
-                                <h4 style={{fontWeight:"500"}} className="text-muted pt-5">Questions & Answers</h4>
+                                </div>
+                                <Container style={{ maxHeight: '55vh',overflowY:"auto" }} fluid>
+                                <h4 style={{fontWeight:"500"}} className="text-muted pt-3">Questions & Answers</h4>
+                                
                                 <div >
                                     {form.completedQuestions?.map(x => {
                                         return (
