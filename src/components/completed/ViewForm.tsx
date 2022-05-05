@@ -1,4 +1,4 @@
-import { Container, Modal } from "react-bootstrap";
+import { Container, Modal, Stack } from "react-bootstrap";
 import { CompletedForm } from "./class/CompletedForm";
 import ViewQuestion from "./ViewQuestion";
 
@@ -15,6 +15,8 @@ export default function ViewForm({ form, show, setShow }: { form?: CompletedForm
                 {form ?
                     <div style={{ boxShadow: '0px 0px 5px #3e3e3e' }} >
                         <Modal.Body  className="p-0">
+                            <div style={{display:"table-row"}}>
+                                <div className="me-auto w-100" style={{display:"table-cell"}} >
                                 <div className="text-dark p-2 pt-3" style={{backgroundColor:"#b5d5ea"}}>
                                     <h3 style={{fontWeight:"700"}}>{form.formName}</h3>
                                     <h5 style={{fontWeight:"500"}}>{form.formDesc}</h5>
@@ -36,6 +38,18 @@ export default function ViewForm({ form, show, setShow }: { form?: CompletedForm
                                     })}
                                 </div>
                             </Container>
+                            </div>
+                            <div style={{display:"table-cell",backgroundColor:"##a2a4aa"}}>
+                                <div id="history-area" style={{width:"15rem"}}>
+                                    <div>
+                                        History
+                                    </div>
+                                    <div>
+                                        History History History
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
                         </Modal.Body>
                         <Modal.Footer>
                         </Modal.Footer>
