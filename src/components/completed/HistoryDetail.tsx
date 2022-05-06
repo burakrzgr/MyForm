@@ -4,9 +4,9 @@ import { Operation } from "./class/CompletedForm";
 export default function HistoryDetail({ detail }: { detail: Operation}) {
     return (
         <div className="m-2">
-            <Button variant="outline-secondary" className="w-100">
+            <div className="w-100 border border-dark p-1 rounded">
                 {detail.operationType}
-            </Button>
+            </div>
         </div>
     );
 }
