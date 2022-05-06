@@ -2,7 +2,7 @@ import { Stack } from "react-bootstrap";
 import { Operation } from "./class/CompletedForm";
 import HistoryDetail from "./HistoryDetail";
 
-export default function History({ history }: { history: Operation[] }) {
+export default function History({ history,allowed }: { history: Operation[],allowed:boolean }) {
     return (
         <>
             <div style={{ display: "table-cell", backgroundColor: "#a2a4aa" }}>
