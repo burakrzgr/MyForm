@@ -8,8 +8,8 @@ export default function History({ history }: { history: Operation[] }) {
             <div style={{ display: "table-cell", backgroundColor: "##a2a4aa" }}>
                 <div id="history-area" style={{ width: "15rem" }}>
                     <Stack direction="vertical">
-                        <div>
-                            History
+                        <div className="text-center" >
+                            <h5 style={{fontWeight:600}}>History</h5>
                         </div>
                         <div>
                             {history.map(x => { return(<HistoryDetail detail={x}></HistoryDetail>)})}
