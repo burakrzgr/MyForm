@@ -5,7 +5,7 @@ import HistoryDetail from "./HistoryDetail";
 export default function History({ history }: { history: Operation[] }) {
     return (
         <>
-            <div style={{ display: "table-cell", backgroundColor: "##a2a4aa" }}>
+            <div style={{ display: "table-cell", backgroundColor: "#a2a4aa" }}>
                 <div id="history-area" style={{ width: "15rem" }}>
                     <Stack direction="vertical">
                         <div className="text-center" >
