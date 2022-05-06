@@ -1,5 +1,6 @@
 import { Stack } from "react-bootstrap";
 import { Operation } from "./class/CompletedForm";
+import HistoryDetail from "./HistoryDetail";
 
 export default function History({ history }: { history: Operation[] }) {
     return (
@@ -11,7 +12,7 @@ export default function History({ history }: { history: Operation[] }) {
                             History
                         </div>
                         <div>
-                            {history.map(x => { return(<div>{x.operationType}</div>)})}
+                            {history.map(x => { return(<HistoryDetail detail={x}></HistoryDetail>)})}
                         </div>
                     </Stack>
                 </div>
