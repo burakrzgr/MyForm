@@ -6,6 +6,7 @@ export default function History({ history,allowed }: { history: Operation[],allo
     return (
         <>
             <div style={{ display: "table-cell", backgroundColor: "#a2a4aa" }}>
+                {allowed?
                 <div id="history-area" style={{ width: "15rem" }}>
                     <Stack direction="vertical">
                         <div className="text-center" >
@@ -15,7 +16,12 @@ export default function History({ history,allowed }: { history: Operation[],allo
                             {history.map(x => { return(<HistoryDetail detail={x}></HistoryDetail>)})}
                         </div>
                     </Stack>
-                </div>
+                </div>:
+                <div id="history-area" style={{ width: "15rem" }}>
+                    <div className="text-center" >
+                            <h5 style={{fontWeight:600}}>You Can't See History</h5>
+                    </div>
+                </div>}
             </div>
         </>);
 }
