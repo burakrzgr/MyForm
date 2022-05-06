@@ -9,7 +9,9 @@ export type CompletedForm = {
     creatorUser: UserModal,
     personalInfoShared: boolean,
     submitterUser: UserModal,
-    completedQuestions?: CompletedQuestion[]
+    completedQuestions?: CompletedQuestion[],
+    history : Operation[],
+    canSeeHistory : boolean
 }
 
 export type CompletedQuestion = {
