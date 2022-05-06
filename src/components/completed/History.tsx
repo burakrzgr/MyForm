@@ -1,3 +1,4 @@
+import { Stack } from "react-bootstrap";
 import { Operation } from "./class/CompletedForm";
 
 export default function History({ history }: { history: Operation[] }) {
@@ -5,12 +6,14 @@ export default function History({ history }: { history: Operation[] }) {
         <>
             <div style={{ display: "table-cell", backgroundColor: "##a2a4aa" }}>
                 <div id="history-area" style={{ width: "15rem" }}>
-                    <div>
-                        History
-                    </div>
-                    <div>
-                        {history.map(x => { return(<>{x.operationType}</>)})}
-                    </div>
+                    <Stack direction="vertical">
+                        <div>
+                            History
+                        </div>
+                        <div>
+                            {history.map(x => { return(<div>{x.operationType}</div>)})}
+                        </div>
+                    </Stack>
                 </div>
             </div>
         </>);
