@@ -23,8 +23,6 @@ export default function History({ history,allowed }: { history: Operation[],allo
                                 <div>&nbsp;</div>
                                 <div>&nbsp;</div>
                                 <div>&nbsp;</div>
-                                <div>&nbsp;</div>
-                                <div>&nbsp;</div>
                                 <div>You are</div>
                                 <div>not</div>
                                 <div>allowed</div>
