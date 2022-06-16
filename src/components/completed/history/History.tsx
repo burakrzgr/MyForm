@@ -1,5 +1,5 @@
 import { Button, Stack } from "react-bootstrap";
-import { Operation } from "./class/CompletedForm";
+import { Operation } from "../class/CompletedForm";
 import HistoryDetail from "./HistoryDetail";
 
 export default function History({ history,allowed }: { history: Operation[],allowed:boolean }) {

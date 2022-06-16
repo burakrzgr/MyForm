@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import { Operation } from "./class/CompletedForm";
+import { Operation } from "../class/CompletedForm";
 
 export default function HistoryDetail({ detail }: { detail: Operation}) {
     return (
