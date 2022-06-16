@@ -40,7 +40,7 @@ export default function ViewForm({ form, show, setShow }: { form?: CompletedForm
                                         </div>
                                     </Container>
                                 </div>
-                                <History history={[{operationType:4},{operationType:7}] as Operation[]} allowed={false}></History>
+                                <History formId={form.id} history={[{operationType:4},{operationType:7}] as Operation[]} allowed={true}></History>
                             </div>
                         </Modal.Body>
                         <Modal.Footer>

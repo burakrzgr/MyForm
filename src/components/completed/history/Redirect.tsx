@@ -1,7 +1,7 @@
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 
 
-export default function History({ formId }: { formId: number }) {
+export default function Redirect({ formId }: { formId: number }) {
     return (
         <>
             <InputGroup>
