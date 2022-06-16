@@ -14,7 +14,7 @@ export default function History({ formId,history,allowed }: { formId:number,hist
                             <h5 style={{fontWeight:600}}>History</h5>
                         </div>
                         <div>
-                            {history.map(x => { return(<HistoryDetail detail={x}></HistoryDetail>)})}
+                            {history.map((x,k) => { return(<HistoryDetail key={k} detail={x}></HistoryDetail>)})}
                         </div>
                         <div className="me-auto">
                             <Redirect formId={formId} ></Redirect>
