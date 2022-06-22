@@ -1,6 +1,6 @@
 import { Container, Modal, Stack } from "react-bootstrap";
 import { CompletedForm, Operation } from "./class/CompletedForm";
-import History from "./History";
+import History from "./history/History";
 import ViewQuestion from "./ViewQuestion";
 
 export default function ViewForm({ form, show, setShow }: { form?: CompletedForm, show: boolean, setShow: Function }) {
@@ -40,7 +40,7 @@ export default function ViewForm({ form, show, setShow }: { form?: CompletedForm
                                         </div>
                                     </Container>
                                 </div>
-                                <History history={[{operationType:4},{operationType:7}] as Operation[]} allowed={false}></History>
+                                <History formId={form.id} history={[{operationType:4},{operationType:7}] as Operation[]} allowed={true}></History>
                             </div>
                         </Modal.Body>
                         <Modal.Footer>

@@ -1,8 +1,9 @@
 import { Button, Stack } from "react-bootstrap";
-import { Operation } from "./class/CompletedForm";
+import { Operation } from "../class/CompletedForm";
 import HistoryDetail from "./HistoryDetail";
+import Redirect from "./Redirect";
 
-export default function History({ history,allowed }: { history: Operation[],allowed:boolean }) {
+export default function History({ formId,history,allowed }: { formId:number,history: Operation[],allowed:boolean }) {
     return (
         <>
             <div style={{ display: "table-cell", backgroundColor: "#a2a4aa" }}>
@@ -13,7 +14,10 @@ export default function History({ history,allowed }: { history: Operation[],allo
                             <h5 style={{fontWeight:600}}>History</h5>
                         </div>
                         <div>
-                            {history.map(x => { return(<HistoryDetail detail={x}></HistoryDetail>)})}
+                            {history.map((x,k) => { return(<HistoryDetail key={k} detail={x}></HistoryDetail>)})}
+                        </div>
+                        <div className="me-auto">
+                            <Redirect formId={formId} ></Redirect>
                         </div>
                     </Stack>
                 </div>:
