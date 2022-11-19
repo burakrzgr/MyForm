@@ -8,7 +8,9 @@ function App() {
     <div className="App">
       <HeaderNavbar />
       <header className="App-content">
+        <div className='night-club'>
           <ConfigureRouter></ConfigureRouter>
+        </div>
       </header>
     </div>
   );

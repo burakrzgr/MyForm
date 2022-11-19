@@ -41,3 +41,7 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.nightclub{
+  background-image: linear-gradient(120deg, #000000, #2D3436);
+}
